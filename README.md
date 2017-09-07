@@ -1,3 +1,5 @@
 # ProyectoTics2
 
-Proyecto universidad, aun no sabemos que haremos
+Nuevo portal para particulares o empresas que realicen trabajos de Flete.
+
+Documentación pendiente.
