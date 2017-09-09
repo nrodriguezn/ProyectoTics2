@@ -1,13 +1,24 @@
 package main
 
-import "../github.com/gin-gonic/gin"
+import (
+	"ProyectoTics2/fletes_backend/routes"
+	"os"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run() // listen and serve on 0.0.0.0:8080
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	router := gin.Default()
+
+	v1 := router.Group("/api")
+	{
+		v1.GET("/", routes.FetchAll)
+	}
+
+	router.Run(":" + port)
 }
