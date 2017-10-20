@@ -1,0 +1,91 @@
+
+
+Usuario:
+
+{
+  "obj_id": "Obj_id",
+  "nombre": "nicolas",
+  "apellido": "rodriguez",
+  "email": "nicolas.rodriguez@mail.com",
+  "url_img": "url",
+  "activo": true,
+  "tipo": "usuario",
+  "direccion": {
+        "comuna": "Las Condes",
+        "calle": "pasaje olga",
+        "numero": "9473",
+        "dpto": "302",
+  },
+  "cedula": {
+        "rut": "185395243",
+        "num_ci": "1298172318293",
+        "fecha_expiracion": "10/10/2017"
+  },
+}
+
+Cliente:
+
+{
+  "obj_id": "Obj_id",
+  "nombre": "nicolas",
+  "apellido": "rodriguez",
+  "email": "nicolas.rodriguez@mail.com",
+  "telefono": "+56951086820",
+  "url_img": "url",
+  "activo": true,
+  "tipo": "cliente",
+  "direccion": {
+        "comuna": "Las Condes",
+        "calle": "pasaje olga",
+        "numero": "9473",
+        "dpto": "302",
+  },
+  "cedula": {
+        "rut": "185395243",
+        "num_ci": "1298172318293",
+        "fecha_expiracion": "10/10/2017"
+  },
+  "vehiculo": {
+        "vehiculo1": {
+              "tipo": "camion",
+              "patente": "dj 23 ee",
+              "color": "blanco",
+              "url_img": "url_img"
+        }
+  },
+}
+
+
+
+Envio: {   falta terminaaaar    }
+
+{
+  "obj_id": "obj_id",
+  "persona_id": "id_persona",
+  "fecha_creacion": "10/10/2017",
+  "lapso_inicial_retiro": "12:30:00pm",
+  "lapso_final_retiro": "13:30:00pm",
+  "fecha_expiracion": "10/10/2018",
+  "subasta": false,
+  "asignado": false,
+  "activo": true,
+  "propuesta_cliente": {  ARREGLAR AQUI
+      "obj_id_clienet": "obj_id",
+      "Precio": 5000,
+      "comentario": "aqui iria un comentario personalisado",
+  }
+
+
+}
+
+
+Comunas:
+{
+  "las condes": ["La Reina", "Vitacura", "otras"],
+  "puente alto": "....",
+
+}
+
+
+
+//una buena idea seria tener una coleccion con las comunas vecinas, de este modo se filtra y se sugiere mejor.
