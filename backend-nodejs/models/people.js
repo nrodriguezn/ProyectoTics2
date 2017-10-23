@@ -10,7 +10,7 @@ const PeopleSchema = new Schema({
   "email": { type: String, unique: true, lowercase: true },
   "telefono": { type: Number },
   "url_img": { type: String },
-  "activo": boolean,
+  "activo": false,
   "tipo": { type: String, enum: ['cliente', 'usuario']},
   "SignupDate": { type: Date, default: Date.now() },
   "direccion": {
@@ -23,7 +23,7 @@ const PeopleSchema = new Schema({
         "rut": { type: String },
         "num_ci": { type: String },
         "fecha_expiracion": { type: Date },
-  },
+  }/*,
   "vehiculo": {     Esta mal Construido aquiii |||||||||||||||
         "vehiculo1": {
               "tipo": "camion",
@@ -31,7 +31,7 @@ const PeopleSchema = new Schema({
               "color": "blanco",
               "url_img": "url_img"
         }
-  },
+  },*/
 })
 
 
