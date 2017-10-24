@@ -11,11 +11,14 @@ const SendSchema = Schema ({
   "fecha_expiracion": {  type: Date },
   "subasta": { type: false },
   "asignado": { type: false },
-  "activo": { type: false }/*,
-  "propuesta_cliente": {  ARREGLAR AQUI
-      "obj_id_clienet": { type: String },
-      "Precio": { type: Number },
-      "comentario": { type: String },*/
+  "activo": { type: false },
+  "propuesta_cliente": [
+                        {//Puede tener varias
+                            "obj_id_clienet": { type: String },
+                            "Precio": { type: Number },
+                            "comentario": { type: String }
+                        }
+                      ]
 })
 
 module.exports = mongoose.model('Send', SendSchema)

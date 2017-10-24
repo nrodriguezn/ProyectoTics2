@@ -23,15 +23,17 @@ const PeopleSchema = new Schema({
         "rut": { type: String },
         "num_ci": { type: String },
         "fecha_expiracion": { type: Date },
-  }/*,
-  "vehiculo": {     Esta mal Construido aquiii |||||||||||||||
-        "vehiculo1": {
-              "tipo": "camion",
-              "patente": "dj 23 ee",
-              "color": "blanco",
-              "url_img": "url_img"
-        }
-  },*/
+  },
+  "vehiculo":
+            [
+              {
+                    "tipo": {type: String, enum: ['camion', 'furgon', 'moto']},
+                    "patente": {type: String},
+                    "color": {type: String},
+                    "url_img": {type: String}
+              }
+            ]
+
 })
 
 
