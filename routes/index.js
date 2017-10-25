@@ -26,16 +26,16 @@ res.status(200).send({message: 'Tienes autorizacion'})
 
 //People Controllers
 api.post('/people', peopleCtrl.postProfile )
-api.get('/people', peopleCtrl.getProfile )
-api.get('/people/:peopleId', peopleCtrl.getProfiles )
+api.get('/people', peopleCtrl.getProfiles )
+api.get('/people/:peopleId', peopleCtrl.getProfile )
 api.put('/people/:peopleId', peopleCtrl.putProfile )
 api.delete('/people/:peopleId', peopleCtrl.deleteProfile )
 
 
 //Send Controllers
 api.post('/send',sendCtrl.postSend  )
-api.get('/send', sendCtrl.getSend )
-api.get('/send/:sendId', sendCtrl.getSends )
+api.get('/send', sendCtrl.getSends )
+api.get('/send/:sendId', sendCtrl.getSend )
 api.put('/send/:sendId', sendCtrl.putSend )
 api.delete('/send/:sendId', sendCtrl.deleteSend )
 

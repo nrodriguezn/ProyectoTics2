@@ -11,7 +11,7 @@ const PeopleSchema = new Schema({
   "telefono": { type: Number },
   "url_img": { type: String },
   "activo": false,
-  "tipo": { type: String, enum: ['cliente', 'usuario']},
+  "tipo": { type: String, enum: ['cliente', 'usuario', 'administrador']},
   "SignupDate": { type: Date, default: Date.now() },
   "direccion": {
         "comuna": { type: String },
