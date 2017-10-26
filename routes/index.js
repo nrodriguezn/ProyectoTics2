@@ -34,7 +34,7 @@ api.delete('/people/:peopleId', peopleCtrl.deleteProfile )
 
 //Send Controllers
 api.post('/send',sendCtrl.postSend  )
-api.get('/send', sendCtrl.getSends )
+api.get('/send', sendCtrl.getSend )
 api.get('/send/:sendId', sendCtrl.getSend )
 api.put('/send/:sendId', sendCtrl.putSend )
 api.delete('/send/:sendId', sendCtrl.deleteSend )
