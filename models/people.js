@@ -42,9 +42,17 @@ const PeopleSchema = new Schema({
 //pico es solo para limitar las estrellas, ahi decidimos los margenes
 
 
+//esta bien, solo que tendria que ser
+    // "calificacion": [{type: Number, enum: [1,2,3,4,5] } ],
+        //asi luego le haces push y cuando queiras calcular su calificacion
+        //calculas AVG de todos los datos que contenga calificacion que seria un arreglo bien largo
+
+
 
 //Numero de envios,  si es cliente
 // "numeroenvios" : {type: Number}
+
+    //esta bien, pero usa camelCase, seria "numeroEnvios" : {type: Number}
 
 
 
@@ -59,6 +67,9 @@ const PeopleSchema = new Schema({
 //      es independiente nomas
 //}
 
+
+  //ESto tienes que hacerlo como hice el perfil de las personas, el tema es que Schema tiene una estructura, la cual
+    //no necesariamente tienes que llenarla siempre, entonces si es independiente, lo marcas y pones menos datos nomas.
 
 //}_
 module.exports = mongoose.model('People', PeopleSchema)
