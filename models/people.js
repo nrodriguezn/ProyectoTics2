@@ -19,11 +19,6 @@ const PeopleSchema = new Schema({
         "numero": { type: Number },
         "dpto": { type: Number },
   },
-  "cedula": {
-        "rut": { type: String },
-        "num_ci": { type: String },
-        "fecha_expiracion": { type: Date },
-  },
   "vehiculo":
             [
               {
