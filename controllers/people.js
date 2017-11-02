@@ -42,6 +42,25 @@ function getProfiles(req, res) {
     res.status(200).send({ peoples })
   })
 }
+
+
+function putCalificacion(req, res) {
+  let PeopleId = req.params.ProfileId
+  var rating = req.body
+  var sum = 0
+
+  People.findById(peopleId, (err, people) =>{
+    if (err) return res.status(500).send({message: 'error al realizar la peticion'})
+    if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
+    for(var i = 0; i < calificacionarr.lenght ; i++){
+      sum+ = calificacionarr[i];
+    }
+    var avg = sum / calificacionarr.lenght
+    People.calificacion = avg
+    res.status(200).send(People)
+  })
+}
+
 //como son personas separamos los clientes(fletes) de usuarios
  //tu siendo cliente quiero que me muestra los usuarios que cumplan con:
  //tu siendo usuario quiero q me muestre los fletes que cumplan con :
