@@ -25,25 +25,25 @@ const PeopleSchema = new Schema({
         "fecha_expiracion": { type: Date },
   },
   "vehiculo":
-            [
+        [
               {
                     "tipo": {type: String, enum: ['camion', 'furgon', 'moto']},
                     "patente": {type: String},
                     "color": {type: String},
                     "url_img": {type: String}
               }
-            ]
+        ]
 
-})
+
 //Calificacion
-"calificacionArr": [],
+"calificacionArr":{ type: Number, []}
 
 
 
 //Numero de envios,  si es cliente
-"numeroEnvios" : {type: Number}
+"numeroEnvios" : {type: Number},
 
-
+})
 
 //Empresa (independiente, empresas)
 //"empresa" : {

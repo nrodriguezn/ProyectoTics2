@@ -54,7 +54,7 @@ function getCalificacion(req, res) {
     if (err) return res.status(500).send({message: 'error al realizar la peticion'})
     if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
     for(var i = 0; i < calificacionArr.lenght ; i++){
-      sum+ = calificacionarr[i];
+      sum = sum + calificacionarr[i];
     }
     var avg = sum / calificacionArr.lenght
     People.calificacion = avg
@@ -77,7 +77,7 @@ function putCalificacion(req,res){
    People.findById(PeopleId , (err, people) =>{
      if (err) return res.status(500).send({message: 'error al realizar la peticion'})
      if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
-     var update People.numeroEnvios + 1
+     var update = numeroEnvios + 1
      People.numeroEnvios = update
      res.status(200).send(People)
    })
