@@ -32,14 +32,9 @@ const PeopleSchema = new Schema({
                     "color": {type: String},
                     "url_img": {type: String}
               }
-        ]
-
-
+        ],
 //Calificacion
-"calificacionArr":{ type: Number, []}
-
-
-
+"calificacionArr":{ type: Number[]},
 //Numero de envios,  si es cliente
 "numeroEnvios" : {type: Number},
 
