@@ -36,24 +36,12 @@ const PeopleSchema = new Schema({
 
 })
 //Calificacion
-"calificacionarr": [],
-"calificacion": {Type: Number}
-// if (tiene 1 calificacion de 5 de un envio entonces tiene 5 estrellas (el numero de envios tb se muestra pero esta en otro campo!))
-// if (tiene 10 calificaciones de 5 estrellas de un total de 20 envios, entonces queda en 2,5 estrellas)
-//pico es solo para limitar las estrellas, ahi decidimos los margenes
-
-
-//esta bien, solo que tendria que ser
-    // "calificacion": [{type: Number, enum: [1,2,3,4,5] } ],
-        //asi luego le haces push y cuando queiras calcular su calificacion
-        //calculas AVG de todos los datos que contenga calificacion que seria un arreglo bien largo
+"calificacionArr": [],
 
 
 
 //Numero de envios,  si es cliente
-// "numeroenvios" : {type: Number}
-
-    //esta bien, pero usa camelCase, seria "numeroEnvios" : {type: Number}
+"numeroEnvios" : {type: Number}
 
 
 
