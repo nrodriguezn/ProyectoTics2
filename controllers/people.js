@@ -16,7 +16,8 @@ function postProfile ( req, res ) {
   People.direccion = req.body.direccion
   People.cedula = req.body.cedula
   People.vehiculo = req.body.vehiculo
-  People.calificacionArr = null
+  People.calificacion.sum_total = 0
+  People.calificacion.largo_total = 0
   People.numeroEnvios = 0
 
   People.save((err, peopleStored)=>{
@@ -48,17 +49,12 @@ function getProfiles(req, res) {
 
 function getCalificacion(req, res) {
   let PeopleId = req.params.ProfileId
-  var sum = 0
 
   People.findById(peopleId, (err, people) =>{
     if (err) return res.status(500).send({message: 'error al realizar la peticion'})
     if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
-    for(var i = 0; i < calificacionArr.lenght ; i++){
-      sum = sum + calificacionarr[i];
-    }
-    var avg = sum / calificacionArr.lenght
-    People.calificacion = avg
-    res.status(200).send(People)
+    var avg = (People.calificacion.sum_total / People.calificacion.largo_total)
+    res.status(200).send(avg)
   })
 }
 
@@ -68,6 +64,8 @@ function putCalificacion(req,res){
 
   People.findByIdAndUpdate(PeopleId, update, (err, peopleUpdated) =>{
     if (err) res.status(500).send({message: 'Error al actualizar calificacion'})
+    People.calificacion.sum_total = People.calificacion.sum_total + update
+    people.calificacion.largo_total = People.calificacion.largo_total + 1
     res.status(200).send({people: peopleUpdated})
   })
 }
@@ -77,7 +75,7 @@ function putCalificacion(req,res){
    People.findById(PeopleId , (err, people) =>{
      if (err) return res.status(500).send({message: 'error al realizar la peticion'})
      if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
-     var update = numeroEnvios + 1
+     var update = People.numeroEnvios + 1
      People.numeroEnvios = update
      res.status(200).send(People)
    })

@@ -30,11 +30,19 @@ const PeopleSchema = new Schema({
                     "tipo": {type: String, enum: ['camion', 'furgon', 'moto']},
                     "patente": {type: String},
                     "color": {type: String},
-                    "url_img": {type: String}
+                    "url_img": {type: String},
               }
         ],
+
+
 //Calificacion
-"calificacionArr":{ type: Number[]},
+"calificacion":{
+        "sum_total": { type: Number},
+        "largo_total": {type: Number},
+      },
+
+
+
 //Numero de envios,  si es cliente
 "numeroEnvios" : {type: Number},
 
