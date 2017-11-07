@@ -66,7 +66,7 @@ function putCalificacion(req,res){
     if (err) res.status(500).send({message: 'Error al actualizar calificacion'})
     People.calificacion.sum_total = People.calificacion.sum_total + update
     people.calificacion.largo_total = People.calificacion.largo_total + 1
-    res.status(200).send({people: peopleUpdated})
+    res.status(200).send({message: 'Se actualizo la calificacion'})
   })
 }
 
@@ -77,10 +77,18 @@ function putCalificacion(req,res){
      if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
      var update = People.numeroEnvios + 1
      People.numeroEnvios = update
-     res.status(200).send(People)
+     res.status(200).send({message: 'se actualizo el numero de envios'})
    })
+}
 
- }
+function getNumeroEnvios(req,res){
+  let PeopleId = req.params.ProfileId
+  People.findById(PeopleId, (err, people) => {
+    if (err) return res.status(500).send({message: 'error al realizar la peticion'})
+    if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
+    res.status(200).send(People.numeroEnvios)
+  })
+}
 //como son personas separamos los clientes(fletes) de usuarios
  //tu siendo cliente quiero que me muestra los usuarios que cumplan con:
  //tu siendo usuario quiero q me muestre los fletes que cumplan con :
@@ -123,7 +131,12 @@ function deleteProfile(req, res) {
 module.exports = {
   getProfile,
   getProfiles,
+  getCalificacion,
+  putCalificacion,
+  putNumeroEnvios,
+  getNumeroEnvios,
   putProfile,
   deleteProfile,
   postProfile
+
 }
