@@ -30,10 +30,10 @@ api.get('/people', peopleCtrl.getProfiles )
 api.get('/people/:peopleId', peopleCtrl.getProfile )
 api.put('/people/:peopleId', peopleCtrl.putProfile )
 api.delete('/people/:peopleId', peopleCtrl.deleteProfile )
-api.get('/people/:peopleId', peopleCtrl.getCalificacion)
-api.put('/people/:peopleId', peopleCtrl.putCalificacion)
-api.put('/people/:peopleId', peopleCtrl.putNumeroEnvios)
-api.get('/people/:peopleId', peopleCtrl.getNumeroEnvios)
+api.get('/people/:calificacion', peopleCtrl.getCalificacion)
+api.put('/people/:calificacion', peopleCtrl.putCalificacion)
+api.put('/people/:envios', peopleCtrl.putNumeroEnvios)
+api.get('/people/:envios', peopleCtrl.getNumeroEnvios)
 
 
 //Send Controllers
