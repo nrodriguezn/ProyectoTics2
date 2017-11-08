@@ -12,6 +12,12 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { UsuarioComponent } from './components/home/usuario/usuario.component';
 import { ClienteComponent } from './components/home/cliente/cliente.component';
 import { FooterClientComponent } from './components/shared/footer-client/footer-client.component';
+import { FleterosComponent } from './components/user/fleteros/fleteros.component';
+import { PublicarComponent } from './components/user/publicar/publicar.component';
+import { PerfilComponent } from './components/user/perfil/perfil.component';
+import { SearchComponent } from './components/client/search/search.component';
+import { ManageComponent } from './components/client/manage/manage.component';
+import { ProfileComponent } from './components/client/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import { FooterClientComponent } from './components/shared/footer-client/footer-
     NavbarComponent,
     UsuarioComponent,
     ClienteComponent,
-    FooterClientComponent
+    FooterClientComponent,
+    FleterosComponent,
+    PublicarComponent,
+    PerfilComponent,
+    SearchComponent,
+    ManageComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
