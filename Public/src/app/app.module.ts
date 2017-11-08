@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { UsuarioComponent } from './components/home/usuario/usuario.component';
 import { ClienteComponent } from './components/home/cliente/cliente.component';
+import { FooterClientComponent } from './components/shared/footer-client/footer-client.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ClienteComponent } from './components/home/cliente/cliente.component';
     LoginComponent,
     NavbarComponent,
     UsuarioComponent,
-    ClienteComponent
+    ClienteComponent,
+    FooterClientComponent
   ],
   imports: [
     BrowserModule,
