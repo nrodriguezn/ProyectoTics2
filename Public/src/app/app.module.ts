@@ -9,13 +9,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { UsuarioComponent } from './components/home/usuario/usuario.component';
+import { ClienteComponent } from './components/home/cliente/cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    UsuarioComponent,
+    ClienteComponent
   ],
   imports: [
     BrowserModule,
