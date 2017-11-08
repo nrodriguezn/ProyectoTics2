@@ -1,15 +1,8 @@
-.card-body-list{
-  display: inline-block;
-
-}
-
 .img img{
   width: 100px;
 }
 
 div ul li ul{
-  overflow: hidden;
-  list-style: none;
   display: inline-block;
 }
 .numeros-cliente{
@@ -18,9 +11,13 @@ div ul li ul{
 }
 
 p{
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 h3{
-float: left;
+float: center;
+}
+.titulo-direccion{
+  padding-left: 20px;
+  padding-top: 10px;
 }
