@@ -1,0 +1,18 @@
+.card-body-list{
+  display: inline-block;
+
+}
+
+.img img{
+  width: 100px;
+}
+
+div ul li ul{
+  overflow: hidden;
+  list-style: none;
+  display: inline-block;
+}
+.numeros-cliente{
+  display: inline-block;
+  padding: 10px;
+}
