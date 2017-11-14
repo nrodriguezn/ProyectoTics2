@@ -11,7 +11,7 @@ import { APP_ROUTING } from './app.routes';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
+
 import { UsuarioComponent } from './components/home/usuario/usuario.component';
 import { ClienteComponent } from './components/home/cliente/cliente.component';
 import { FleterosComponent } from './components/user/fleteros/fleteros.component';
@@ -20,7 +20,7 @@ import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { SearchComponent } from './components/client/search/search.component';
 import { ManageComponent } from './components/client/manage/manage.component';
 import { ProfileComponent } from './components/client/profile/profile.component';
-import { DownNavUserComponent } from './components/shared/down-nav-user/down-nav-user.component';
+
 import { NavBarUserComponent } from './components/shared/user/nav-bar-user/nav-bar-user.component';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { NavBarUserComponent } from './components/shared/user/nav-bar-user/nav-b
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NavbarComponent,
+
     UsuarioComponent,
     ClienteComponent,
     FleterosComponent,
@@ -37,7 +37,7 @@ import { NavBarUserComponent } from './components/shared/user/nav-bar-user/nav-b
     SearchComponent,
     ManageComponent,
     ProfileComponent,
-    DownNavUserComponent,
+
     NavBarUserComponent
   ],
   imports: [

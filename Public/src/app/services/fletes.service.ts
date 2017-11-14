@@ -5,15 +5,15 @@ import { Router } from '@angular/router';
 export class FletesService {
 
   constructor(  private router:Router ) { }
-  private usuario = 'cliente'
+  private usuario = 'usuario'
 
   setUserType(UserType){
     this.usuario = UserType
     if(this.usuario == "cliente"){
-      this.router.navigate(['/AppComponent'])
+      this.router.navigate(['/appComponent'])
       console.log("cliente")
     }else if(this.usuario == "usuario"){
-      this.router.navigate(['/AppComponent'])
+      this.router.navigate(['/appComponent'])
       console.log("usuario")
     }
   }
