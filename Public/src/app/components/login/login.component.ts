@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FletesService } from '../../services/fletes.service';
+
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor( private _fletesService:FletesService) { }
 
   ngOnInit() {
+  }
+  setUserTypeLogin(userType){
+    return this._fletesService.setUserType(userType)
   }
 
 }
