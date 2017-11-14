@@ -1,0 +1,6 @@
+.footer_nic{
+    position: fixed;
+    bottom: 0;
+    z-index: 100;/* Depende el valor segun las capas flotantes que tengas */
+    float: center;
+}
