@@ -6,6 +6,7 @@ import { UsuarioComponent } from './components/home/usuario/usuario.component';
 import { FleterosComponent } from './components/user/fleteros/fleteros.component';
 import {PerfilComponent} from './components/user/perfil/perfil.component';
 import {PublicarComponent} from './components/user/publicar/publicar.component';
+import { AppComponent } from './app.component';
 
 const APP_ROUTES: Routes = [
 
@@ -16,6 +17,7 @@ const APP_ROUTES: Routes = [
   { path: 'verFleteros', component: FleterosComponent },
   { path: 'perfilUser', component: PerfilComponent },
   { path: 'publicarFlete', component: PublicarComponent },
+  { path: 'appComponent', component: AppComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

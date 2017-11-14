@@ -18,3 +18,8 @@
   </div>
     <!--Footer Cliente (Fijo) Este si va aqui -->
 </div>
+
+<div *ngIf="usuario == 'login'">
+    <app-login></app-login>
+    <router-outlet></router-outlet>
+</div>
