@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   setUserTypeLogin(userType){
-    return this._fletesService.setUserType(userType)
+     return this._fletesService.setUserType(userType)
   }
 
 }
