@@ -36,7 +36,10 @@ const PeopleSchema = new Schema({
 
 })
 //Calificacion
-"calificacionArr": [],
+//"calificacion": {type: Number, enum: ['1','2','3','4','5']},
+// if (tiene 1 calificacion de 5 de un envio entonces tiene 5 estrellas (el numero de envios tb se muestra pero esta en otro campo!))
+// if (tiene 10 calificaciones de 5 estrellas de un total de 20 envios, entonces queda en 2,5 estrellas)
+//pico es solo para limitar las estrellas, ahi decidimos los margenes
 
 
 

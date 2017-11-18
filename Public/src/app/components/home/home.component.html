@@ -1,11 +1,12 @@
 
+
+
 <!-- User Section -->
 <div *ngIf="usuario == 'usuario'">
   <app-nav-bar-user></app-nav-bar-user>
   <div class="container main_container">
       <router-outlet></router-outlet>
   </div>
-
 </div>
 
 
@@ -16,11 +17,4 @@
       <router-outlet></router-outlet>
   </div>
     <!--Footer Cliente (Fijo) Este si va aqui -->
-</div>
-
-
-<!-- Login Section -->
-<div *ngIf="usuario == 'login'">
-    <app-login></app-login>
-    <router-outlet></router-outlet>
 </div>
