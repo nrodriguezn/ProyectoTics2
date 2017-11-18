@@ -8,7 +8,7 @@ export class FletesService {
   private usuario = 'usuario'
 
   setUserType(UserType){
-    
+
     this.usuario = UserType
     if(this.usuario == "cliente"){
       this.router.navigate(['/appComponent'])
