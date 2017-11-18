@@ -5,15 +5,25 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
+
+<!-- INICIO LINKS USUARIO -->
+
+      <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated()">
         <a class="nav-link" [routerLink]="['verFleteros']">Fleteros</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated()">
         <a class="nav-link" [routerLink]="['publicarFlete']">Publicar Flete</a>
       </li>
       <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()">
         <a class="nav-link" [routerLink]="['perfilUser']">Perfil</a>
       </li>
+
+
+<!-- Fin LINKS USUARIO -->
+<!-- INICIO LINKS Cliente -->
+
+
+<!-- Fin LINKS Cliente -->
     </ul>
     <span class="navbar-text">
       <button

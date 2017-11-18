@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AppComponent } from './app.component';
+import {AuthGuardService} from './services/auth-guard.service';
 
 //Usuario Routes
 
@@ -20,9 +21,9 @@ const APP_ROUTES: Routes = [
 
   { path: 'home', component: HomeComponent },
 
-  { path: 'verFleteros', component: FleterosComponent },
-  { path: 'perfilUser', component: PerfilComponent },
-  { path: 'publicarFlete', component: PublicarComponent },
+  { path: 'verFleteros', component: FleterosComponent, canActivate: [AuthGuardService] },
+  { path: 'perfilUser', component: PerfilComponent, canActivate: [AuthGuardService] },
+  { path: 'publicarFlete', component: PublicarComponent, canActivate: [AuthGuardService] },
   { path: 'appComponent', component: AppComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
