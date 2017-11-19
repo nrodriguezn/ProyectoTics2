@@ -18,7 +18,8 @@ import {SearchComponent} from './components/client/search/search.component';
 
 
 //Rutas Extras
-import { CLIENT_ROUTES } from './components/client/client.routes';
+import { CLIENT_ACTIVE_ROUTES } from './components/client/manage/manage.routes';
+import {CLIENT_SEARCH_ROUTES} from './components/client/search/search.routes';
 
 const APP_ROUTES: Routes = [
 
@@ -28,9 +29,9 @@ const APP_ROUTES: Routes = [
   { path: 'perfilUser', component: PerfilComponent, canActivate: [AuthGuardService] },
   { path: 'publicarFlete', component: PublicarComponent, canActivate: [AuthGuardService] },
 
-  { path: 'manage', component: ManageComponent, canActivate: [AuthGuardService] },
+  { path: 'manage', component: ManageComponent, canActivate: [AuthGuardService], children: CLIENT_ACTIVE_ROUTES },
   { path: 'clientProfile', component: ProfileComponent, canActivate: [AuthGuardService] },
-  { path: 'search', component: SearchComponent, canActivate: [AuthGuardService] },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuardService], children: CLIENT_SEARCH_ROUTES },
 
   { path: 'appComponent', component: AppComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }

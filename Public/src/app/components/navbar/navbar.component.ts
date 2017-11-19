@@ -30,6 +30,10 @@ export class NavbarComponent implements OnInit {
   }
 
 
+  changeNav(){
+    this.userType = this._fletesService.getUserType()
+  }
+
 
 
 

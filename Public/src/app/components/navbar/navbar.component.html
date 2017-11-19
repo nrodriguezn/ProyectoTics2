@@ -40,6 +40,13 @@
 <!-- Fin LINKS Cliente -->
 </ul>
     <span class="navbar-text">
+
+      <button
+                 class="btn btn-primary btn-margin btn-sm"
+                 (click)="changeNav()">
+                   Cambiar Nav
+               </button>
+
       <button
               (click)="login()"
               *ngIf="!auth.isAuthenticated()"
