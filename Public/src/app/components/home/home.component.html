@@ -1,20 +1,7 @@
 
-
-
-<!-- User Section -->
-<div *ngIf="usuario == 'usuario'">
-  <app-navbar></app-navbar>
-  <div class="container main_container">
-      <router-outlet></router-outlet>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">{{ userType | uppercase }}</h1>
+    <p class="lead">Esta es la pagina de inicio que queda por programar.</p>
   </div>
-</div>
-
-
-<!-- Client Section --->
-<div *ngIf="usuario == 'cliente'">
-  <!-- Header Client, este cambia y va dentro de Footer -->
-  <div class="container main_container">
-      <router-outlet></router-outlet>
-  </div>
-    <!--Footer Cliente (Fijo) Este si va aqui -->
 </div>

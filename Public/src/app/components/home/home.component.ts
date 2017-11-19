@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FletesService} from './../../services/fletes.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  
+userType:string
 
-  constructor() { }
+  constructor(private _fletesService:FletesService) { }
 
   ngOnInit() {
+    this.userType = this._fletesService.getUserType()
   }
 
 }
