@@ -8,23 +8,37 @@
 
 <!-- INICIO LINKS USUARIO -->
 
-      <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated()">
-        <a class="nav-link" [routerLink]="['verFleteros']">Fleteros</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated()">
-        <a class="nav-link" [routerLink]="['publicarFlete']">Publicar Flete</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()">
-        <a class="nav-link" [routerLink]="['perfilUser']">Perfil</a>
-      </li>
+
+        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && userType == 'usuario'">
+          <a class="nav-link" [routerLink]="['verFleteros']">Fleteros</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated()&& userType == 'usuario'">
+          <a class="nav-link" [routerLink]="['publicarFlete']">Publicar Flete</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()&& userType == 'usuario'">
+          <a class="nav-link" [routerLink]="['perfilUser']">Perfil</a>
+        </li>
+
 
 
 <!-- Fin LINKS USUARIO -->
 <!-- INICIO LINKS Cliente -->
 
 
+    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && userType == 'cliente'">
+      <a class="nav-link" [routerLink]="['search']">Buscar Fletes</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && userType == 'cliente'">
+      <a class="nav-link" [routerLink]="['manage']">Gestionar Fletes</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated() && userType == 'cliente'">
+      <a class="nav-link" [routerLink]="['clientProfile']">Perfil</a>
+    </li>
+
+
+
 <!-- Fin LINKS Cliente -->
-    </ul>
+</ul>
     <span class="navbar-text">
       <button
               (click)="login()"
@@ -41,3 +55,5 @@
     </span>
   </div>
 </nav>
+
+<h1 style="text-align: center;">{{userType}}</h1>

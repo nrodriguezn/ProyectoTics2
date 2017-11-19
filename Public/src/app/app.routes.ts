@@ -11,6 +11,9 @@ import {PublicarComponent} from './components/user/publicar/publicar.component';
 
 
 //Cliente Routes
+import {ManageComponent} from './components/client/manage/manage.component';
+import {ProfileComponent} from './components/client/profile/profile.component';
+import {SearchComponent} from './components/client/search/search.component';
 
 
 
@@ -24,6 +27,11 @@ const APP_ROUTES: Routes = [
   { path: 'verFleteros', component: FleterosComponent, canActivate: [AuthGuardService] },
   { path: 'perfilUser', component: PerfilComponent, canActivate: [AuthGuardService] },
   { path: 'publicarFlete', component: PublicarComponent, canActivate: [AuthGuardService] },
+
+  { path: 'manage', component: ManageComponent, canActivate: [AuthGuardService] },
+  { path: 'clientProfile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuardService] },
+
   { path: 'appComponent', component: AppComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

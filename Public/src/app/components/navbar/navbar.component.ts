@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import {FletesService} from './../../services/fletes.service';
 
@@ -12,11 +13,12 @@ export class NavbarComponent implements OnInit {
   userType:string
 
   constructor(private auth:AuthService, private _fletesService:FletesService) {
+  auth.handleAuthentication();
 
-
-  auth.handleAuthentication(); }
+}
 
   ngOnInit() {
+    this.userType = this._fletesService.getUserType()
   }
 
   login(){
@@ -27,9 +29,7 @@ export class NavbarComponent implements OnInit {
     this.auth.logout()
   }
 
-  setUserType(){
-    this.userType = this._fletesService.getUserType();
-  }
+
 
 
 

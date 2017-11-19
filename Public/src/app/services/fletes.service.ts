@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 export class FletesService {
 
   constructor(  private router:Router ) { }
-  private usuario = 'usuario'
+  private usuario = 'cliente'
 
   setUserType(){
 
@@ -18,6 +18,7 @@ export class FletesService {
   }
 
   getUserType(){
+    console.log("getUserType")
     return this.usuario;
   }
 }
