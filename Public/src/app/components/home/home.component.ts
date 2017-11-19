@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import {FletesService} from './../../services/fletes.service';
 
 @Component({
@@ -13,6 +13,14 @@ userType:string
   constructor(private _fletesService:FletesService) { }
 
   ngOnInit() {
+  }
+
+  ngOnChange(){
+      
+    }
+
+  changeUserType(){
+    this._fletesService.setUserType();
     this.userType = this._fletesService.getUserType()
   }
 
