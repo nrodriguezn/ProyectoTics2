@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-archivado',
   templateUrl: './archivado.component.html',
-  styles: []
+  styleUrls: ['./archivado.component.css']
 })
 export class ArchivadoComponent implements OnInit {
 

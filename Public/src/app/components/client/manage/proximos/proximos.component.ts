@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-proximos',
   templateUrl: './proximos.component.html',
-  styles: []
+    styleUrls: ['./proximos.component.css']
 })
 export class ProximosComponent implements OnInit {
 

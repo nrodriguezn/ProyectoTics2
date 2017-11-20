@@ -18,7 +18,7 @@ export class FletesService {
   }
 
   getUserType(){
-    console.log("getUserType")
+    console.log("getUserType Servicio")
     return this.usuario;
   }
 }

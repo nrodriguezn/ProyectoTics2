@@ -16,8 +16,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     //this.activatedRoute.params
     //.subscribe( this.usuario => this.usuario = this._fletesService.getUserType())
-
-
       this.usuario = this._fletesService.getUserType()
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import {FletesService} from './../../services/fletes.service';
@@ -9,20 +9,22 @@ import {FletesService} from './../../services/fletes.service';
   styles: []
 })
 export class NavbarComponent implements OnInit {
+  userType: string;
 
-  userType:string
 
   constructor(private auth:AuthService, private _fletesService:FletesService) {
   auth.handleAuthentication();
+  //this._fletesService.getUsinformerType()
+    //    .subscribe()
+  }
 
-}
 
   ngOnInit() {
     this.userType = this._fletesService.getUserType()
   }
 
   login(){
-  this.auth.login()
+    this.auth.login()
   }
 
   salir(){
