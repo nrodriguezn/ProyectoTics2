@@ -1,20 +1,25 @@
 
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">{{ userType | uppercase }}</h1>
+    <p class="lead">
+            Esta es la pagina de inicio que queda por programar <br><hr>br
+      Seleccionar todos los elementos iguales: cmd + ctrl + g <br>
+      Seleccionar el siguiente elemento igual: cmd + d <br>
+      Mover un elemento: cmd + ctrl + flecha <br>
+      Comentar lineas: cmd + shift + / <br>
+      To UPPERCASE: cmd + k + u <br>
+      To lowercase: cmd + k + l <br>
+      Duplicar Linea: cmd + shift + d <br>
+      Juntar Lineas: cmd + j <br>
 
-
-<!-- User Section -->
-<div *ngIf="usuario == 'usuario'">
-  <app-nav-bar-user></app-nav-bar-user>
-  <div class="container main_container">
-      <router-outlet></router-outlet>
+    </p>
   </div>
 </div>
 
 
-<!-- Client Section --->
-<div *ngIf="usuario == 'cliente'">
-  <!-- Header Client, este cambia y va dentro de Footer -->
-  <div class="container main_container">
-      <router-outlet></router-outlet>
-  </div>
-    <!--Footer Cliente (Fijo) Este si va aqui -->
-</div>
+<button
+           class="btn btn-primary btn-margin btn-sm"
+           (click)="changeUserType()">
+             Cambiar Tipo Usuario
+         </button>

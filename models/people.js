@@ -19,11 +19,6 @@ const PeopleSchema = new Schema({
         "numero": { type: Number },
         "dpto": { type: Number },
   },
-  "cedula": {
-        "rut": { type: String },
-        "num_ci": { type: String },
-        "fecha_expiracion": { type: Date },
-  },
   "vehiculo":
             [
               {
@@ -44,7 +39,7 @@ const PeopleSchema = new Schema({
 
 
 //Numero de envios,  si es cliente
-// "numeroenvios" : {type: Number}
+"numeroEnvios" : {type: Number}
 
 
 
@@ -59,6 +54,9 @@ const PeopleSchema = new Schema({
 //      es independiente nomas
 //}
 
+
+  //ESto tienes que hacerlo como hice el perfil de las personas, el tema es que Schema tiene una estructura, la cual
+    //no necesariamente tienes que llenarla siempre, entonces si es independiente, lo marcas y pones menos datos nomas.
 
 //}_
 module.exports = mongoose.model('People', PeopleSchema)
