@@ -45,6 +45,20 @@ function getProfiles(req, res) {
     res.status(200).send({ peoples })
   })
 }
+//como son personas separamos los clientes(fletes) de usuarios
+ //tu siendo cliente quiero que me muestra los usuarios que cumplan con:
+ //tu siendo usuario quiero q me muestre los fletes que cumplan con :
+
+//function getProfilesComuna ((comunaSSSSSSS,(cliente,usuario), people)
+//function getProfilesTipocamion ((tipo,cliente) , people)
+
+
+//ORDER BY onda comunas y ordenar por empresas de esa comuna
+//function getProfilesCalificacion ((cliente,usuario),people) ordena por calificacion, una persona con buena calicacion aun que tenga pcoos envios puede que sea buena persona c:
+//function getProfilesEmpresa (((empresa,independiente),cliente), people) ordena por empresa y dps independiente, o indepentidente y dps empresas
+//function getProfilesEnvios (cliente, people) ordena por numero de envios , una persona con buena calificacion puede tener pocos envios
+
+
 
 
 function getCalificacion(req, res) {

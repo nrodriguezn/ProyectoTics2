@@ -1,0 +1,25 @@
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">{{ userType | uppercase }}</h1>
+    <p class="lead">
+            Esta es la pagina de inicio que queda por programar <br><hr>br
+      Seleccionar todos los elementos iguales: cmd + ctrl + g <br>
+      Seleccionar el siguiente elemento igual: cmd + d <br>
+      Mover un elemento: cmd + ctrl + flecha <br>
+      Comentar lineas: cmd + shift + / <br>
+      To UPPERCASE: cmd + k + u <br>
+      To lowercase: cmd + k + l <br>
+      Duplicar Linea: cmd + shift + d <br>
+      Juntar Lineas: cmd + j <br>
+
+    </p>
+  </div>
+</div>
+
+
+<button
+           class="btn btn-primary btn-margin btn-sm"
+           (click)="changeUserType()">
+             Cambiar Tipo Usuario
+         </button>

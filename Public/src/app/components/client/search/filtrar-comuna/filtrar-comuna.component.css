@@ -1,0 +1,51 @@
+.option-select{
+  width: 250px;
+}
+.comuna-form{
+  padding-top: 20px;
+}
+
+.card-body-list{
+  display: inline-block;
+
+}
+
+.img img{
+  width: 200px;
+  padding-bottom: 20px;
+}
+
+div ul li ul{
+  overflow: hidden;
+  list-style: none;
+  display: inline-block;
+}
+.numeros-cliente{
+  display: inline-block;
+  padding: 10px;
+}
+
+p{
+  padding-top: 20px;
+}
+
+h3{
+float: left;
+}
+
+ul {
+  padding-top: 20px;
+}
+.main-container{
+  padding-top: 20px;
+}
+
+
+.botones li{
+  padding-top: 5px;
+  align-items: right;
+}
+
+.ancho-b{
+  width: 230px;
+}

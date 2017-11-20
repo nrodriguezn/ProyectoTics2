@@ -1,2 +1,7 @@
 backend-nodejs/node_modules/*
+<<<<<<< HEAD
 package-lock.json
+=======
+
+./DS_Store
+>>>>>>> feature/frontend
