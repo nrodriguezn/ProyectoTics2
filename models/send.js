@@ -12,6 +12,12 @@ const SendSchema = Schema ({
   "subasta": { type: false },
   "asignado": { type: false },
   "activo": { type: false },
+  "direccion":{
+            "comuna": { type: String },
+            "calle": { type: String },
+            "numero": { type: Number },
+            "dpto": { type: Number },
+            }
   "propuesta_cliente": [
                         {//Puede tener varias
                             "obj_id_clienet": { type: String },

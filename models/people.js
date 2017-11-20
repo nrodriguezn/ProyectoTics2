@@ -19,11 +19,6 @@ const PeopleSchema = new Schema({
         "numero": { type: Number },
         "dpto": { type: Number },
   },
-  "cedula": {
-        "rut": { type: String },
-        "num_ci": { type: String },
-        "fecha_expiracion": { type: Date },
-  },
   "vehiculo":
             [
               {
@@ -35,6 +30,33 @@ const PeopleSchema = new Schema({
             ]
 
 })
+//Calificacion
+//"calificacion": {type: Number, enum: ['1','2','3','4','5']},
+// if (tiene 1 calificacion de 5 de un envio entonces tiene 5 estrellas (el numero de envios tb se muestra pero esta en otro campo!))
+// if (tiene 10 calificaciones de 5 estrellas de un total de 20 envios, entonces queda en 2,5 estrellas)
+//pico es solo para limitar las estrellas, ahi decidimos los margenes
 
 
+
+//Numero de envios,  si es cliente
+"numeroEnvios" : {type: Number}
+
+
+
+//Empresa (independiente, empresas)
+//"empresa" : {
+//    NICO NOSE COMO PERO:
+// IF (es empresa){
+//               "nombreempresa": {type: String}
+//               "rutempresa": {type: String}
+//                "direccionempresa": {type: String}
+//    } else {
+//      es independiente nomas
+//}
+
+
+  //ESto tienes que hacerlo como hice el perfil de las personas, el tema es que Schema tiene una estructura, la cual
+    //no necesariamente tienes que llenarla siempre, entonces si es independiente, lo marcas y pones menos datos nomas.
+
+//}_
 module.exports = mongoose.model('People', PeopleSchema)
