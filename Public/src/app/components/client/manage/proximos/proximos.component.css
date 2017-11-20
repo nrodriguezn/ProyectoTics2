@@ -4,7 +4,8 @@
 }
 
 .img img{
-  width: 100px;
+  width: 200px;
+  padding-bottom: 20px;
 }
 
 div ul li ul{
@@ -27,4 +28,16 @@ float: left;
 
 ul {
   padding-top: 20px;
+}
+.main-container{
+  padding-top: 20px;
+}
+
+
+.botones li{
+  padding-top: 5px;
+  align-items: right;
+}
+.ancho-b{
+  width: 230px;
 }
