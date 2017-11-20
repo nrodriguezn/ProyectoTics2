@@ -18,7 +18,60 @@ export class FletesService {
   }
 
   getUserType(){
-    console.log("getUserType Servicio")
     return this.usuario;
   }
+
+
+  // CRUD
+
+//   nuevoHeroe(heroe:Heroe){
+//   let body = JSON.stringify(heroe)
+//   let headers = new Headers({
+//     'Content-Type':'application/json'
+//   })
+//   return this.http.post(this.fireURL, body, { headers } ) //URL, BODY, HEADERS
+//           .map(res=>{
+//           console.log(res.json())
+//           return res.json()
+//         })
+// }
+//
+// actualizarHeroe(heroe:Heroe, key$:string){
+//   let body = JSON.stringify(heroe)
+//   let headers = new Headers({
+//     'Content-Type':'application/json'
+//   })
+//   let url = `${this.heroeURL}/${ key$ }.json`
+//   return this.http.put(url, body, { headers } ) //URL, BODY, HEADERS
+//           .map(res=>{
+//           console.log("Actualizar servicio")
+//           console.log(res.json())
+//           return res.json()
+//         })
+// }
+//
+// getHeroe(key$:string){
+//   let url = `${ this.heroeURL }/${ key$}.json`
+//   return this.http.get(url)
+//     .map(res=>res.json())
+// }
+//
+// getHeroes(){
+//   return this.http.get(this.fireURL)
+//     .map(res=>res.json())
+// }
+//
+// borrarHeroe(key$:string){
+//   let url = `${this.heroeURL}/${key$}.json`
+//   return this.http.delete(url)
+//     .map( res => res.json() )
+// }
+
+
+
+
+
+
+
+
 }
