@@ -1,9 +1,9 @@
 
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
 
-    <div class="" *ngIf="profile">
+  <div class="container main-container">
+
+    <div class="animated fadeIn fast" *ngIf="profile">
       <h2>Perfil del usuario: {{ profile.name }}</h2>
       <pre>  {{ profile | json}} </pre>
 
@@ -38,4 +38,3 @@
               Juntar Lineas: cmd + j <br>
         </p>
       </div>
-    </div>
