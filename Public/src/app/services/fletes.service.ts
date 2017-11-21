@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import {Http, Headers} from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class FletesService {
 
-  constructor(  private router:Router ) { }
-  // private usuario = 'cliente'
+  constructor(  private router:Router, private http:Http ) { }
+
   public usuario = 'cliente'
+  public profile:string
+  public apiUrl:string = 'http://localhost:3000'
+
 //Funciones Basicas
 
   setUserType(){
@@ -21,15 +26,33 @@ export class FletesService {
     return this.usuario;
   }
 
-
 //Peticiones a la API
+getProfileSesion(sub:string){
+  let url = `${ this.apiUrl }/${sub}`
+  return this.http.get(url)
+    .map(res=>res.json())
+}
+
+postNewProfile(profile:any){
+  let body = JSON.stringify(profile)
+  let headers = new Headers({
+    'Content-Type':'application/json'
+  })
+  return this.http.post(this.apiUrl, body, { headers } ) //URL, BODY, HEADERS
+          .map(res=>{
+          console.log(res.json())
+          return res.json()
+        })
+}
+
+
+
 
 
 
 
 
   // CRUD
-
 //   nuevoHeroe(heroe:Heroe){
 //   let body = JSON.stringify(heroe)
 //   let headers = new Headers({
@@ -72,12 +95,4 @@ export class FletesService {
 //   return this.http.delete(url)
 //     .map( res => res.json() )
 // }
-
-
-
-
-
-
-
-
 }

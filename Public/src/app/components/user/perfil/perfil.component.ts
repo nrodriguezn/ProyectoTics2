@@ -8,18 +8,12 @@ import { AuthService } from './../../../services/auth.service';
 })
 export class PerfilComponent implements OnInit {
 
-  profile:any
+
 
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
-    if (this.auth.userProfile) {
-      this.profile = this.auth.userProfile;
-    } else {
-      this.auth.getProfile((err, profile) => {
-        this.profile = profile;
-      });
-    }
+
   }
 
 }
