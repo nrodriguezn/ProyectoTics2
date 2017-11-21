@@ -19,6 +19,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FleterosComponent } from './components/user/fleteros/fleteros.component';
 import { PublicarComponent } from './components/user/publicar/publicar.component';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
+
+
+//CLIENTE
 import { SearchComponent } from './components/client/search/search.component';
 import { ManageComponent } from './components/client/manage/manage.component';
 import { ProfileComponent } from './components/client/profile/profile.component';
@@ -29,9 +32,6 @@ import { ProximosComponent } from './components/client/manage/proximos/proximos.
 import { PorPrecioComponent } from './components/client/manage/por-precio/por-precio.component';
 import { SubastasComponent } from './components/client/manage/subastas/subastas.component';
 import { ActivosComponent } from './components/client/manage/activos/activos.component';
-
-
-//CLIENTE
 
 
 

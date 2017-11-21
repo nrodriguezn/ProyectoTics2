@@ -3,6 +3,7 @@
 const People = require('../models/people')
 
  function setSesion(req, res){
+   console.log("EXITOOOOOOOASLKDHLAKSJHDASKDJ")
   res.status(200).send({message: 'Tienes autorizacion'})
 }
 
