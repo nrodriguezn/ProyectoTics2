@@ -10,6 +10,7 @@ export class FletesService {
 
   public usuario = 'cliente'
   public profile:string
+  // public apiUrl:string = 'https://fletes-portales.herokuapp.com/api'
   public apiUrl:string = 'http://localhost:3000/api'
 
 
@@ -47,11 +48,11 @@ postNewProfile(profile:any){
 }
 
 test(){
-  let url = `${this.apiUrl}/api/setsesion`
-  let body = " hola"
+  let url = `${this.apiUrl}/setsesion`
   let headers = new Headers({
     'Content-Type':'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': 'http://localhost:4200',
+    'Access-Control-Allow-Methods': 'POST, PUT, GET, DELETE',
   })
   console.log("hare la peticion")
   return this.http.get(url, {headers})
