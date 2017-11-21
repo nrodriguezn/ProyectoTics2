@@ -6,11 +6,9 @@ import {FletesService} from './../../services/fletes.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styles: []
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  userType: string;
-
 
   constructor(private auth:AuthService, private _fletesService:FletesService) {
   auth.handleAuthentication();
@@ -20,7 +18,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
-    this.userType = this._fletesService.getUserType()
+
   }
 
   login(){
@@ -30,13 +28,6 @@ export class NavbarComponent implements OnInit {
   salir(){
     this.auth.logout()
   }
-
-
-  changeNav(){
-    this.userType = this._fletesService.getUserType()
-  }
-
-
 
 
 }

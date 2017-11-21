@@ -14,11 +14,11 @@
         </ul>
         <ul>
             <div class="numeros-cliente">
-              <h5>142</h5>
+              <!-- <h5>{{ this.auth.userProfile.fletes.numero}}</h5> -->
               <span>Fletes</span>
             </div>
             <div class="numeros-cliente">
-              <h5>12</h5>
+              <!-- <h5>{{ this.auth.userProfile.fletes.cancelados}}</h5> -->
               <span>Cancelados</span>
             </div>
             <div class="numeros-cliente">
@@ -30,9 +30,9 @@
             <button type="button" class="btn btn-info">Editar Perfil</button>
         </ul>
 
-<h3>Nombre  <br> Usuario</h3>
+<h3>{{this.auth.userProfile.given_name}}</h3>
 <hr>
-<p>Aqui, iria un texto para definir en pocas palabras quien es este usuario, tipo instagram</p>
+<!-- <p>{{this.auth.userProfile.resenaPropia}}</p> -->
     </li>
   </ul>
 
@@ -46,17 +46,17 @@
 <tbody>
   <tr>
     <th scope="row">Dinero gastado este mes:</th>
-    <td>$200.000</td>
+    <!-- <td>{{this.auth.userProfile.infoExtra.dineroGastado}}</td> -->
 
   </tr>
   <tr>
     <th scope="row">Cantidad de envios realizados:</th>
-    <td>23</td>
+    <!-- <td>{{this.auth.userProfile.infoExtra.enviosCantidad}}</td> -->
 
   </tr>
   <tr>
     <th scope="row">Fletes Activos:</th>
-    <td>2</td>
+    <!-- <td>{{this.auth.userProfile.infoExtra.fletesActivos}}</td> -->
 
   </tr>
 </tbody>
