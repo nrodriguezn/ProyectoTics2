@@ -10,13 +10,12 @@ import {AuthService} from './../../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-userType:string
+userType:string = this._fletesService.usuario
 profile:any
 
   constructor(private _fletesService:FletesService, public auth:AuthService) { }
 
   ngOnInit() {
-    this.userType = this._fletesService.getUserType()
 
       if (this.auth.userProfile) {
         this.profile = this.auth.userProfile;
@@ -31,8 +30,7 @@ profile:any
 
   changeUserType(){
     this._fletesService.setUserType();
-    this.userType = this._fletesService.getUserType()
-
+    // this.userType = this._fletesService.getUserType()
   }
 
 }

@@ -9,13 +9,13 @@
 <!-- INICIO LINKS USUARIO -->
 
 
-        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && userType == 'usuario'">
+        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && this._fletesService.usuario == 'usuario'">
           <a class="nav-link" [routerLink]="['verFleteros']">Fleteros</a>
         </li>
-        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated()&& userType == 'usuario'">
+        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated()&& this._fletesService.usuario == 'usuario'">
           <a class="nav-link" [routerLink]="['publicarFlete']">Publicar Flete</a>
         </li>
-        <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()&& userType == 'usuario'">
+        <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()&& this._fletesService.usuario == 'usuario'">
           <a class="nav-link" [routerLink]="['perfilUser']">Perfil</a>
         </li>
 
@@ -25,13 +25,13 @@
 <!-- INICIO LINKS Cliente -->
 
 
-    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && userType == 'cliente'">
+    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && this._fletesService.usuario == 'cliente'">
       <a class="nav-link" [routerLink]="['search']">Buscar Fletes</a>
     </li>
-    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && userType == 'cliente'">
+    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && this._fletesService.usuario == 'cliente'">
       <a class="nav-link" [routerLink]="['manage']">Gestionar Fletes</a>
     </li>
-    <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated() && userType == 'cliente'">
+    <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated() && this._fletesService.usuario == 'cliente'">
       <a class="nav-link" [routerLink]="['clientProfile']">Perfil</a>
     </li>
 
@@ -40,13 +40,6 @@
 <!-- Fin LINKS Cliente -->
 </ul>
     <span class="navbar-text">
-
-      <button
-                 class="btn btn-primary btn-margin btn-sm"
-                 (click)="changeNav()">
-                   Cambiar Nav
-               </button>
-
       <button
               (click)="login()"
               *ngIf="!auth.isAuthenticated()"

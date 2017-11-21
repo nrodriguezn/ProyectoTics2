@@ -1,4 +1,5 @@
 
+
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
 
@@ -8,11 +9,18 @@
 
       <hr>
 
-      <h4>El tipo de usuario es: <strong>{{ userType }}</strong> </h4><button
-                 class="btn btn-primary btn-margin btn-sm"
-                 (click)="changeUserType()">
-                   Cambiar Tipo Usuario
-               </button>
+      <table>
+        <tr>
+            <td><h4>El tipo de usuario es: <strong>{{this._fletesService.usuario}}  </strong>    </h4></td>
+            <td><button
+              style="padding-left: 10px;"
+               class="btn btn-primary btn-margin btn-sm"
+               (click)="changeUserType()">
+                 Cambiar Tipo Usuario
+             </button></td>
+        </tr>
+      </table>
+
       <hr>
 
     </div>

@@ -5,21 +5,27 @@ import { Router } from '@angular/router';
 export class FletesService {
 
   constructor(  private router:Router ) { }
-  private usuario = 'cliente'
+  // private usuario = 'cliente'
+  public usuario = 'cliente'
+//Funciones Basicas
 
   setUserType(){
-
     if(this.usuario == 'usuario'){
       this.usuario = 'cliente'
     }else{
       this.usuario = 'usuario'
     }
-    console.log(this.usuario)
   }
 
   getUserType(){
     return this.usuario;
   }
+
+
+//Peticiones a la API
+
+
+
 
 
   // CRUD
