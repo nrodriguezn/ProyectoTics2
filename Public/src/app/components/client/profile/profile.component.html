@@ -9,7 +9,7 @@
     <li class="list-group-item card-body-list">
       <ul>
           <div class="img">
-            <img src="assets/img/default.jpg" alt="">
+            <img [src]="profile.picture" alt="">
           </div>
         </ul>
         <ul>
@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-info">Editar Perfil</button>
         </ul>
 
-<h3>Nombre  <br> Usuario</h3>
+<h3 >{{this.auth.userProfile.given_name}}</h3>
 <hr>
 <p>Aqui, iria un texto para definir en pocas palabras quien es este cliente, tipo instagram</p>
     </li>

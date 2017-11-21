@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark main-header ">
   <a class="navbar-brand" [routerLink]="['home']">FletesApp</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,13 +9,13 @@
 <!-- INICIO LINKS USUARIO -->
 
 
-        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && userType == 'usuario'">
+        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && this._fletesService.usuario == 'usuario'">
           <a class="nav-link" [routerLink]="['verFleteros']">Fleteros</a>
         </li>
-        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated()&& userType == 'usuario'">
+        <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated()&& this._fletesService.usuario == 'usuario'">
           <a class="nav-link" [routerLink]="['publicarFlete']">Publicar Flete</a>
         </li>
-        <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()&& userType == 'usuario'">
+        <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()&& this._fletesService.usuario == 'usuario'">
           <a class="nav-link" [routerLink]="['perfilUser']">Perfil</a>
         </li>
 
@@ -25,13 +25,13 @@
 <!-- INICIO LINKS Cliente -->
 
 
-    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && userType == 'cliente'">
+    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && this._fletesService.usuario == 'cliente'">
       <a class="nav-link" [routerLink]="['search']">Buscar Fletes</a>
     </li>
-    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && userType == 'cliente'">
+    <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && this._fletesService.usuario == 'cliente'">
       <a class="nav-link" [routerLink]="['manage']">Gestionar Fletes</a>
     </li>
-    <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated() && userType == 'cliente'">
+    <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated() && this._fletesService.usuario == 'cliente'">
       <a class="nav-link" [routerLink]="['clientProfile']">Perfil</a>
     </li>
 
@@ -40,13 +40,6 @@
 <!-- Fin LINKS Cliente -->
 </ul>
     <span class="navbar-text">
-
-      <button
-                 class="btn btn-primary btn-margin btn-sm"
-                 (click)="changeNav()">
-                   Cambiar Nav
-               </button>
-
       <button
               (click)="login()"
               *ngIf="!auth.isAuthenticated()"
@@ -62,3 +55,6 @@
     </span>
   </div>
 </nav>
+<div class="espacio">
+
+</div>

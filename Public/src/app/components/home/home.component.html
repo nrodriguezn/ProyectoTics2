@@ -1,25 +1,46 @@
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">{{ userType | uppercase }}</h1>
-    <p class="lead">
-            Esta es la pagina de inicio que queda por programar <br><hr>br
-      Seleccionar todos los elementos iguales: cmd + ctrl + g <br>
-      Seleccionar el siguiente elemento igual: cmd + d <br>
-      Mover un elemento: cmd + ctrl + flecha <br>
-      Comentar lineas: cmd + shift + / <br>
-      To UPPERCASE: cmd + k + u <br>
-      To lowercase: cmd + k + l <br>
-      Duplicar Linea: cmd + shift + d <br>
-      Juntar Lineas: cmd + j <br>
-
-    </p>
-  </div>
-</div>
 
 
-<button
-           class="btn btn-primary btn-margin btn-sm"
-           (click)="changeUserType()">
-             Cambiar Tipo Usuario
-         </button>
+  <div class="container main-container">
+
+    <div class="animated fadeIn fast" *ngIf="profile">
+      <h2>Perfil del usuario: {{ profile.name }}</h2>
+      <pre>  {{ profile | json}} </pre>
+
+      <hr>
+
+      <table>
+        <tr>
+            <td><h4>El tipo de usuario es: <strong>{{this._fletesService.usuario}}  </strong>    </h4></td>
+            <td><button
+              style="padding-left: 10px;"
+               class="btn btn-primary btn-margin btn-sm"
+               (click)="changeUserType()">
+                 Cambiar Tipo Usuario
+             </button></td>
+        </tr>
+      </table>
+
+      <hr>
+
+    </div>
+    <button
+      style="padding-left: 10px;"
+       class="btn btn-primary btn-margin btn-sm"
+       (click)="test()">
+         TEST
+     </button>
+     {{ this.respuesta }}
+
+          <h3>Comandos para Atom</h3>
+          <p class="lead">
+              Seleccionar todos los elementos iguales: cmd + ctrl + g <br>
+              Seleccionar el siguiente elemento igual: cmd + d <br>
+              Mover un elemento: cmd + ctrl + flecha <br>
+              Comentar lineas: cmd + shift + / <br>
+              To UPPERCASE: cmd + k + u <br>
+              To lowercase: cmd + k + l <br>
+              Duplicar Linea: cmd + shift + d <br>
+              Juntar Lineas: cmd + j <br>
+        </p>
+      </div>
