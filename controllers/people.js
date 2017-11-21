@@ -2,6 +2,10 @@
 
 const People = require('../models/people')
 
+ function setSesion(req, res){
+  res.status(200).send({message: 'Tienes autorizacion'})
+}
+
 function postProfile ( req, res ) {
   console.log('POST /api/profile')
   let people = new People()
@@ -86,5 +90,6 @@ module.exports = {
   getProfiles,
   putProfile,
   deleteProfile,
-  postProfile
+  postProfile,
+  setSesion
 }

@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
 userType:string = this._fletesService.usuario
 profile:any
+respuesta:string
 
   constructor(private _fletesService:FletesService, public auth:AuthService) { }
 
@@ -25,12 +26,13 @@ profile:any
         });
       }
     }
-
-
-
   changeUserType(){
     this._fletesService.setUserType();
     // this.userType = this._fletesService.getUserType()
+  }
+  test(){
+    this._fletesService.test()
+    .subscribe(respuesta => this.respuesta = respuesta)
   }
 
 }

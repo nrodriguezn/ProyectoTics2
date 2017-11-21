@@ -10,7 +10,8 @@ export class FletesService {
 
   public usuario = 'cliente'
   public profile:string
-  public apiUrl:string = 'http://localhost:3000'
+  public apiUrl:string = 'http://localhost:3000/api'
+
 
 //Funciones Basicas
 
@@ -44,6 +45,19 @@ postNewProfile(profile:any){
           return res.json()
         })
 }
+
+test(){
+  let url = `${this.apiUrl}/api/setsesion`
+  let body = " hola"
+  let headers = new Headers({
+    'Content-Type':'application/json',
+    'Access-Control-Allow-Origin': '*'
+  })
+  console.log("hare la peticion")
+  return this.http.get(url, {headers})
+      .map(res => {return res.json()})
+}
+
 
 
 
