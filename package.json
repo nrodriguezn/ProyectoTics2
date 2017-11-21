@@ -21,6 +21,7 @@
     "mongoose": "^4.11.11"
   },
   "devDependencies": {
+    "@angular/cli": "^1.5.3",
     "eslint-config-node": "^1.6.0",
     "nodemon": "^1.12.0"
   }
