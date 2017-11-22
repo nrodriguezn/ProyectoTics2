@@ -17,10 +17,7 @@ respuesta:string
   constructor(private _fletesService:FletesService, public auth:AuthService) { }
 
   ngOnInit() {
-      if (!this.auth.userProfile) {
-        this.auth.getProfile((err, profile) => {
-        });
-      }
+    this.auth.instanceProfile()
     }
   changeUserType(){
     this._fletesService.setUserType();

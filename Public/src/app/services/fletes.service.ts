@@ -8,8 +8,8 @@ export class FletesService {
 
   constructor(  private router:Router, private http:Http ) { }
 
-  public usuario = 'cliente'
-  public profile:string
+  public usuario = ''
+
   // public apiUrl:string = 'https://fletes-portales.herokuapp.com/api'
   public apiUrl:string = 'http://localhost:3000/api'
 
@@ -29,20 +29,22 @@ export class FletesService {
   }
 
 //Peticiones a la API
-getProfileSesion(sub:string){
-  let url = `${ this.apiUrl }/${sub}`
+getProfileSesion(sub:String){
+  let url = `${ this.apiUrl }/people/${sub}`
   return this.http.get(url)
     .map(res=>res.json())
 }
 
 postNewProfile(profile:any){
   let body = JSON.stringify(profile)
+  let url = `${this.apiUrl}/people`
   let headers = new Headers({
-    'Content-Type':'application/json'
-  })
-  return this.http.post(this.apiUrl, body, { headers } ) //URL, BODY, HEADERS
+     'Content-Type':'application/json'
+   })
+  console.log("hare la peticion")
+  console.log(body)
+  return this.http.post(url, body, {headers} ) //URL, BODY, HEADERS
           .map(res=>{
-          console.log(res.json())
           return res.json()
         })
 }

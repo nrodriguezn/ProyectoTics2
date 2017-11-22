@@ -11,7 +11,9 @@ import {FletesService} from './fletes.service';
 @Injectable()
 export class AuthService {
 
+
   public userProfile:any
+  sub:String
 
 
   auth0 = new auth0.WebAuth({
@@ -44,7 +46,6 @@ export class AuthService {
   }
 
   private setSession(authResult): void {
-    console.log("setSesion")
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
@@ -53,7 +54,6 @@ export class AuthService {
   }
 
   public setFletesAppSesion(){  //guarda informacion se la sesion en la bdd de la api
-    console.log("setFletesApp")
      const accessToken = localStorage.getItem('access_token');
      if (!accessToken) {
        throw new Error('Access token must exist to fetch profile');
@@ -82,26 +82,40 @@ export class AuthService {
       //si existe, es por que ya esta inscrito y se continua por guardar variables de la setSession
       //si no, se guardan datos en bdd y en fletes.service
 
+      public instanceProfile(){
+        console.log("instance")
+        const accessToken = localStorage.getItem('access_token');
+        if (!accessToken) {
+          throw new Error('Access token must exist to fetch profile');
+        }
+        const self = this;
+        this.auth0.client.userInfo(accessToken, (err, profile) => {
+          if (profile) {
+            self.userProfile = profile;
+            console.log(profile)
+            this._fletesService.getProfileSesion(profile.sub)
+            .subscribe(res => {
+              this.userProfile = res
+              console.log(res.people.tipo)
+              this._fletesService.usuario = res.people.tipo
+            })
+          }
+        });
+      }
 
 
 
   public setUserMetadata(user, context, callback){
-    if(user){
-      user.app_metadata = user.app_metadata || {};
-    }
-      // update the app_metadata that will be part of the response
-      user.app_metadata.userType = user.app_metadata.userType || [];
-      user.app_metadata.userType.push('usuario');
+      user.userType = "usuario"
       // persist the app_metadata update
-      console.log(user.sub, user.app_metadata)
-      auth0.users.updateAppMetadata(user.user_id, user.app_metadata)
-        .then(function(){
-          callback(null, user, context);
-        })
-        .catch(function(err){
-          callback(err);
-        });
+      this._fletesService.postNewProfile(user) //guarda en la base de datos
+      .subscribe( user => {
+      console.log("leyendo en ultima instancia")
+      this.userProfile = user
+    })
+
     }
+
 
 
   public logout(): void {
@@ -111,6 +125,7 @@ export class AuthService {
     localStorage.removeItem('expires_at');
     // Go back to the home route
     this.router.navigate(['/']);
+    delete this.userProfile
   }
 
   public isAuthenticated(): boolean {

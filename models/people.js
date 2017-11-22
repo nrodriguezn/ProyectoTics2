@@ -5,12 +5,11 @@ const Schema = mongoose.Schema
 
 const PeopleSchema = new Schema({
 
+  "sub": {type: String},
   "nombre": { type: String },
   "apellido": { type: String },
-  "email": { type: String, unique: true, lowercase: true },
-  "telefono": { type: Number },
+  "telefono": { type: String },
   "url_img": { type: String },
-  "activo": false,
   "tipo": { type: String, enum: ['cliente', 'usuario', 'administrador']},
   "SignupDate": { type: Date, default: Date.now() },
   "direccion": {
@@ -27,7 +26,14 @@ const PeopleSchema = new Schema({
                     "color": {type: String},
                     "url_img": {type: String}
               }
-            ]
+            ],
+    "calificacion": {
+                      "cantidadDeCalificaciones": {type: Number, default: '0'},
+                      "sumaTotalCalificaciones": {type: Number, default: '0'},
+                      "calificacionFinal": {type: Number, default: '0'}
+                    },
+    "numeroEnvios": {type: Number},
+    "fletesCancelados": {type: Number}
 
 })
 //Calificacion

@@ -9,30 +9,29 @@ const People = require('../models/people')
 
 function postProfile ( req, res ) {
   console.log('POST /api/profile')
+  console.log(req.body)
   let people = new People()
-  People.nombre = req.body.nombre
-  People.apellido = req.body.apellido
-  People.email = req.body.email
-  People.telefono = req.body.telefono
-  People.url_img = req.body.url_img
-  People.activo = true
-  People.tipo = req.body.tipo
-  People.SignupDate = req.body.SignupDate
-  People.direccion = req.body.direccion
-  People.cedula = req.body.cedula
-  People.vehiculo = req.body.vehiculo
-  People.calificacionArr = null
-  People.numeroEnvios = 0
+  people.sub = req.body.sub
+  people.nombre = req.body.given_name
+  people.apellido = req.body.family_name
+  people.telefono = ""
+  people.url_img = req.body.picture
+  people.tipo = req.body.userType
+  people.direccion = ""
+  people.vehiculo = ""
+  people.numeroEnvios = "0"
+  people.fletesCancelados = "0"
 
-  People.save((err, peopleStored)=>{
+  people.save((err, peopleStored)=>{
     if(err) res.status(500).send({message: 'Error al guardar en la base de datos'})
     res.status(200).send({people: peopleStored})
   })
 }
 
 function getProfile(req, res) {
-  let peopleId = req.params.profileId
-  People.findById(peopleId, (err, people) => {
+  let id_auth = req.params.peopleId
+  People.findOne({sub: id_auth}, (err, people) =>{
+    console.log(people)
     if (err) return res.status(500).send({message: 'Error al realizar la peticion'})
     if (!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
 
