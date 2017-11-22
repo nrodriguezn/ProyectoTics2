@@ -10,8 +10,8 @@ export class FletesService {
 
   public usuario = ''
 
-  // public apiUrl:string = 'https://fletes-portales.herokuapp.com/api'
-  public apiUrl:string = 'http://localhost:3000/api'
+  public apiUrl:string = 'https://fletes-portales.herokuapp.com/api'
+  // public apiUrl:string = 'http://localhost:3000/api'
 
 
 //Funciones Basicas
