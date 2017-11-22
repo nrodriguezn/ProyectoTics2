@@ -4,34 +4,47 @@
   <!--Body-->
   <div class="card-body animated fadeIn fast">
     <ul class="list-group">
+        <li class="list-group-item card-body-list">
+          <table class="table">
+            <tr>
+              <td>
+                <span>Bienvenido</span><br>
+                <h3> {{this.auth.userProfile.nombre}}</h3>
+              </td>
+              <td>
+                <ul>
+                  <div class="img">
+                    <img [src]="this.auth.userProfile.url_img" alt="">
+                  </div>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                    <div class="numeros-cliente">
+                      <h5>{{ this.auth.userProfile.numeroEnvios}}</h5>
+                      <span>Fletes</span>
+                    </div>
+                    <div class="numeros-cliente">
+                      <h5>{{ this.auth.userProfile.fletesCancelados}}</h5>
+                      <span>Cancelados</span>
+                    </div>
+                    <div class="numeros-cliente">
+                      <h5>{{ this.auth.userProfile.numeroEnvios}}</h5>
+                      <span>Este Mes</span>
+                    </div>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                    <button type="button" class="btn btn-info">Editar Perfil</button>
+                </ul>
+              </td>
+            </tr>
+          </table>
 
 
-    <li class="list-group-item card-body-list">
-      <ul>
-          <div class="img">
-            <img src="assets/img/default.jpg" alt="">
-          </div>
-        </ul>
-        <ul>
-            <div class="numeros-cliente">
-              <!-- <h5>{{ this.auth.userProfile.fletes.numero}}</h5> -->
-              <span>Fletes</span>
-            </div>
-            <div class="numeros-cliente">
-              <!-- <h5>{{ this.auth.userProfile.fletes.cancelados}}</h5> -->
-              <span>Cancelados</span>
-            </div>
-            <div class="numeros-cliente">
-              <h5>12</h5>
-              <span>Este Mes</span>
-            </div>
-        </ul>
-        <ul>
-            <button type="button" class="btn btn-info">Editar Perfil</button>
-        </ul>
-
-<h3>{{this.auth.userProfile.given_name}}</h3>
 <hr>
+<pre>  {{ this.auth.userProfile | json}} </pre>
 <!-- <p>{{this.auth.userProfile.resenaPropia}}</p> -->
     </li>
   </ul>

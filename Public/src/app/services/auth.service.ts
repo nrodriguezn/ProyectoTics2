@@ -14,7 +14,7 @@ export class AuthService {
 
   public userProfile:any
   sub:String
-  private datoNuevoUsuario = 'cliente'
+  private datoNuevoUsuario = 'usuario'
 
 
   auth0 = new auth0.WebAuth({
@@ -106,7 +106,7 @@ export class AuthService {
             console.log(profile)
             this._fletesService.getProfileSesion(profile.sub)
             .subscribe(res => {
-              this.userProfile = res
+              this.userProfile = res.people
               console.log("seteando tipo usuario en la web")
               this._fletesService.usuario = res.people.tipo
             })
@@ -137,6 +137,7 @@ export class AuthService {
     // Go back to the home route
     this.router.navigate(['/']);
     delete this.userProfile
+    delete this._fletesService.usuario
   }
 
   public isAuthenticated(): boolean {
