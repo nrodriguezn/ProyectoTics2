@@ -14,6 +14,7 @@ export class AuthService {
 
   public userProfile:any
   sub:String
+  private datoNuevoUsuario = 'cliente'
 
 
   auth0 = new auth0.WebAuth({
@@ -62,18 +63,23 @@ export class AuthService {
        if (!profile) {
          throw new Error ('No existe profile')
        }else{
-          console.log("viene getProfileSesion")
           this.userProfile = profile
           //verifica si existe en la base de datos
           this._fletesService.getProfileSesion(profile.sub)
           .subscribe(profile_ =>{
             if(profile_.people == null){
+              this.userProfile.userType = this.datoNuevoUsuario
               this._fletesService.postNewProfile(this.userProfile)
-              .subscribe(res => this.userProfile = res)
+              .subscribe(res => {
+                this.userProfile = res
+                // this._fletesService.usuario = res.userType
+              })
             }else{
-              this.userProfile = profile
+              this.userProfile = profile_
+              console.log(profile_)
+              this._fletesService.usuario = profile_.people.tipo
             }
-            this._fletesService.usuario = profile_.people.tipo
+            // this._fletesService.usuario = this.userProfile.people.tipo
           }, error => {
             console.log("No existe userType, actualizando")
             this.setUserMetadata(this.userProfile, this.userProfile, false)
@@ -101,7 +107,7 @@ export class AuthService {
             this._fletesService.getProfileSesion(profile.sub)
             .subscribe(res => {
               this.userProfile = res
-              console.log(res.people.tipo)
+              console.log("seteando tipo usuario en la web")
               this._fletesService.usuario = res.people.tipo
             })
           }

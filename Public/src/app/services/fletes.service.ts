@@ -10,8 +10,8 @@ export class FletesService {
 
   public usuario = ''
 
-  public apiUrl:string = 'https://fletes-portales.herokuapp.com/api'
-  // public apiUrl:string = 'http://localhost:3000/api'
+  // public apiUrl:string = 'https://fletes-portales.herokuapp.com/api'
+  public apiUrl:string = 'http://localhost:3000/api'
 
 
 //Funciones Basicas
@@ -35,7 +35,7 @@ postNewProfile(profile:any){
    })
    return this.http.post(url , body, {headers} ) //URL, BODY, HEADERS
           .map(res=>{
-          console.log("res: ", res.json())
+          this.usuario = res.json().people.tipo
           return res.json()
         })
 }

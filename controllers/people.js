@@ -13,15 +13,12 @@ function postProfile ( req, res ) {
   people.sub = req.body.sub
   people.nombre = req.body.given_name
   people.apellido = req.body.family_name
-  people.telefono = ""
   people.url_img = req.body.picture
   people.tipo = req.body.userType
-  people.direccion = ""
-  people.vehiculo = ""
   people.numeroEnvios = "0"
   people.fletesCancelados = "0"
 
-  console.log(people)
+  console.log(people, "Guardar Ahora")
   people.save((err, peopleStored)=>{
     if(err) res.status(500).send({message: 'Error al guardar en la base de datos'})
     res.status(200).send({people: peopleStored})
