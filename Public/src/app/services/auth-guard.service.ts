@@ -14,10 +14,10 @@ export class AuthGuardService implements CanActivate {
     console.log(next)
 
     if(this.auth.isAuthenticated()){
-      console.log("paso el guard")
+      console.log("Pasó el Guard")
       return true
     }else{
-      console.error("bloqueado por el guard")
+      console.error("Bloqueado por el Guard")
       return false
     }
   }

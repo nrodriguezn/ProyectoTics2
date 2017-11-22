@@ -49,14 +49,10 @@ postNewProfile(profile:any){
 
 test(){
   let url = `${this.apiUrl}/setsesion`
-  let headers = new Headers({
-    'Content-Type':'application/json',
-    'Access-Control-Allow-Origin': 'http://localhost:4200',
-    'Access-Control-Allow-Methods': 'POST, PUT, GET, DELETE',
-  })
-  console.log("hare la peticion")
-  return this.http.get(url, {headers})
-      .map(res => {return res.json()})
+  return this.http.get(url)
+      .map(res => {
+        console.log(res.json())
+        return res.json()})
 }
 
 

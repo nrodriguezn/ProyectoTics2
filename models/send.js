@@ -18,13 +18,13 @@ const SendSchema = Schema ({
             "numero": { type: Number },
             "dpto": { type: Number },
             }
-  "propuesta_cliente": [
-                        {//Puede tener varias
-                            "obj_id_clienet": { type: String },
-                            "Precio": { type: Number },
-                            "comentario": { type: String }
-                        }
-                      ]
+  // "propuesta_cliente": [
+                        // {//Puede tener varias
+                            // "obj_id_clienet": { type: String },
+                            // "Precio": { type: Number },
+                            // "comentario": { type: String }
+                        // }
+                      // ]
 })
 
 module.exports = mongoose.model('Send', SendSchema)

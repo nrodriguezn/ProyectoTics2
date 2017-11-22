@@ -39,7 +39,7 @@ const PeopleSchema = new Schema({
 
 
 //Numero de envios,  si es cliente
-"numeroEnvios" : {type: Number}
+//"numeroEnvios" : {type: Number}
 
 
 

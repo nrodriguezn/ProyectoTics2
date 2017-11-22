@@ -3,9 +3,9 @@
 
   <div class="container main-container">
 
-    <div class="animated fadeIn fast" *ngIf="profile">
-      <h2>Perfil del usuario: {{ profile.name }}</h2>
-      <pre>  {{ profile | json}} </pre>
+    <div class="animated fadeIn fast" *ngIf="this.auth.userProfile">
+      <h2>Perfil del usuario: {{ this.auth.userProfile.name }}</h2>
+      <pre>  {{ this.auth.userProfile | json}} </pre>
 
       <hr>
 
@@ -30,7 +30,7 @@
        (click)="test()">
          TEST
      </button>
-     {{ this.respuesta }}
+     {{ this.respuesta?.message }}
 
           <h3>Comandos para Atom</h3>
           <p class="lead">

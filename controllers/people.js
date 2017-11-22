@@ -3,7 +3,7 @@
 const People = require('../models/people')
 
  function setSesion(req, res){
-   console.log("EXITOOOOOOOASLKDHLAKSJHDASKDJ")
+  // console.log("Set Sesion")
   res.status(200).send({message: 'Tienes autorizacion'})
 }
 
@@ -65,43 +65,43 @@ function getProfiles(req, res) {
 
 
 
-function getCalificacion(req, res) {
-  let PeopleId = req.params.ProfileId
-  var sum = 0
+// function getCalificacion(req, res) {
+//   let PeopleId = req.params.ProfileId
+//   var sum = 0
+//
+//   People.findById(peopleId, (err, people) =>{
+//     if (err) return res.status(500).send({message: 'error al realizar la peticion'})
+//     if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
+//     for(var i = 0; i < calificacionArr.lenght ; i++){
+//       sum+ = calificacionarr[i];
+//     }
+//     var avg = sum / calificacionArr.lenght
+//     People.calificacion = avg
+//     res.status(200).send(People)
+//   })
+// }
 
-  People.findById(peopleId, (err, people) =>{
-    if (err) return res.status(500).send({message: 'error al realizar la peticion'})
-    if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
-    for(var i = 0; i < calificacionArr.lenght ; i++){
-      sum+ = calificacionarr[i];
-    }
-    var avg = sum / calificacionArr.lenght
-    People.calificacion = avg
-    res.status(200).send(People)
-  })
-}
-
-function putCalificacion(req,res){
-  let PeopleId = req.params.ProfileId
-  let update = req.body
-
-  People.findByIdAndUpdate(PeopleId, update, (err, peopleUpdated) =>{
-    if (err) res.status(500).send({message: 'Error al actualizar calificacion'})
-    res.status(200).send({people: peopleUpdated})
-  })
-}
-
- function putNumeroEnvios(req, res) {
-   let PeopleId = req.params.ProfileId
-   People.findById(PeopleId , (err, people) =>{
-     if (err) return res.status(500).send({message: 'error al realizar la peticion'})
-     if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
-     var update People.numeroEnvios + 1
-     People.numeroEnvios = update
-     res.status(200).send(People)
-   })
-
- }
+// function putCalificacion(req,res){
+//   let PeopleId = req.params.ProfileId
+//   let update = req.body
+//
+//   People.findByIdAndUpdate(PeopleId, update, (err, peopleUpdated) =>{
+//     if (err) res.status(500).send({message: 'Error al actualizar calificacion'})
+//     res.status(200).send({people: peopleUpdated})
+//   })
+// }
+//
+//  function putNumeroEnvios(req, res) {
+//    let PeopleId = req.params.ProfileId
+//    People.findById(PeopleId , (err, people) =>{
+//      if (err) return res.status(500).send({message: 'error al realizar la peticion'})
+//      if(!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
+//      var update People.numeroEnvios + 1
+//      People.numeroEnvios = update
+//      res.status(200).send(People)
+//    })
+//
+//  }
 //como son personas separamos los clientes(fletes) de usuarios
  //tu siendo cliente quiero que me muestra los usuarios que cumplan con:
  //tu siendo usuario quiero q me muestre los fletes que cumplan con :

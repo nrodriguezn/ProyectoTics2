@@ -13,6 +13,7 @@ export class AuthService {
 
   public userProfile:any
 
+
   auth0 = new auth0.WebAuth({
     clientID: 'ZX2d1TOZdN5fqJiybZu5p3pXO1HWgL4H',
     domain: 'nico-app.auth0.com',
@@ -25,12 +26,10 @@ export class AuthService {
   constructor(public router: Router, public _fletesService:FletesService) {}
 
   public login(): void {
-    console.log("login")
     this.auth0.authorize();
   }
 
   public handleAuthentication(): void {
-    console.log("handleAuth")
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
@@ -61,28 +60,49 @@ export class AuthService {
      }
      this.auth0.client.userInfo(accessToken, (err, profile) => {
        if (!profile) {
-        throw new Error ('No existe profile')
-      }else{
-        console.log("viene getProfileSesion")
-        this._fletesService.getProfileSesion(profile.sub)
-        .subscribe(profile_ =>  this.userProfile = profile_ )
-        if(!this.userProfile.userType){
-            //agregar campo y finalizar
-            console.log("no existe userType, actualizando")
-            this.userProfile.userType = 'cliente'
-            this._fletesService.postNewProfile(this.userProfile)
-              .subscribe(profile => this.userProfile = profile)
-              //devuelve el objeto completo que esta en la base de datos.
-        }
+         throw new Error ('No existe profile')
+       }else{
+          console.log("viene getProfileSesion")
+          this.userProfile = profile
+          //verifica si existe en la base de datos
+          this._fletesService.getProfileSesion(profile.sub)
+          .subscribe(profile_ =>{
+            this.userProfile = profile_
+            console.log(this.userProfile)
+          }, error => {
+            console.log("No existe userType, actualizando")
+            this.setUserMetadata(this.userProfile, this.userProfile, false)
+              }
+            )
+          }
+        })
       }
-   });
 
       //pregunto en la api si existe alguien con ese dato.
       //si existe, es por que ya esta inscrito y se continua por guardar variables de la setSession
       //si no, se guardan datos en bdd y en fletes.service
 
 
-  }
+
+
+  public setUserMetadata(user, context, callback){
+    if(user){
+      user.app_metadata = user.app_metadata || {};
+    }
+      // update the app_metadata that will be part of the response
+      user.app_metadata.userType = user.app_metadata.userType || [];
+      user.app_metadata.userType.push('usuario');
+      // persist the app_metadata update
+      console.log(user.sub, user.app_metadata)
+      auth0.users.updateAppMetadata(user.user_id, user.app_metadata)
+        .then(function(){
+          callback(null, user, context);
+        })
+        .catch(function(err){
+          callback(err);
+        });
+    }
+
 
   public logout(): void {
     // Remove tokens and expiry time from localStorage
@@ -101,7 +121,6 @@ export class AuthService {
   }
 
   public getProfile(cb): void {
-    console.log("getProfile")
       const accessToken = localStorage.getItem('access_token');
       if (!accessToken) {
         throw new Error('Access token must exist to fetch profile');

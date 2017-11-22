@@ -17,12 +17,8 @@ respuesta:string
   constructor(private _fletesService:FletesService, public auth:AuthService) { }
 
   ngOnInit() {
-
-      if (this.auth.userProfile) {
-        this.profile = this.auth.userProfile;
-      } else {
+      if (!this.auth.userProfile) {
         this.auth.getProfile((err, profile) => {
-          this.profile = profile;
         });
       }
     }
