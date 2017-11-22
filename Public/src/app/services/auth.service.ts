@@ -67,8 +67,13 @@ export class AuthService {
           //verifica si existe en la base de datos
           this._fletesService.getProfileSesion(profile.sub)
           .subscribe(profile_ =>{
-            this.userProfile = profile_
-            console.log(this.userProfile)
+            if(profile_.people == null){
+              this._fletesService.postNewProfile(this.userProfile)
+              .subscribe(res => this.userProfile = res)
+            }else{
+              this.userProfile = profile
+            }
+            this._fletesService.usuario = profile_.people.tipo
           }, error => {
             console.log("No existe userType, actualizando")
             this.setUserMetadata(this.userProfile, this.userProfile, false)
@@ -106,7 +111,7 @@ export class AuthService {
 
 
   public setUserMetadata(user, context, callback){
-      user.userType = "usuario"
+      user.userType = "cliente"
       // persist the app_metadata update
       this._fletesService.postNewProfile(user) //guarda en la base de datos
       .subscribe( user => {

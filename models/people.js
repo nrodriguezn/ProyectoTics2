@@ -13,10 +13,10 @@ const PeopleSchema = new Schema({
   "tipo": { type: String, enum: ['cliente', 'usuario', 'administrador']},
   "SignupDate": { type: Date, default: Date.now() },
   "direccion": {
-        "comuna": { type: String },
-        "calle": { type: String },
-        "numero": { type: Number },
-        "dpto": { type: Number },
+        "comuna": { type: String, default: "" },
+        "calle": { type: String , default: ""},
+        "numero": { type: Number, default: '0'},
+        "dpto": { type: Number, default: '0' },
   },
   "vehiculo":
             [

@@ -3,13 +3,12 @@
 const People = require('../models/people')
 
  function setSesion(req, res){
-  // console.log("Set Sesion")
+  console.log("Set Sesion")
   res.status(200).send({message: 'Tienes autorizacion'})
 }
 
 function postProfile ( req, res ) {
   console.log('POST /api/profile')
-  console.log(req.body)
   let people = new People()
   people.sub = req.body.sub
   people.nombre = req.body.given_name
@@ -22,6 +21,7 @@ function postProfile ( req, res ) {
   people.numeroEnvios = "0"
   people.fletesCancelados = "0"
 
+  console.log(people)
   people.save((err, peopleStored)=>{
     if(err) res.status(500).send({message: 'Error al guardar en la base de datos'})
     res.status(200).send({people: peopleStored})
@@ -29,9 +29,9 @@ function postProfile ( req, res ) {
 }
 
 function getProfile(req, res) {
+  console.log("get Profile")
   let id_auth = req.params.peopleId
   People.findOne({sub: id_auth}, (err, people) =>{
-    console.log(people)
     if (err) return res.status(500).send({message: 'Error al realizar la peticion'})
     if (!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
 

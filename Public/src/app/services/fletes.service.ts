@@ -16,14 +16,6 @@ export class FletesService {
 
 //Funciones Basicas
 
-  setUserType(){
-    if(this.usuario == 'usuario'){
-      this.usuario = 'cliente'
-    }else{
-      this.usuario = 'usuario'
-    }
-  }
-
   getUserType(){
     return this.usuario;
   }
@@ -41,20 +33,22 @@ postNewProfile(profile:any){
   let headers = new Headers({
      'Content-Type':'application/json'
    })
-  console.log("hare la peticion")
-  console.log(body)
-  return this.http.post(url, body, {headers} ) //URL, BODY, HEADERS
+   return this.http.post(url , body, {headers} ) //URL, BODY, HEADERS
           .map(res=>{
+          console.log("res: ", res.json())
           return res.json()
         })
 }
 
+
 test(){
   let url = `${this.apiUrl}/setsesion`
-  return this.http.get(url)
-      .map(res => {
-        console.log(res.json())
-        return res.json()})
+  console.log("getTest")
+  let headers = new Headers({
+     'Content-Type':'application/json'
+   })
+  return this.http.get(url, {headers})
+  .map(res => res.json())
 }
 
 

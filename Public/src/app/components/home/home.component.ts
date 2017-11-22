@@ -19,13 +19,14 @@ respuesta:string
   ngOnInit() {
     this.auth.instanceProfile()
     }
-  changeUserType(){
-    this._fletesService.setUserType();
-    // this.userType = this._fletesService.getUserType()
-  }
+
   test(){
-    this._fletesService.test()
-    .subscribe(respuesta => this.respuesta = respuesta)
+    let perfil = { "sub": "google-a12312312", "nombre":"test"}
+    // this._fletesService.test()
+    // .subscribe(res => this.respuesta = res)
+  this._fletesService.postNewProfile(perfil)
+    .subscribe(response => console.log(response))
+
   }
 
 }

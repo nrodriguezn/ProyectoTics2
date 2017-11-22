@@ -25,7 +25,10 @@ res.status(200).send({message: 'Tienes autorizacion'})
 })
 
 //People Controllers
-api.get('/setsesion', peopleCtrl.setSesion)
+// api.get('/setsesion', peopleCtrl.setSesion)
+api.get('/setsesion', (req,res) => {
+  console.log("funciona")
+res.status(200).send({message: 'funcionando'})})
 api.post('/people', peopleCtrl.postProfile )
 api.get('/people', peopleCtrl.getProfiles )
 api.get('/people/:peopleId', peopleCtrl.getProfile )
