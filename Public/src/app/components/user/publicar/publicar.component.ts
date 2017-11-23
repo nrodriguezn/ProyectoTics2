@@ -23,7 +23,6 @@ export class PublicarComponent implements OnInit {
     .subscribe(res => {
         if(res){
           this.formaFlete = true
-          console.log("formaFLete: ",this.formaFlete)
         }
     })
   }

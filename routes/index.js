@@ -39,6 +39,7 @@ api.delete('/people/:peopleId', peopleCtrl.deleteProfile )
 //Flete controllers
 api.post('/postform', fleteCtrl.postNewFlete )
 api.get('/fletes', fleteCtrl.getAllFletes)
+api.get('/fletes/:comuna', fleteCtrl.getComunaFilter)
 
 
 

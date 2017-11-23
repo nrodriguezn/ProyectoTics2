@@ -18,7 +18,6 @@ export class VerTodosComponent implements OnInit {
     this._fletesService.getAllFletes()
     .subscribe(data => {
       this.fletes = data.sends
-      console.log(this.fletes)
     })
   }
 

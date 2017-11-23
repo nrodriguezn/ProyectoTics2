@@ -5,8 +5,6 @@ const Flete = require('../models/flete')
 
 function postNewFlete(req, res){
   console.log("postNewFlete")
-  console.log(req.body)
-
   let flete = new Flete()
 
   flete.persona_id = req.body.persona_id
@@ -34,9 +32,18 @@ function getAllFletes(req, res){
         Flete.find({}, (err, sends) =>{
         if(err) return res.status(500).send({message: 'Error al realizar la peticion'})
         if(!sends) return res.status(404).send({message: 'Al parecer no hay envios aun '})
-
-        console.log(sends)
         res.status(200).send({ sends })
+      })
+}
+
+function getComunaFilter(req, res){
+    console.log("getFletesComuna:", req.params.comuna)
+    let comuna = req.params.comuna
+    	  Flete.find({ $or: [{"direccionOrigen.comuna": comuna},{"direccionDestino.comuna": comuna}] }, (err, send) =>{
+        if (err) return res.status(500).send({message:'Error al realizar la peticion'})
+        if (!send) return res.status(404).send({message: 'No se ha encontrado el perfil '})
+
+        res.status(200).send({ send })
       })
 }
 
@@ -107,7 +114,8 @@ function getAllFletes(req, res){
 
 module.exports = {
   postNewFlete,
-  getAllFletes
+  getAllFletes,
+  getComunaFilter
   // getSend,
   // getSends,
   // putSend,

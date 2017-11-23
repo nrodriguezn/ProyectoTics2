@@ -13,9 +13,7 @@ export class AuthService {
 
 
   public userProfile:any
-
-
-
+  public readyToShow = false
   sub:String
   private datoNuevoUsuario = 'usuario'
 
@@ -81,7 +79,8 @@ export class AuthService {
               })
             }else{
               this.userProfile = profile_
-              console.log(profile_)
+              console.log("SetFletes ready to Show")
+              this.readyToShow = true
               this._fletesService.usuario = profile_.people.tipo
             }
             // this._fletesService.usuario = this.userProfile.people.tipo
@@ -112,13 +111,13 @@ export class AuthService {
         const self = this;
         this.auth0.client.userInfo(accessToken, (err, profile) => {
           if (profile) {
-            console.log(profile)
             self.userProfile = profile;
             this._fletesService.getProfileSesion(profile.sub)
             .subscribe(res => {
               this.userProfile = res.people
-              console.log("seteando tipo usuario en la web")
               this._fletesService.usuario = res.people.tipo
+              console.log("Ready To Show Data")
+              this.readyToShow = true
             })
           }
         });

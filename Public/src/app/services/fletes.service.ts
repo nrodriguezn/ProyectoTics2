@@ -70,6 +70,16 @@ let headers = new Headers({
     return res.json() })
 }
 
+public filtrarPorComuna(comuna){
+  let url =`${this.apiUrl}/fletes/${comuna}`
+  let headers = new Headers({
+     'Content-Type':'application/json'
+   })
+  return this.http.get(url, {headers})
+  .map(res => {
+    return res.json()
+  })
+}
 
 
 
