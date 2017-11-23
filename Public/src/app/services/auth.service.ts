@@ -13,6 +13,9 @@ export class AuthService {
 
 
   public userProfile:any
+
+
+
   sub:String
   private datoNuevoUsuario = 'usuario'
 
@@ -26,7 +29,9 @@ export class AuthService {
     scope: 'openid profile'
   });
 
-  constructor(public router: Router, public _fletesService:FletesService) {}
+  constructor(public router: Router, public _fletesService:FletesService) {
+  }
+
 
   public login(): void {
     this.auth0.authorize();

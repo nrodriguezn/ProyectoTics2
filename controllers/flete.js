@@ -29,6 +29,17 @@ function postNewFlete(req, res){
   })
 }
 
+function getAllFletes(req, res){
+    console.log("getFletes")
+        Flete.find({}, (err, sends) =>{
+        if(err) return res.status(500).send({message: 'Error al realizar la peticion'})
+        if(!sends) return res.status(404).send({message: 'Al parecer no hay envios aun '})
+
+        console.log(sends)
+        res.status(200).send({ sends })
+      })
+}
+
 // function postSend(req, res) {
 //   console.log('POST /api/profile')
 //   console.log(req.body)
@@ -95,7 +106,8 @@ function postNewFlete(req, res){
 // }
 
 module.exports = {
-  postNewFlete
+  postNewFlete,
+  getAllFletes
   // getSend,
   // getSends,
   // putSend,

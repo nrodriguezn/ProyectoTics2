@@ -43,7 +43,6 @@ postNewProfile(profile:any){
 
 //POST NEW FLETE, DESDE usuario
 public postNewFleteForm(forma, userProfile){
-    console.log("userProfile",userProfile)
     if(forma.form._value.tipoFlete == null){
     forma.form._value.tipoFlete = "normal"
   }
@@ -58,6 +57,17 @@ public postNewFleteForm(forma, userProfile){
        return status
     })
 
+}
+
+//OBTIENE los fletes al ingresar en cliente/buscar
+public getAllFletes(){
+let url = `${this.apiUrl}/fletes`
+let headers = new Headers({
+   'Content-Type':'application/json'
+ })
+ return this.http.get(url, {headers})
+ .map(res =>{
+    return res.json() })
 }
 
 

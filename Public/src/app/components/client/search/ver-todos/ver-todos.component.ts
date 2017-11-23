@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FletesService} from './../../../../services/fletes.service';
+import {AuthService} from './../../../../services/auth.service';
 
 @Component({
   selector: 'app-ver-todos',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerTodosComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth:AuthService, public _fletesService:FletesService) { }
+
+ public fletes:any[] = []
 
   ngOnInit() {
+    this.auth.instanceProfile()
+    this._fletesService.getAllFletes()
+    .subscribe(data => {
+      this.fletes = data.sends
+      console.log(this.fletes)
+    })
   }
 
 }
