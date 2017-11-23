@@ -94,16 +94,21 @@ export class AuthService {
       //si no, se guardan datos en bdd y en fletes.service
 
       public instanceProfile(){
-        console.log("instance")
         const accessToken = localStorage.getItem('access_token');
         if (!accessToken) {
           throw new Error('Access token must exist to fetch profile');
         }
+        if(!this.isAuthenticated()){
+          console.log("entre al if")
+          delete this._fletesService.usuario
+          delete this.userProfile
+          localStorage.clear()
+        }
         const self = this;
         this.auth0.client.userInfo(accessToken, (err, profile) => {
           if (profile) {
-            self.userProfile = profile;
             console.log(profile)
+            self.userProfile = profile;
             this._fletesService.getProfileSesion(profile.sub)
             .subscribe(res => {
               this.userProfile = res.people
@@ -121,7 +126,6 @@ export class AuthService {
       // persist the app_metadata update
       this._fletesService.postNewProfile(user) //guarda en la base de datos
       .subscribe( user => {
-      console.log("leyendo en ultima instancia")
       this.userProfile = user
     })
 

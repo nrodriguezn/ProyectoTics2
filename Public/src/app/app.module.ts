@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 
 //Services
 import { FletesService } from './services/fletes.service';
@@ -57,6 +58,7 @@ import { ActivosComponent } from './components/client/manage/activos/activos.com
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     APP_ROUTING
   ],
   providers: [

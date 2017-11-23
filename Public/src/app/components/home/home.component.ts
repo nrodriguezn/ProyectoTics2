@@ -20,13 +20,4 @@ respuesta:string
     this.auth.instanceProfile()
     }
 
-  test(){
-    let perfil = { "sub": "google-a12312312", "nombre":"test"}
-    // this._fletesService.test()
-    // .subscribe(res => this.respuesta = res)
-  this._fletesService.postNewProfile(perfil)
-    .subscribe(response => console.log(response))
-
-  }
-
 }

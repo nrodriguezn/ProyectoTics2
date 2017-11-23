@@ -1,175 +1,361 @@
 
   <!--Body-->
-  <div class="card-body animated fadeIn fast">
+<div class="card-body animated fadeIn fast">
+  <form (ngSubmit)="enviar(forma)" #forma="ngForm" novalidate="">
 
-
-<div class="card"> <!-- Informacion de tu Flete-->
-  <div class="card-header">
-    <h4>Información de tu Flete</h4>
+  <div class="card w-75 mx-auto" *ngIf="this.formaFlete == false">
+    <div class="card-body text-center">
+      <h4 class="card-title">Crea Nuevo Flete</h4>
+      <p class="card-text">Es importante que indiques todos los datos, de esta manera, evitaras problemas futuros</p>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">
+        Enviar
+      </button>
+    </div>
   </div>
   <br>
-  <div class="card-body">
-    <div class="form-row">
-        <div class="col">
-          Titulo:
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Nombre Flete">
+
+  <div class="alert alert-success" role="alert" *ngIf="this.formaFlete == true" >
+    <h4 class="alert-heading">Flete enviado con exito!</h4>
+    <p>Ahora solo te queda esperar que alguien se ofrezca a realizar este trabajo !  </p>
+    <hr>
+    <p class="mb-0">Puedes gestionar la informacion y ver tus resultados en tu perfil </p>
+  </div>
+
+
+
+
+
+
+
+    <div class="card"> <!-- Informacion de tu Flete-->
+      <div class="card-header">
+        <h4>Información de tu Flete</h4>
+      </div>
+      <br>
+      <div class="card-body">
+        <div class="form-row">
+            <div class="col">
+              Titulo:
+            </div>
+            <div class="col">
+              <input type="text"
+                     class="form-control"
+                     placeholder="Nombre Flete"
+                     name="titulo"
+                     ngModel
+                     minlength="5"
+                     required>
+            </div>
+          </div>
+          <br>
+
+      <div class="card-body">
+            <div class="form-row">
+              <div class="col">
+                  Comentario:
+              </div>
+              <div class="col">
+                  <textarea type="text"
+                            class="form-control"
+                            placeholder="Comentario"
+                            name="comentario"
+                            ngModel
+                            minlength="10"
+                            required>
+                            </textarea>
+              </div>
+          </div>
+          <br>
+
+          <div class="form-row">
+              <div class="col">
+                Horario Flete:
+              </div>
+              <div class="col">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Fin de semana, entre las 13.00 y las 20.00 hrs"
+                       name="horario"
+                       ngModel
+                       minlength="5"
+                       required>
+              </div>
+            </div>
+            <br>
+
+            <div class="form-row">
+                <div class="col">
+                  Tipo de Flete:
+                </div>
+                <div class="col">
+                  <select
+                      class="form-control"
+                      name="tipoFlete"
+                      [ngModel]=""
+                      required
+                      value="Normal">
+                    <option selected>Normal</option>
+                    <option>Subasta</option>
+                  </select>
+                </div>
+              </div>
+
+            <br>
+
+            <div class="form-row">
+                <div class="col">
+                  Imagen:
+                </div>
+                <div class="col">
+                  <input type="file" class="form-control-file" name="imagen" ngModel >
+                  <span> <small>No es Obligatoria</small> </span>
+                </div>
+             </div>
         </div>
       </div>
-
-      <br>
-
-    <div class="card-body">
-      <div class="form-row">
-        <div class="col">
-            Comentario:
-        </div>
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Comentario">
-        </div>
     </div>
-
     <br>
 
-    <div class="form-row">
-        <div class="col">
-          Horario Flete:
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Fin de semana, entre las 13.00 y las 20.00 hrs">
-        </div>
+
+    <div class="card"> <!-- Ubicacion de tu Flete -->
+      <div class="card-header">
+        <h4>Ubicación de tu Flete</h4>
       </div>
+      <h3 class="text-left titulo-direccion">Dirección Inicio</h3>
 
-    <br>
-
-      <div class="form-row">
-          <div class="col">
-            Tipo de Flete:
-          </div>
-          <div class="col">
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>Normal</option>
-              <option>Subasta</option>
+      <div class="card-body">
+        <div class="form-row">
+            <div class="col">
+              Comuna:
+            </div>
+            <div class="col">
+              <select class="form-control option-select" name="comuna_origen" ngModel>
+              <option>Alhué</option>
+              <option>Buin</option>
+              <option>Calera de tango</option>
+              <option>Cerrillos</option>
+              <option>Cerro navia</option>
+              <option>Colina</option>
+              <option>Conchalí</option>
+              <option>Curacaví</option>
+              <option>El bosque</option>
+              <option>El monte</option>
+              <option>Estación central</option>
+              <option>Huechuraba</option>
+              <option>Independencia</option>
+              <option>Isla de maipo</option>
+              <option>La cisterna</option>
+              <option>La florida</option>
+              <option>La granja</option>
+              <option>La pintana</option>
+              <option>La reina</option>
+              <option>Lampa</option>
+              <option>Las condes</option>
+              <option>Lo barnechea</option>
+              <option>Lo espejo</option>
+              <option>Lo prado</option>
+              <option>Macul</option>
+              <option>Maipú</option>
+              <option>María pinto</option>
+              <option>Melipilla</option>
+              <option>Ñuñoa</option>
+              <option>Padre hurtado</option>
+              <option>Paine</option>
+              <option>Pedro aguirre cerda</option>
+              <option>Peñaflor</option>
+              <option>Peñalolén</option>
+              <option>Pirque</option>
+              <option>Providencia</option>
+              <option>Pudahuel</option>
+              <option>Puente alto</option>
+              <option>Quilicura</option>
+              <option>Quinta normal</option>
+              <option>Recoleta</option>
+              <option>Renca</option>
+              <option>San bernardo</option>
+              <option>San joaquín</option>
+              <option>San josé de maipo</option>
+              <option>San miguel</option>
+              <option>San pedro</option>
+              <option>San ramón</option>
+              <option>Santiago</option>
+              <option>Talagante</option>
+              <option>Tiltil</option>
+              <option>Vitacura</option>
             </select>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="form-row">
+              <div class="col">
+                Calle:
+              </div>
+              <div class="col">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Colon"
+                       name="calle_origen"
+                       ngModel
+                       required
+                       >
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-row">
+                <div class="col">
+                  Numero:
+                </div>
+                <div class="col">
+                  <input type="text"
+                         class="form-control"
+                         placeholder="9473"
+                         name="numero_origen"
+                         ngModel
+                         required>
+                </div>
+              </div>
+
+            </div>
+
+            <hr>
+            <h3 class="text-left titulo-direccion">Dirección Entrega</h3>
+            <div class="card-body">
+              <div class="form-row">
+                <div class="col">
+                  Comuna:
+                </div>
+                <div class="col">
+                  <select class="form-control option-select" name="comuna_destino" ngModel>
+                  <option>Alhué</option>
+                  <option>Buin</option>
+                  <option>Calera de tango</option>
+                  <option>Cerrillos</option>
+                  <option>Cerro navia</option>
+                  <option>Colina</option>
+                  <option>Conchalí</option>
+                  <option>Curacaví</option>
+                  <option>El bosque</option>
+                  <option>El monte</option>
+                  <option>Estación central</option>
+                  <option>Huechuraba</option>
+                  <option>Independencia</option>
+                  <option>Isla de maipo</option>
+                  <option>La cisterna</option>
+                  <option>La florida</option>
+                  <option>La granja</option>
+                  <option>La pintana</option>
+                  <option>La reina</option>
+                  <option>Lampa</option>
+                  <option>Las condes</option>
+                  <option>Lo barnechea</option>
+                  <option>Lo espejo</option>
+                  <option>Lo prado</option>
+                  <option>Macul</option>
+                  <option>Maipú</option>
+                  <option>María pinto</option>
+                  <option>Melipilla</option>
+                  <option>Ñuñoa</option>
+                  <option>Padre hurtado</option>
+                  <option>Paine</option>
+                  <option>Pedro aguirre cerda</option>
+                  <option>Peñaflor</option>
+                  <option>Peñalolén</option>
+                  <option>Pirque</option>
+                  <option>Providencia</option>
+                  <option>Pudahuel</option>
+                  <option>Puente alto</option>
+                  <option>Quilicura</option>
+                  <option>Quinta normal</option>
+                  <option>Recoleta</option>
+                  <option>Renca</option>
+                  <option>San bernardo</option>
+                  <option>San joaquín</option>
+                  <option>San josé de maipo</option>
+                  <option>San miguel</option>
+                  <option>San pedro</option>
+                  <option>San ramón</option>
+                  <option>Santiago</option>
+                  <option>Talagante</option>
+                  <option>Tiltil</option>
+                  <option>Vitacura</option>
+                </select>
+              </div>
+          </div>
+
+          <br>
+
+          <div class="form-row">
+              <div class="col">
+                Calle:
+              </div>
+              <div class="col">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Colon"
+                       name="calle_destino"
+                       ngModel
+                       required
+                       >
+              </div>
+            </div>
+
+            <br>
+
+            <div class="form-row">
+                <div class="col">
+                  Numero:
+                </div>
+                <div class="col">
+                  <input type="text"
+                         class="form-control"
+                         placeholder="9473"
+                         name="numero_destino"
+                         ngModel
+                         required>
+                </div>
+              </div>
+
+
           </div>
         </div>
-
         <br>
 
-        <div class="form-row">
-            <div class="col">
-              Imagen:
-            </div>
-            <div class="col">
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
+        <div class="card">
+          <div class="card-header">
+            <h4>Tu Información</h4>
           </div>
-  </div>
+          <div class="card-body">
+            <p class="card-text">Información de Perfil</p>
+            <div class="row">
+                <div class="col">
+                    Nombre:
+                </div>
+                <div class="col">
+                    {{ this.auth.userProfile.nombre}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                  Apellido:
+                </div>
+                <div class="col">
+                  {{ this.auth.userProfile.apellido }}
+                </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Envios realizados hasta ahora
+              </div>
+              <div class="col">
+                {{ this.auth.userProfile.numeroEnvios }}
+              </div>
+            </div>
+            <pre>{{this.auth.userProfile | json}}</pre>
+          </div>
+        </div>
+      </form>
 </div>
-</div>
-<br>
-
-
-<div class="card"> <!-- Ubicacion de tu Flete -->
-  <div class="card-header">
-  <h4>Ubicación de tu Flete</h4>
-  </div>
-  <h3 class="text-left titulo-direccion">Dirección Inicio</h3>
-  <div class="card-body">
-
-
-    <div class="form-row">
-        <div class="col">
-          Comuna:
-        </div>
-        <div class="col">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Las Condes</option>
-            <option>Vitacura</option>
-            <option>Providencia</option>
-          </select>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="form-row">
-          <div class="col">
-            Calle:
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Colon">
-          </div>
-        </div>
-
-        <br>
-
-        <div class="form-row">
-            <div class="col">
-              Numero:
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="9473">
-            </div>
-          </div>
-
-  </div>
-  <hr>
-  <h3 class="text-left titulo-direccion">Dirección Entrega</h3>
-  <div class="card-body">
-
-
-    <div class="form-row">
-        <div class="col">
-          Comuna:
-        </div>
-        <div class="col">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Las Condes</option>
-            <option>Vitacura</option>
-            <option>Providencia</option>
-          </select>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="form-row">
-          <div class="col">
-            Calle:
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Colon">
-          </div>
-        </div>
-
-        <br>
-
-        <div class="form-row">
-            <div class="col">
-              Numero:
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="9473">
-            </div>
-          </div>
-
-  </div>
-</div>
-
-<br>
-
-<div class="card">
-  <div class="card-header">
-    <h4>Tu Información</h4>
-  </div>
-  <div class="card-body">
-    <p class="card-text">Información de Perfil</p>
-  </div>
-</div>
-
-
-
-
-  </div>

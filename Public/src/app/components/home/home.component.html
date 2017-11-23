@@ -1,36 +1,23 @@
   <div class="container main-container">
 
-    <div class="animated fadeIn fast" *ngIf="this.auth.userProfile">
+    <!-- <div class="animated fadeIn fast" *ngIf="!this.auth.userProfile.name == null">
+      <h3>Lo sentimos, el backend no esta corriendo</h3>
+      <hr>
+    </div>-->
+
+    <div class="animated fadeIn fast" *ngIf="this.auth.userProfile.nombre">
       <h2>Perfil del usuario: {{ this.auth.userProfile.nombre }}</h2>
       <pre>  {{ this.auth.userProfile | json}} </pre>
 
       <hr>
 
-      <table>
-        <tr>
-            <td><h4>El tipo de usuario es: <strong>{{this._fletesService.usuario}}  </strong>    </h4></td>
-            <td><button
-              style="padding-left: 10px;"
-               class="btn btn-primary btn-margin btn-sm"
-               (click)="changeUserType()">
-                 Cambiar Tipo Usuario
-             </button></td>
-        </tr>
-      </table>
-
-      <hr>
 
     </div>
-    <button
-      style="padding-left: 10px;"
-       class="btn btn-primary btn-margin btn-sm"
-       (click)="test()">
-         Funcion de Prueba
-     </button>
-     {{ this.respuesta?.message }}
 
-          <h3>Comandos para Atom</h3>
-          <p class="lead">
+
+          <h3 class="text-center">Comandos para Atom</h3>
+          <hr>
+          <p class="lead text-center">
               Seleccionar todos los elementos iguales: cmd + ctrl + g <br>
               Seleccionar el siguiente elemento igual: cmd + d <br>
               Mover un elemento: cmd + ctrl + flecha <br>

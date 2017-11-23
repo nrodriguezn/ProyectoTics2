@@ -6,6 +6,7 @@ const userCtrl = require('../controllers/user')
 const peopleCtrl = require('../controllers/people')
 const sendCtrl = require('../controllers/send')
 const auth = require('../middlewares/auth')
+const fleteCtrl = require('../controllers/flete')
 const api = express.Router()
 
 
@@ -34,6 +35,10 @@ api.get('/people', peopleCtrl.getProfiles )
 api.get('/people/:peopleId', peopleCtrl.getProfile )
 api.put('/people/:peopleId', peopleCtrl.putProfile )
 api.delete('/people/:peopleId', peopleCtrl.deleteProfile )
+
+//Flete controllers
+api.post('/postform', fleteCtrl.postNewFlete )
+
 
 
 //Send Controllers

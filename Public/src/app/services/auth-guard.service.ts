@@ -11,7 +11,6 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(next:ActivatedRouteSnapshot, state: RouterStateSnapshot){
 
-    console.log(next)
 
     if(this.auth.isAuthenticated()){
       console.log("Pasó el Guard")

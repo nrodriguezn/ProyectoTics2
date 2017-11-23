@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/Rx';
 
+
 @Injectable()
 export class FletesService {
 
@@ -39,6 +40,28 @@ postNewProfile(profile:any){
           return res.json()
         })
 }
+
+//POST NEW FLETE, DESDE usuario
+public postNewFleteForm(forma, userProfile){
+    console.log("userProfile",userProfile)
+    if(forma.form._value.tipoFlete == null){
+    forma.form._value.tipoFlete = "normal"
+  }
+    forma.form._value.id_mongodb = userProfile._id
+    let url = `${this.apiUrl}/postform`
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    })
+    return this.http.post(url, forma.form._value, {headers})
+    .map(res => {
+       let status = res
+       return status
+    })
+
+}
+
+
+
 
 
 test(){
