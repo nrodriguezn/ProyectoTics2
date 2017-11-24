@@ -1,6 +1,8 @@
 'use strict'
 
 const Flete = require('../models/flete')
+const People = require('../models/people')
+var ObjectId = require('mongodb').ObjectID;
 
 
 function postNewFlete(req, res){
@@ -46,6 +48,50 @@ function getComunaFilter(req, res){
         res.status(200).send({ send })
       })
 }
+
+function putNewArchivado(req, res){
+  console.log("puNewArchivado", req.body)
+     People.findByIdAndUpdate(req.body._id, req.body,(err, peopleUpdated) =>{
+    if (err) res.status(500).send({message: 'Error al actualizar'})
+    res.status(200).send({ peopleUpdated})
+  })
+}
+
+
+function getFletesArchivados(req, res ){
+      People.findById(req.params.idUsuario, {archivados: 1}, (err, people) => {
+      if (err) res.status(500).send({message: 'Error al Buscar Usuario'})
+      // fletes.find({_id: {$in: [ObjectId("5a1796dfceea2a84f371bea4"), ObjectId("5a17975cceea2a84f371bea5")] }})  //ESTE SI FUNCIONA
+      //ASI SI FUNCIONA
+
+      var id_array = new Array()
+
+      for(var i = 0; i < people.archivados.length; i++){
+        id_array.push(`ObjectId("${people.archivados[i]}")`)
+      }
+
+      i= 0
+      let salida ="["
+      id_array.forEach(dato=>{
+          salida += dato + ", "
+          i++
+        })
+        salida = salida + "]"
+
+        Flete.find({_id: {$in: eval(salida)}}, (err, archivados)=>{
+          if (err) res.status(500).send({message: 'Error al Buscar Usuario'})
+          res.status(200).send({archivados})
+        })
+      })
+}
+
+
+
+
+
+
+
+
 
 // function postSend(req, res) {
 //   console.log('POST /api/profile')
@@ -115,7 +161,9 @@ function getComunaFilter(req, res){
 module.exports = {
   postNewFlete,
   getAllFletes,
-  getComunaFilter
+  getComunaFilter,
+  putNewArchivado,
+  getFletesArchivados
   // getSend,
   // getSends,
   // putSend,

@@ -27,6 +27,11 @@ const PeopleSchema = new Schema({
                     "url_img": {type: String}
               }
             ],
+    "archivados":[
+      {
+        type: String, default: []
+      }
+    ],
     "calificacion": {
                       "cantidadDeCalificaciones": {type: Number, default: '0'},
                       "sumaTotalCalificaciones": {type: Number, default: '0'},

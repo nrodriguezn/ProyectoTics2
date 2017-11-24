@@ -1,6 +1,7 @@
 
+
 <div class="card-body animated fadeIn fast">
-  <ul class="list-group">
+  <ul class="list-group" *ngFor="let archivado of this._fletesService.fletesArchivados">
     <li class="list-group-item card-body-list">
         <table class="table">
           <tr>
@@ -11,8 +12,8 @@
             </td>
             <td>
               <div class="comentario">
-                <h4>Titulo Flete</h4>
-                <p class="border border-info comentario-flete"> Es un transporte de una caja grande, de 3x3 metros y 2 de altura, ojala en una camioneta tapada</p>
+                <h4>{{archivado.titulo}}</h4>
+                <p class="border border-info comentario-flete"> {{archivado.comentario}}</p>
               </div>
             </td>
             <td>
@@ -29,8 +30,8 @@
         <table class="table table-sm">
           <tbody>
             <tr>
-              <th scope="row">Fecha Despacho</th>
-              <td>22/22/22</td>
+              <th scope="row">Horario Despacho</th>
+              <td>{{archivado.horarioRetiro}}</td>
             </tr>
             <tr>
               <th scope="row">Cantidad de Cotizaciones</th>
@@ -38,16 +39,36 @@
             </tr>
             <tr>
               <th scope="row">Subasta</th>
-              <td>no / Ofertar</td>
+              <td>{{archivado.subasta}}</td>
             </tr>
             <tr>
               <th scope="row">Fecha Publicacion</th>
-              <td>22/22/22</td>
+              <td>{{ archivado.fechaCreacion | date:'MMMM - dd'}}</td>
             </tr>
             <tr>
               <th scope="row">Direccion Completa</th>
-              <td>Ciudad, Region, Comuna, Calle, Numero</td>
+              <td> <strong>Origen</strong> </td>
+              <td> <strong>Destino</strong> </td>
             </tr>
+            <tr>
+              <th scope="row">Comuna</th>
+              <td>{{ archivado.direccionOrigen.comuna}}</td>
+              <td>{{ archivado.direccionDestino.comuna }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Calle</th>
+              <td>{{ archivado.direccionOrigen.calle }}</td>
+              <td>{{ archivado.direccionDestino.calle }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Numero</th>
+              <td>{{ archivado.direccionOrigen.numero }}</td>
+              <td>{{ archivado.direccionDestino.numero }}</td>
+            </tr>
+
+
+
+
           </tbody>
         </table>
       </div>

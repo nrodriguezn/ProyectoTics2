@@ -10,9 +10,12 @@ export class FletesService {
   constructor(  private router:Router, private http:Http ) { }
 
   public usuario = ''
+  public fletes:any[] = []
+  public fletesArchivados:any[] = []
 
   // public apiUrl:string = 'https://fletes-portales.herokuapp.com/api'
   public apiUrl:string = 'http://localhost:3000/api'
+
 
 
 //Funciones Basicas
@@ -77,7 +80,41 @@ public filtrarPorComuna(comuna){
    })
   return this.http.get(url, {headers})
   .map(res => {
-    return res.json()
+    // return res.json()
+    this.fletes = res.json().send
+  })
+}
+
+public  ofertarButton(id, mongo_id){
+  console.log("ofertar: ", id, mongo_id)
+}
+
+
+public  archivarButton(body, mongo_id){
+    let url = `${this.apiUrl}/fletes/archivar`
+    let headers = new Headers({
+       'Content-Type':'application/json'
+     })
+
+     return this.http.put(url,body, {headers})
+     .map(res => res.json())
+}
+
+
+public  verPerfilButton(mongo_id){
+  console.log("ver Perfil", mongo_id)
+}
+
+public instanceArchivados(user){
+  let url =`${this.apiUrl}/fletes/archivados/${user._id}`
+  let headers = new Headers({
+     'Content-Type':'application/json'
+   })
+
+  return this.http.get(url, {headers})
+  .map(res => {
+    this.fletesArchivados = res.json().archivados
+    return this.fletesArchivados
   })
 }
 

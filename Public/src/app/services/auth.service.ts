@@ -15,7 +15,7 @@ export class AuthService {
   public userProfile:any
   public readyToShow = false
   sub:String
-  private datoNuevoUsuario = 'usuario'
+  private datoNuevoUsuario = 'cliente'
 
 
   auth0 = new auth0.WebAuth({
@@ -153,6 +153,7 @@ export class AuthService {
     // access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
+
   }
 
   public getProfile(cb): void {

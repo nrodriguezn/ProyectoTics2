@@ -40,7 +40,8 @@ api.delete('/people/:peopleId', peopleCtrl.deleteProfile )
 api.post('/postform', fleteCtrl.postNewFlete )
 api.get('/fletes', fleteCtrl.getAllFletes)
 api.get('/fletes/:comuna', fleteCtrl.getComunaFilter)
-
+api.put('/fletes/archivar', fleteCtrl.putNewArchivado)
+api.get('/fletes/archivados/:idUsuario', fleteCtrl.getFletesArchivados)
 
 
 //Send Controllers

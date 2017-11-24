@@ -75,7 +75,7 @@
 
 
       <div class="card-body animated fadeIn fast">
-        <ul class="list-group" *ngFor="let flete of this.fletes">
+        <ul class="list-group" *ngFor="let flete of this._fletesService.fletes">
           <li class="list-group-item card-body-list">
             <table class="table">
               <tr>
@@ -94,7 +94,7 @@
                   <div class="botones">
                     <ul class="list-group">
                       <li><button type="button" class="btn btn-success ancho-b">Ofertar</button></li>
-                      <li><button type="button" class="btn btn-info ancho-b">Archivar</button></li>
+                      <li><button type="button" class="btn btn-info ancho-b" (click)="archivar( flete.id_usuario_mongodb, flete._id)" >Archivar</button></li>
                       <li><button type="button" class="btn btn-primary ancho-b">Ver Mas o Perfil</button></li>
                     </ul>
                   </div>

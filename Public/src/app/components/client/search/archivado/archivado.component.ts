@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from './../../../../services/auth.service';
+import {FletesService} from './../../../../services/fletes.service';
+
 
 @Component({
   selector: 'app-archivado',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArchivadoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _fletesService:FletesService, public auth:AuthService) { }
 
   ngOnInit() {
+    this.auth.instanceProfile()
+    setTimeout(time=>{
+      this._fletesService.instanceArchivados(this.auth.userProfile)
+      // .subscribe(dato=>{console.log(this._fletesService.fletesArchivados)})
+      .subscribe(dato=>{console.log(this._fletesService.fletesArchivados)})
+    },800)
+
   }
 
 }

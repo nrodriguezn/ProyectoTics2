@@ -19,12 +19,23 @@ export class FiltrarComunaComponent implements OnInit {
   }
 
   public buscarPorComuna(){
-    console.log("buscar por comuna")
-    console.log(this.comunaBuscar)
-    this._fletesService.filtrarPorComuna(this.comunaBuscar)
-    .subscribe(data => {
-      this.fletes = data.send
-    })
+    if(this.auth.isAuthenticated()){
+      console.log("buscar por comuna")
+      console.log(this.comunaBuscar)
+      this._fletesService.filtrarPorComuna(this.comunaBuscar)
+      .subscribe()
+    }
   }
+
+  archivar(id, mongo_id){ //IMPORTANTE Recibe los valores al revez, me equivoque desde la vista jaja
+    this.auth.userProfile.archivados.push(mongo_id)
+
+      this._fletesService.archivarButton(this.auth.userProfile, mongo_id)
+       .subscribe(dato =>{
+         this.auth.instanceProfile()
+       })
+
+  }
+
 
 }
