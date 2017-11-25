@@ -42,6 +42,9 @@ api.get('/fletes', fleteCtrl.getAllFletes)
 api.get('/fletes/:comuna', fleteCtrl.getComunaFilter)
 api.put('/fletes/archivar', fleteCtrl.putNewArchivado)
 api.get('/fletes/archivados/:idUsuario', fleteCtrl.getFletesArchivados)
+api.delete('/fletes/:id_usuario/:id_flete', fleteCtrl.deleteFleteArchivado)
+api.put('/fletes/ofertar/archivado', fleteCtrl.putOfertarFleteArchivado)
+api.put('/fletes/ofertar/normal', fleteCtrl.putOfertarFleteNormal)
 
 
 //Send Controllers

@@ -21,9 +21,9 @@ export class VerTodosComponent implements OnInit {
     })
   }
 
-  ofertar(id, mongo_id){
-      this._fletesService.ofertarButton(id, mongo_id)
-        // .subscribe()
+  ofertar(id_flete){
+      this._fletesService.ofertarFleteNormal(id_flete, this.auth.userProfile._id)
+        .subscribe()
   }
   archivar(id, mongo_id){ //IMPORTANTE Recibe los valores al revez, me equivoque desde la vista jaja
     this.auth.userProfile.archivados.push(mongo_id)

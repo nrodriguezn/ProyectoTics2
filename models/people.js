@@ -32,6 +32,11 @@ const PeopleSchema = new Schema({
         type: String, default: []
       }
     ],
+    "ofertado":[
+      {
+        type: String, default: []
+      }
+    ],
     "calificacion": {
                       "cantidadDeCalificaciones": {type: Number, default: '0'},
                       "sumaTotalCalificaciones": {type: Number, default: '0'},

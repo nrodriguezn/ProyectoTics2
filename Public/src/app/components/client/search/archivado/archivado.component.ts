@@ -16,10 +16,24 @@ export class ArchivadoComponent implements OnInit {
     this.auth.instanceProfile()
     setTimeout(time=>{
       this._fletesService.instanceArchivados(this.auth.userProfile)
-      // .subscribe(dato=>{console.log(this._fletesService.fletesArchivados)})
-      .subscribe(dato=>{console.log(this._fletesService.fletesArchivados)})
+      .subscribe()
     },800)
+  }
 
+  quitar(id_archivado){
+    this._fletesService.quitarArchivado(id_archivado, this.auth.userProfile._id)
+    .subscribe(data=>{
+      this._fletesService.instanceArchivados(this.auth.userProfile)
+      .subscribe()
+    })
+  }
+
+  ofertar(id_archivado){
+    this._fletesService.ofertarFleteArchivado(id_archivado, this.auth.userProfile._id)
+    .subscribe(data => {
+      this._fletesService.instanceArchivados(this.auth.userProfile)
+      .subscribe()
+    })
   }
 
 }

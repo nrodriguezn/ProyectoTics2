@@ -63,7 +63,6 @@ function getFletesArchivados(req, res ){
       if (err) res.status(500).send({message: 'Error al Buscar Usuario'})
       // fletes.find({_id: {$in: [ObjectId("5a1796dfceea2a84f371bea4"), ObjectId("5a17975cceea2a84f371bea5")] }})  //ESTE SI FUNCIONA
       //ASI SI FUNCIONA
-
       var id_array = new Array()
 
       for(var i = 0; i < people.archivados.length; i++){
@@ -83,6 +82,35 @@ function getFletesArchivados(req, res ){
           res.status(200).send({archivados})
         })
       })
+}
+
+function deleteFleteArchivado(req, res){
+  console.log("delete Flete Archivado")
+  People.update({_id : req.params.id_usuario}, {$pull: {archivados : req.params.id_flete}}, (err, updated)=>{
+    if (err) res.status(500).send({message: 'Error al actualizar'})
+    res.status(200).send({ updated })
+  })
+}
+
+function putOfertarFleteArchivado(req, res){//Funcion llamada solo desde ver archivados, los elimina y oferta
+  console.log("put Ofertar Flete")
+  console.log(req.body)
+  People.update({_id: req.body._id_usuario}, {$pull: {archivados: req.body._id_archivado}}, (err, updated)=>{
+    if (err) res.status(500).send({message: 'Error al actualizar'})
+    People.update({_id: req.body._id_usuario}, {$push: {ofertado: req.body._id_archivado}}, (err, updated) =>{
+      if (err) res.status(500).send({message: 'Error al actualizar'})
+      res.status(200).send({updated})
+    })
+  })
+}
+
+function putOfertarFleteNormal(req, res){//Este es cualquier otro caso
+  console.log("ofertar Flete Normalmente")
+  console.log(req.body)
+  People.update({_id: req.body._id_usuario}, {$push: {ofertado: req.body._id_flete}}, (err, updated)=>{
+    if (err) res.status(500).send({message: 'Error al actualizar'})
+    res.status(200).send({updated})
+  })
 }
 
 
@@ -163,7 +191,10 @@ module.exports = {
   getAllFletes,
   getComunaFilter,
   putNewArchivado,
-  getFletesArchivados
+  getFletesArchivados,
+  deleteFleteArchivado,
+  putOfertarFleteArchivado,
+  putOfertarFleteNormal
   // getSend,
   // getSends,
   // putSend,

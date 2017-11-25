@@ -34,8 +34,14 @@ export class FiltrarComunaComponent implements OnInit {
        .subscribe(dato =>{
          this.auth.instanceProfile()
        })
-
   }
+
+  ofertar(id_flete){
+      this._fletesService.ofertarFleteNormal(id_flete, this.auth.userProfile._id)
+        .subscribe()
+  }
+
+
 
 
 }

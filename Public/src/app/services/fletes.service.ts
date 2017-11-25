@@ -85,10 +85,6 @@ public filtrarPorComuna(comuna){
   })
 }
 
-public  ofertarButton(id, mongo_id){
-  console.log("ofertar: ", id, mongo_id)
-}
-
 
 public  archivarButton(body, mongo_id){
     let url = `${this.apiUrl}/fletes/archivar`
@@ -117,6 +113,43 @@ public instanceArchivados(user){
     return this.fletesArchivados
   })
 }
+
+public quitarArchivado(id_flete_archivado, id_usuario){
+  let url = `${this.apiUrl}/fletes/${id_usuario}/${id_flete_archivado}`
+    return this.http.delete(url)
+      .map( res => {
+        res.json()} )
+  }
+
+public ofertarFleteArchivado(id_archivado, id_usuario){
+    let url = `${this.apiUrl}/fletes/ofertar/archivado`
+     var body = {
+        _id_archivado : id_archivado,
+        _id_usuario : id_usuario
+    }
+    let headers = new Headers({
+       'Content-Type':'application/json'
+     })
+
+      return this.http.put(url, body, {headers})
+        .map( res => {
+          res.json()} )
+    }
+
+  public ofertarFleteNormal(id_flete, id_usuario){
+    let url = `${this.apiUrl}/fletes/ofertar/normal`
+     var body = {
+        _id_flete : id_flete,
+        _id_usuario : id_usuario
+    }
+    let headers = new Headers({
+       'Content-Type':'application/json'
+     })
+    return this.http.put(url, body, {headers})
+      .map( res => {
+        res.json()} )
+  }
+
 
 
 
