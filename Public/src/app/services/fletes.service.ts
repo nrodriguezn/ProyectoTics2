@@ -12,6 +12,7 @@ export class FletesService {
   public usuario = ''
   public fletes:any[] = []
   public fletesArchivados:any[] = []
+  public ofertadosActivos:any[] = []
 
   // public apiUrl:string = 'https://fletes-portales.herokuapp.com/api'
   public apiUrl:string = 'http://localhost:3000/api'
@@ -149,6 +150,19 @@ public ofertarFleteArchivado(id_archivado, id_usuario){
       .map( res => {
         res.json()} )
   }
+
+  getAllFletesOfertadosActivos(id_usuario){
+    let url = `${this.apiUrl}/fletes/ofertados/${id_usuario}`
+    let headers = new Headers({
+       'Content-Type':'application/json'
+     })
+     return this.http.get(url, {headers})
+     .map(res =>{
+       console.log(res.json())
+       console.log("AÑSKLDJAÑSKLDJ")
+        return res.json() })
+    }
+
 
 
 
