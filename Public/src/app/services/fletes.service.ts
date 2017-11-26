@@ -158,14 +158,9 @@ public ofertarFleteArchivado(id_archivado, id_usuario){
      })
      return this.http.get(url, {headers})
      .map(res =>{
-       console.log(res.json())
-       console.log("AÑSKLDJAÑSKLDJ")
+       this.ofertadosActivos = res.json()
         return res.json() })
     }
-
-
-
-
 
 
 test(){

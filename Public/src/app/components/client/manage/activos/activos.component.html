@@ -4,6 +4,10 @@
   <ul class="list-group">
     <li class="list-group-item card-body-list">
 
+      <div class="" *ngFor="let item of this._fletesService.ofertadosActivos">
+                <pre>{{ item.comentario }}</pre>
+      </div>
+
       <table class="table">
         <tr>
           <td>
