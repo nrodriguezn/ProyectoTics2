@@ -57,7 +57,6 @@ function putNewArchivado(req, res){
   })
 }
 
-
 function getFletesArchivados(req, res ){
       People.findById(req.params.idUsuario, {archivados: 1}, (err, people) => {
       if (err) res.status(500).send({message: 'Error al Buscar Usuario'})
@@ -115,11 +114,11 @@ function getAllFletesOfertadosActivos(req, res){
   console.log("getAllFletesOfertadosActivos")
   // if(!req.params._id_usuario) res.status(500).send({message: 'Internal Server error'})
 
-  People.findById(req.params.id_usuario, {archivados: 1, _id: 0}, (err, people) => {
+  People.findById(req.params.id_usuario, {ofertado: 1, _id: 0}, (err, people) => {
 
         var id_array = new Array()
-        for(var i = 0; i < people.archivados.length; i++){
-          id_array.push(`ObjectId("${people.archivados[i]}")`)
+        for(var i = 0; i < people.ofertado.length; i++){
+          id_array.push(`ObjectId("${people.ofertado[i]}")`)
         }
         let salida ="["
         id_array.forEach(dato=>{
@@ -135,6 +134,16 @@ function getAllFletesOfertadosActivos(req, res){
      })
 
 }
+
+function deleteFleteArchivado(req, res){
+
+    People.update({_id : req.params.id_usuario}, {$pull: {ofertado : req.params.id_flete}}, (err, update)=>{
+      if (err) res.status(500).send({message: 'Error al actualizar'})
+      console.log(update)
+        res.status(200).send(update)
+    })
+  }
+
 
 
 
@@ -219,7 +228,8 @@ module.exports = {
   deleteFleteArchivado,
   putOfertarFleteArchivado,
   putOfertarFleteNormal,
-  getAllFletesOfertadosActivos
+  getAllFletesOfertadosActivos,
+  deleteFleteArchivado
   // getSend,
   // getSends,
   // putSend,

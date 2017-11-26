@@ -12,27 +12,26 @@ export class FletesService {
   public usuario = ''
   public fletes:any[] = []
   public fletesArchivados:any[] = []
-  public ofertadosActivos:any[] = []
+
 
   // public apiUrl:string = 'https://fletes-portales.herokuapp.com/api'
   public apiUrl:string = 'http://localhost:3000/api'
 
 
 
-//Funciones Basicas
 
-  getUserType(){
+
+public getUserType(){
     return this.usuario;
-  }
+}
 
-//Peticiones a la API
-getProfileSesion(sub:String){
+public getProfileSesion(sub:String){
   let url = `${ this.apiUrl }/people/${sub}`
   return this.http.get(url)
     .map(res=>res.json())
 }
 
-postNewProfile(profile:any){
+public postNewProfile(profile:any){
   let body = JSON.stringify(profile)
   let url = `${this.apiUrl}/people`
   let headers = new Headers({
@@ -45,7 +44,6 @@ postNewProfile(profile:any){
         })
 }
 
-//POST NEW FLETE, DESDE usuario
 public postNewFleteForm(forma, userProfile){
     if(forma.form._value.tipoFlete == null){
     forma.form._value.tipoFlete = "normal"
@@ -63,15 +61,15 @@ public postNewFleteForm(forma, userProfile){
 
 }
 
-//OBTIENE los fletes al ingresar en cliente/buscar
+
 public getAllFletes(){
-let url = `${this.apiUrl}/fletes`
-let headers = new Headers({
-   'Content-Type':'application/json'
- })
- return this.http.get(url, {headers})
- .map(res =>{
-    return res.json() })
+    let url = `${this.apiUrl}/fletes`
+    let headers = new Headers({
+       'Content-Type':'application/json'
+     })
+     return this.http.get(url, {headers})
+     .map(res =>{
+       return res.json() })
 }
 
 public filtrarPorComuna(comuna){
@@ -120,7 +118,7 @@ public quitarArchivado(id_flete_archivado, id_usuario){
     return this.http.delete(url)
       .map( res => {
         res.json()} )
-  }
+}
 
 public ofertarFleteArchivado(id_archivado, id_usuario){
     let url = `${this.apiUrl}/fletes/ofertar/archivado`
@@ -135,9 +133,9 @@ public ofertarFleteArchivado(id_archivado, id_usuario){
       return this.http.put(url, body, {headers})
         .map( res => {
           res.json()} )
-    }
+}
 
-  public ofertarFleteNormal(id_flete, id_usuario){
+public ofertarFleteNormal(id_flete, id_usuario){
     let url = `${this.apiUrl}/fletes/ofertar/normal`
      var body = {
         _id_flete : id_flete,
@@ -149,18 +147,34 @@ public ofertarFleteArchivado(id_archivado, id_usuario){
     return this.http.put(url, body, {headers})
       .map( res => {
         res.json()} )
-  }
+}
 
-  getAllFletesOfertadosActivos(id_usuario){
+public getAllFletesOfertadosActivos(id_usuario){
     let url = `${this.apiUrl}/fletes/ofertados/${id_usuario}`
     let headers = new Headers({
        'Content-Type':'application/json'
      })
      return this.http.get(url, {headers})
      .map(res =>{
-       this.ofertadosActivos = res.json()
         return res.json() })
-    }
+}
+
+
+public abandonarActivo(id_flete, id_usuario){
+  let url = `${this.apiUrl}/fletes/archivado/${id_usuario}/${id_flete}`
+    return this.http.delete(url)
+      .map( res => {
+        res.json()} )
+  }
+
+
+
+
+
+
+
+
+
 
 
 test(){
