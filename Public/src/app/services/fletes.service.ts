@@ -113,9 +113,16 @@ public instanceArchivados(user){
   })
 }
 
-public quitarArchivado(id_flete_archivado, id_usuario){
-  let url = `${this.apiUrl}/fletes/${id_usuario}/${id_flete_archivado}`
-    return this.http.delete(url)
+public quitarArchivado(id_archivado, id_usuario){
+  let url = `${this.apiUrl}/fletes/quitar/archivado`
+   var body = {
+      _id_archivado : id_archivado,
+      _id_usuario : id_usuario
+  }
+  let headers = new Headers({
+     'Content-Type':'application/json'
+   })
+    return this.http.put(url, body, {headers})
       .map( res => {
         res.json()} )
 }

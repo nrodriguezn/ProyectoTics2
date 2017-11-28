@@ -23,16 +23,14 @@ export class ArchivadoComponent implements OnInit {
   quitar(id_archivado){
     this._fletesService.quitarArchivado(id_archivado, this.auth.userProfile._id)
     .subscribe(data=>{
-      this._fletesService.instanceArchivados(this.auth.userProfile)
-      .subscribe()
+        this.ngOnInit()
     })
   }
 
   ofertar(id_archivado){
     this._fletesService.ofertarFleteArchivado(id_archivado, this.auth.userProfile._id)
     .subscribe(data => {
-      this._fletesService.instanceArchivados(this.auth.userProfile)
-      .subscribe()
+      this.ngOnInit()
     })
   }
 
