@@ -5,12 +5,12 @@
   <hr>
 </div> -->
 
-    <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.name != null">
+    <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.name != undefined">
 <h2>Perfil del usuario: {{ this.auth.userProfile.name }}</h2>
 <pre>  {{ this.auth.userProfile | json}} </pre>
       <hr>
     </div>
-    <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.nombre != null">
+    <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.nombre != undefined">
 <h2>Perfil del usuario: {{this.auth.userProfile.nombre}}</h2>
 <pre>  {{ this.auth.userProfile | json}} </pre>
       <hr>

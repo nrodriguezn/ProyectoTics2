@@ -143,9 +143,9 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/']);
     delete this.userProfile
-    delete this._fletesService.usuario
+    this._fletesService.usuario = ''
+    this.router.navigate(['/appComponent']);
   }
 
   public isAuthenticated(): boolean {

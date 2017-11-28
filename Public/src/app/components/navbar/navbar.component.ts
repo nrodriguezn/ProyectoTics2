@@ -25,9 +25,8 @@ export class NavbarComponent implements OnInit {
     this.auth.login()
   }
 
-  salir(){
+  logout(){
     this.auth.logout()
-    // delete this._fletesService.usuario 
   }
 
 
