@@ -5,14 +5,21 @@
   <hr>
 </div> -->
 
-    <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow">
-<h2>Perfil del usuario: {{ this.auth.userProfile.name }} {{this.auth.userProfile.nombre}}</h2>
+    <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.name != null">
+<h2>Perfil del usuario: {{ this.auth.userProfile.name }}</h2>
 <pre>  {{ this.auth.userProfile | json}} </pre>
-
       <hr>
-
-
     </div>
+    <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.nombre != null">
+<h2>Perfil del usuario: {{this.auth.userProfile.nombre}}</h2>
+<pre>  {{ this.auth.userProfile | json}} </pre>
+      <hr>
+    </div>
+
+
+
+
+
 
 
           <h3 class="text-center">Comandos para Atom</h3>

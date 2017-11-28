@@ -8,9 +8,7 @@
 
 <!-- INICIO LINKS USUARIO -->
 
-<li class="nav-item" routerLinkActive="active"  *ngIf="this.auth.userProfile && this._fletesService.usuario == 'usuario'">
-  <a class="nav-link" [routerLink]="['verFleteros']">testLink</a>
-</li>
+
         <li class="nav-item" routerLinkActive="active"  *ngIf="auth.isAuthenticated() && this._fletesService.usuario == 'usuario'">
           <a class="nav-link" [routerLink]="['verFleteros']">Fleteros</a>
         </li>
@@ -50,7 +48,7 @@
 
     <button
                class="btn btn-primary btn-margin btn-sm"
-               *ngIf="auth.isAuthenticated()"
+               *ngIf="this.auth.isAuthenticated()"
                (click)="auth.logout()">
                  Salir
              </button>
