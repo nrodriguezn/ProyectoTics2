@@ -83,7 +83,7 @@ function getFletesArchivados(req, res ){
 }
 
 function deleteFleteArchivado(req, res){
-  console.log("delete Flete Archivado", req.body._id_usuario, "<- usuario  flete-> ", req.body._id_archivado)
+  console.log("delete Flete Archivado")
   People.update({_id: req.body._id_usuario}, {$pull: {archivados: req.body._id_archivado}}, (err, updated)=>{
     if (err) res.status(500).send({message: 'Error al actualizar'})
       res.status(200).send({updated})
@@ -135,6 +135,13 @@ function getAllFletesOfertadosActivos(req, res){
 
 }
 
+function deleteFleteActivo(req, res){
+  console.log("delete Flete Activo")
+  People.update({_id: req.body._id_usuario}, {$pull: {ofertado: req.body._id_activo}}, (err, updated)=>{
+    if (err) res.status(500).send({message: 'Error al actualizar'})
+      res.status(200).send({updated})
+  })
+}
 
 
 
@@ -221,6 +228,7 @@ module.exports = {
   putOfertarFleteArchivado,
   putOfertarFleteNormal,
   getAllFletesOfertadosActivos,
+  deleteFleteActivo
   // getSend,
   // getSends,
   // putSend,

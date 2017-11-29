@@ -16,20 +16,19 @@ export class ActivosComponent implements OnInit {
 
   ngOnInit() {
       this.auth.instanceProfile()
-      this._fletesService.getAllFletesOfertadosActivos(this.auth.userProfile._id)
-      .subscribe(data => {
-            this.ofertadosActivos = data
-      })
+      setTimeout(time=>{
+        this._fletesService.getAllFletesOfertadosActivos(this.auth.userProfile._id)
+        .subscribe(data => {
+              this.ofertadosActivos = data
+        })
+      }, 800)
+
   }
 
   public abandonar(id){
     this._fletesService.abandonarActivo(id, this.auth.userProfile._id )
     .subscribe(data=>{
-      this.auth.instanceProfile()
-      this._fletesService.getAllFletesOfertadosActivos(this.auth.userProfile._id)
-      .subscribe(data => {
-            this.ofertadosActivos = data
-      })
+      this.ngOnInit()
     })
   }
 

@@ -46,7 +46,7 @@ api.put('/fletes/quitar/archivado', fleteCtrl.deleteFleteArchivado)
 api.put('/fletes/ofertar/archivado', fleteCtrl.putOfertarFleteArchivado)
 api.put('/fletes/ofertar/normal', fleteCtrl.putOfertarFleteNormal)
 api.get('/fletes/ofertados/:id_usuario', fleteCtrl.getAllFletesOfertadosActivos)
-api.delete('/fletes/archivado/:id_usuario/:id_flete', fleteCtrl.deleteFleteArchivado)
+api.put('/fletes/activo/abandonar', fleteCtrl.deleteFleteActivo)
 
 
 //Send Controllers

@@ -1,76 +1,95 @@
-
-<div class="card-body animated fadeIn fast">
-  <ul class="list-group" *ngFor="let flete of this.fletes">
-    <li class="list-group-item card-body-list">
-      <table class="table">
-        <tr>
-          <td>
-            <div class="img">
-              <img src="assets/img/default.jpg" alt="">
-            </div>
-          </td>
-          <td>
-            <div class="comentario ancho-elementos">
-              <h4>{{ flete.titulo }}</h4>
-              <p class="border border-info comentario-flete"> {{flete.comentario}}</p>
-            </div>
-          </td>
-          <td>
-            <div class="botones">
-              <ul class="list-group">
-                <li><button type="button" class="btn btn-success ancho-b" name="button" (click)="ofertar(flete._id)">Ofertar</button></li>
-                <li><button type="button" class="btn btn-info ancho-b" (click)="archivar( flete.id_usuario_mongodb, flete._id)" >Archivar</button></li>
-                <li><button type="button" class="btn btn-primary ancho-b" (click)="verPerfil(flete.id_usuario_mongodb)">Ver Mas o Perfil</button></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      </table>
-      <div class="container main-container">
-        <table class="table table-sm">
-          <tbody>
-            <tr>
-              <th scope="row">Horario Despacho</th>
-              <td>{{flete.horarioRetiro}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Cantidad de Cotizaciones</th>
-              <td>4</td>
-            </tr>
-            <tr>
-              <th scope="row">Tipo de Flete</th>
-              <td>{{ flete.subasta }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Fecha Publicacion</th>
-              <td> {{ flete.fechaCreacion | date:'MMMM - dd'}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Direccion Completa</th>
-              <td> <strong>Origen</strong> </td>
-              <td> <strong>Destino</strong> </td>
-            </tr>
-            <tr>
-              <th scope="row">Comuna</th>
-              <td>{{ flete.direccionOrigen.comuna}}</td>
-              <td>{{ flete.direccionDestino.comuna }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Calle</th>
-              <td>{{ flete.direccionOrigen.calle }}</td>
-              <td>{{ flete.direccionDestino.calle }}</td>
-            </tr>
-            <tr>
-              <th scope="row">Numero</th>
-              <td>{{ flete.direccionOrigen.numero }}</td>
-              <td>{{ flete.direccionDestino.numero }}</td>
-            </tr>
-          </tbody>
+<div *ngFor="let flete of this.fletes; let i = index">
+  <div class="card-body animated fadeIn fast" >
+    <ul class="list-group" >
+      <li class="list-group-item card-body-list">
+        <table class="table">
+          <tr>
+            <td>
+              <div class="img">
+                <img src="assets/img/default.jpg" alt="">
+              </div>
+            </td>
+            <td>
+              <div class="comentario ancho-elementos">
+                <h4>{{ flete.titulo }}</h4>
+                <p class="border border-info comentario-flete"> {{flete.comentario}}</p>
+              </div>
+            </td>
+            <td>
+              <div class="botones">
+                <ul class="list-group">
+                  <li><button type="button" class="btn btn-success ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id">Ofertar</button></li>
+                  <li><button type="button" class="btn btn-info ancho-b" (click)="archivar( flete.id_usuario_mongodb, flete._id)" >Archivar</button></li>
+                  <li><button type="button" class="btn btn-primary ancho-b" (click)="verPerfil(flete.id_usuario_mongodb)">Ver Mas o Perfil</button></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
         </table>
+        <div class="container main-container">
+          <table class="table table-sm">
+            <tbody>
+              <tr>
+                <th scope="row">Horario Despacho</th>
+                <td>{{flete.horarioRetiro}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Cantidad de Cotizaciones</th>
+                <td>4</td>
+              </tr>
+              <tr>
+                <th scope="row">Tipo de Flete</th>
+                <td>{{ flete.subasta }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Fecha Publicacion</th>
+                <td> {{ flete.fechaCreacion | date:'MMMM - dd'}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Direccion Completa</th>
+                <td> <strong>Origen</strong> </td>
+                <td> <strong>Destino</strong> </td>
+              </tr>
+              <tr>
+                <th scope="row">Comuna</th>
+                <td>{{ flete.direccionOrigen.comuna}}</td>
+                <td>{{ flete.direccionDestino.comuna }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Calle</th>
+                <td>{{ flete.direccionOrigen.calle }}</td>
+                <td>{{ flete.direccionDestino.calle }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Numero</th>
+                <td>{{ flete.direccionOrigen.numero }}</td>
+                <td>{{ flete.direccionDestino.numero }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="modal fade" [attr.id]="flete._id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{flete.titulo}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{flete.comentario}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="ofertar(flete._id)">Ofertar</button>
+        </div>
       </div>
-    </li>
+    </div>
+  </div>
 
-
-
-  </ul>
 </div>

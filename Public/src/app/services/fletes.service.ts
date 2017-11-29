@@ -168,8 +168,15 @@ public getAllFletesOfertadosActivos(id_usuario){
 
 
 public abandonarActivo(id_flete, id_usuario){
-  let url = `${this.apiUrl}/fletes/archivado/${id_usuario}/${id_flete}`
-    return this.http.delete(url)
+  let url = `${this.apiUrl}/fletes/activo/abandonar`
+   var body = {
+      _id_activo : id_flete,
+      _id_usuario : id_usuario
+  }
+  let headers = new Headers({
+     'Content-Type':'application/json'
+   })
+    return this.http.put(url, body, {headers})
       .map( res => {
         res.json()} )
   }
