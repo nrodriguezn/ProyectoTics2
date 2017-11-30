@@ -142,11 +142,12 @@ public ofertarFleteArchivado(id_archivado, id_usuario){
           res.json()} )
 }
 
-public ofertarFleteNormal(id_flete, id_usuario){
+public ofertarFleteNormal(id_flete, id_usuario, forma){
     let url = `${this.apiUrl}/fletes/ofertar/normal`
      var body = {
         _id_flete : id_flete,
-        _id_usuario : id_usuario
+        _id_usuario : id_usuario,
+        _valor_flete : forma.form._value.valor_flete
     }
     let headers = new Headers({
        'Content-Type':'application/json'

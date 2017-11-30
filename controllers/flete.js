@@ -103,10 +103,12 @@ function putOfertarFleteArchivado(req, res){//Funcion llamada solo desde ver arc
 
 function putOfertarFleteNormal(req, res){//Este es cualquier otro caso
   console.log("ofertar Flete Normalmente")
-  People.update({_id: req.body._id_usuario}, {$push: {ofertado: req.body._id_flete}}, (err, updated)=>{
-    if (err) res.status(500).send({message: 'Error al actualizar'})
-    res.status(200).send({updated})
-  })
+
+  console.log(req.body)
+  // People.update({_id: req.body._id_usuario}, {$push: {ofertado: req.body._id_flete}}, (err, updated)=>{
+  //   if (err) res.status(500).send({message: 'Error al actualizar'})
+  //   res.status(200).send({updated})
+  // })
 }
 
 function getAllFletesOfertadosActivos(req, res){

@@ -1,4 +1,5 @@
 <div *ngFor="let flete of this.fletes; let i = index">
+  <form (ngSubmit)="enviar(forma)" #forma="ngForm" novalidate="">
   <div class="card-body animated fadeIn fast" >
     <ul class="list-group" >
       <li class="list-group-item card-body-list">
@@ -82,14 +83,27 @@
           </button>
         </div>
         <div class="modal-body">
-          {{flete.comentario}}
+          <div class="form-row">
+              <div class="col">
+                Precio a Cobrar:
+              </div>
+              <div class="col">
+                <input type="text"
+                       class="form-control"
+                       placeholder="$10.000"
+                       name="valor_flete"
+                       ngModel
+                       minlength="5"
+                       required>
+              </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" (click)="ofertar(flete._id)">Ofertar</button>
+          <button type="button" class="btn btn-primary" (click)="ofertar(flete._id, forma)">Ofertar</button>
         </div>
       </div>
     </div>
   </div>
-
+  </form>
 </div>

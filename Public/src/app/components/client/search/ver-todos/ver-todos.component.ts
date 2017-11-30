@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
 import {FletesService} from './../../../../services/fletes.service';
 import {AuthService} from './../../../../services/auth.service';
 
@@ -21,8 +22,8 @@ export class VerTodosComponent implements OnInit {
     })
   }
 
-  ofertar(id_flete){
-      this._fletesService.ofertarFleteNormal(id_flete, this.auth.userProfile._id)
+  ofertar(id_flete, forma:NgForm){
+      this._fletesService.ofertarFleteNormal(id_flete, this.auth.userProfile._id, forma)
         .subscribe()
   }
   archivar(id, mongo_id){ //IMPORTANTE Recibe los valores al revez, me equivoque desde la vista jaja

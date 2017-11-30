@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from './../../../../services/auth.service';
+import {NgForm} from '@angular/forms';
 import {FletesService} from './../../../../services/fletes.service';
 
 @Component({
@@ -36,8 +37,8 @@ export class FiltrarComunaComponent implements OnInit {
        })
   }
 
-  ofertar(id_flete){
-      this._fletesService.ofertarFleteNormal(id_flete, this.auth.userProfile._id)
+  ofertar(id_flete, forma:NgForm){
+      this._fletesService.ofertarFleteNormal(id_flete, this.auth.userProfile._id, forma)
         .subscribe()
   }
 
