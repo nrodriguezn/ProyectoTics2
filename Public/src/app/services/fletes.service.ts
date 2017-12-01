@@ -18,9 +18,6 @@ export class FletesService {
   public apiUrl:string = 'http://localhost:3000/api'
 
 
-
-
-
 public getUserType(){
     return this.usuario;
 }

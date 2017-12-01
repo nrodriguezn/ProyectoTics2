@@ -5,45 +5,87 @@ const Schema = mongoose.Schema
 
 const PeopleSchema = new Schema({
 
-  "sub": {type: String},
-  "nombre": { type: String },
-  "apellido": { type: String },
-  "telefono": { type: String },
-  "url_img": { type: String },
-  "tipo": { type: String, enum: ['cliente', 'usuario', 'administrador']},
-  "SignupDate": { type: Date, default: Date.now() },
-  "direccion": {
-        "comuna": { type: String},
-        "calle": { type: String },
-        "numero": { type: Number},
-        "dpto": { type: Number},
+  "sub": {
+    type: String
   },
-  "vehiculo":
-           [
-             {
-                    "tipo": {type: String, enum: ['camion', 'furgon', 'moto']},
-                    "patente": {type: String},
-                    "color": {type: String},
-                    "url_img": {type: String}
-              }
-            ],
-    "archivados":[
-      {
-        type: String, default: []
-      }
-    ],
-    "ofertado":[
-      {
-        type: String, default: []
-      }
-    ],
-    "calificacion": {
-                      "cantidadDeCalificaciones": {type: Number, default: '0'},
-                      "sumaTotalCalificaciones": {type: Number, default: '0'},
-                      "calificacionFinal": {type: Number, default: '0'}
-                    },
-    "numeroEnvios": {type: Number},
-    "fletesCancelados": {type: Number}
+  "nombre": {
+    type: String
+  },
+  "apellido": {
+    type: String
+  },
+  "telefono": {
+    type: String
+  },
+  "url_img": {
+    type: String
+  },
+  "tipo": {
+    type: String,
+    enum: ['cliente', 'usuario', 'administrador']
+  },
+  "SignupDate": {
+    type: Date,
+    default: Date.now()
+  },
+  "direccion": {
+    "comuna": {
+      type: String
+    },
+    "calle": {
+      type: String
+    },
+    "numero": {
+      type: Number
+    },
+    "dpto": {
+      type: Number
+    },
+  },
+  "vehiculo": [{
+    "tipo": {
+      type: String,
+      enum: ['camion', 'furgon', 'moto']
+    },
+    "patente": {
+      type: String
+    },
+    "color": {
+      type: String
+    },
+    "url_img": {
+      type: String
+    }
+  }],
+  "archivados": [{
+    type: String,
+    default: []
+  }],
+  "ofertado": [{
+    "id_": type: String,
+    "monto": type: String
+
+  }],
+  "calificacion": {
+    "cantidadDeCalificaciones": {
+      type: Number,
+      default: '0'
+    },
+    "sumaTotalCalificaciones": {
+      type: Number,
+      default: '0'
+    },
+    "calificacionFinal": {
+      type: Number,
+      default: '0'
+    }
+  },
+  "numeroEnvios": {
+    type: Number
+  },
+  "fletesCancelados": {
+    type: Number
+  }
 
 })
 //Calificacion
@@ -71,8 +113,8 @@ const PeopleSchema = new Schema({
 //}
 
 
-  //ESto tienes que hacerlo como hice el perfil de las personas, el tema es que Schema tiene una estructura, la cual
-    //no necesariamente tienes que llenarla siempre, entonces si es independiente, lo marcas y pones menos datos nomas.
+//ESto tienes que hacerlo como hice el perfil de las personas, el tema es que Schema tiene una estructura, la cual
+//no necesariamente tienes que llenarla siempre, entonces si es independiente, lo marcas y pones menos datos nomas.
 
 //}_
 module.exports = mongoose.model('People', PeopleSchema)
