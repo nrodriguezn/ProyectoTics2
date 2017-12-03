@@ -8,7 +8,7 @@ var ObjectId = require('mongodb').ObjectID;
 function postNewFlete(req, res) {
   console.log("postNewFlete")
   let flete = new Flete()
-
+  
   flete.persona_id = req.body.persona_id
   flete.horarioRetiro = req.body.horario
   flete.subasta = req.body.tipoFlete
