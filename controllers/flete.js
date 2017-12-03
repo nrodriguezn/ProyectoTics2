@@ -203,7 +203,7 @@ function getAllFletesOfertadosActivos(req, res) {
 
     var id_array = new Array()
     for (var i = 0; i < people.ofertado.length; i++) {
-      id_array.push(`ObjectId("${people.ofertado[i]}")`)
+      id_array.push(`ObjectId("${people.ofertado[i].id_}")`)
     }
     let salida = "["
     id_array.forEach(dato => {
@@ -216,6 +216,7 @@ function getAllFletesOfertadosActivos(req, res) {
         $in: eval(salida)
       }
     }, (err, activos) => {
+      console.log(activos)
       if (err) res.status(500).send({
         message: 'Error al Buscar Usuario'
       })

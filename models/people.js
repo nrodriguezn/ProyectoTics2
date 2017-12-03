@@ -62,8 +62,12 @@ const PeopleSchema = new Schema({
     default: []
   }],
   "ofertado": [{
-    "id_": type: String,
-    "monto": type: String
+    "id_": {
+      type: String
+    },
+    "monto": {
+      type: String
+    }
 
   }],
   "calificacion": {
