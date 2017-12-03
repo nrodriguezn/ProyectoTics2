@@ -269,14 +269,31 @@ function deleteFleteActivo(req, res) {
     _id: req.body._id_usuario
   }, {
     $pull: {
-      ofertado: req.body._id_activo
+      ofertado: {
+        id_: req.body._id_activo
+      }
     }
   }, (err, updated) => {
+    console.log("PeopleUopdated: ", updated)
     if (err) res.status(500).send({
       message: 'Error al actualizar'
     })
-    res.status(200).send({
-      updated
+    Flete.update({
+      _id: req.body._id_activo
+    }, {
+      $pull: {
+        ofertado: {
+          id_usuario: req.body._id_usuario
+        }
+      }
+    }, (err, updated) => {
+      console.log("FleteUdated: ", updated)
+      if (err) res.status(500).send({
+        message: 'Error al actualizar'
+      })
+      res.status(200).send({
+        updated
+      })
     })
   })
 }
