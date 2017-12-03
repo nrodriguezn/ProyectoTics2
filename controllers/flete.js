@@ -155,14 +155,31 @@ function putOfertarFleteArchivado(req, res) { //Funcion llamada solo desde ver a
       _id: req.body._id_usuario
     }, {
       $push: {
-        ofertado: req.body._id_archivado
+        ofertado: {
+          id_: req.body._id_archivado,
+          monto: req.body._valor_flete
+        }
       }
     }, (err, updated) => {
       if (err) res.status(500).send({
         message: 'Error al actualizar'
       })
-      res.status(200).send({
-        updated
+      Flete.update({
+        _id: req.body._id_archivado
+      }, {
+        $push: {
+          ofertado: {
+            id_usuario: req.body._id_usuario,
+            monto: req.body._valor_flete
+          }
+        }
+      }, (err, updated) => {
+        if (err) res.status(500).send({
+          message: 'Error al actualizar'
+        })
+        res.status(200).send({
+          updated
+        })
       })
     })
   })
@@ -185,8 +202,22 @@ function putOfertarFleteNormal(req, res) { //Este es cualquier otro caso
     if (err) res.status(500).send({
       message: 'Error al actualizar'
     })
-    res.status(200).send({
-      updated
+    Flete.update({
+      _id: req.body._id_flete
+    }, {
+      $push: {
+        ofertado: {
+          id_usuario: req.body._id_usuario,
+          monto: req.body._valor_flete
+        }
+      }
+    }, (err, updated) => {
+      if (err) res.status(500).send({
+        message: 'Error al actualizar'
+      })
+      res.status(200).send({
+        updated
+      })
     })
   })
 }
@@ -194,22 +225,24 @@ function putOfertarFleteNormal(req, res) { //Este es cualquier otro caso
 function getAllFletesOfertadosActivos(req, res) {
 
   console.log("getAllFletesOfertadosActivos")
-  // if(!req.params._id_usuario) res.status(500).send({message: 'Internal Server error'})
 
   People.findById(req.params.id_usuario, {
     ofertado: 1,
     _id: 0
   }, (err, people) => {
+    console.log("People:", people)
 
     var id_array = new Array()
     for (var i = 0; i < people.ofertado.length; i++) {
-      id_array.push(`ObjectId("${people.ofertado[i].id_}")`)
+      if (people.ofertado[i].id_ != undefined)
+        id_array.push(`ObjectId("${people.ofertado[i].id_}")`)
     }
     let salida = "["
     id_array.forEach(dato => {
       salida += dato + ", "
     })
     salida = salida + "]"
+    console.log("salida", salida)
 
     Flete.find({
       _id: {
@@ -220,6 +253,9 @@ function getAllFletesOfertadosActivos(req, res) {
       if (err) res.status(500).send({
         message: 'Error al Buscar Usuario'
       })
+
+
+
       res.status(200).send(activos)
     })
 

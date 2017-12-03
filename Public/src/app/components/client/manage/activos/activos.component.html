@@ -22,7 +22,12 @@
           <td>
             <div class="botones">
               <ul class="list-group">
-                <li><button type="button" class="btn btn-info ancho-b">Contactar con Persona</button></li>
+                <!-- <p *ngFor="let ofertado of flete.ofertado"> {{ofertado.monto}} </p> -->
+                <li *ngFor="let ofertado of flete.ofertado">
+                  <button type="button" class="btn btn-info ancho-b" *ngIf="ofertado.id_usuario === this.auth.userProfile._id" >
+                    {{ ofertado.monto | currency:'CPL':true: '.0-0' }}
+                  </button>
+                </li>
                 <li><button type="button" class="btn btn-danger ancho-b" (click)="abandonar(flete._id)">Abandonar</button></li>
               </ul>
             </div>

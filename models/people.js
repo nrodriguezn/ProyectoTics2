@@ -68,7 +68,6 @@ const PeopleSchema = new Schema({
     "monto": {
       type: String
     }
-
   }],
   "calificacion": {
     "cantidadDeCalificaciones": {

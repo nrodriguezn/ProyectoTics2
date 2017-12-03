@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
 import {AuthService} from './../../../../services/auth.service';
 import {FletesService} from './../../../../services/fletes.service';
 
@@ -27,8 +28,8 @@ export class ArchivadoComponent implements OnInit {
     })
   }
 
-  ofertar(id_archivado){
-    this._fletesService.ofertarFleteArchivado(id_archivado, this.auth.userProfile._id)
+  ofertar(id_archivado, forma:NgForm){
+    this._fletesService.ofertarFleteArchivado(id_archivado, this.auth.userProfile._id, forma)
     .subscribe(data => {
       this.ngOnInit()
     })

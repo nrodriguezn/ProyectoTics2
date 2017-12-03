@@ -58,7 +58,6 @@ public postNewFleteForm(forma, userProfile){
 
 }
 
-
 public getAllFletes(){
     let url = `${this.apiUrl}/fletes`
     let headers = new Headers({
@@ -81,8 +80,7 @@ public filtrarPorComuna(comuna){
   })
 }
 
-
-public  archivarButton(body, mongo_id){
+public archivarButton(body, mongo_id){
     let url = `${this.apiUrl}/fletes/archivar`
     let headers = new Headers({
        'Content-Type':'application/json'
@@ -92,8 +90,7 @@ public  archivarButton(body, mongo_id){
      .map(res => res.json())
 }
 
-
-public  verPerfilButton(mongo_id){
+public verPerfilButton(mongo_id){
   console.log("ver Perfil", mongo_id)
 }
 
@@ -124,11 +121,12 @@ public quitarArchivado(id_archivado, id_usuario){
         res.json()} )
 }
 
-public ofertarFleteArchivado(id_archivado, id_usuario){
+public ofertarFleteArchivado(id_archivado, id_usuario, forma){
     let url = `${this.apiUrl}/fletes/ofertar/archivado`
      var body = {
         _id_archivado : id_archivado,
-        _id_usuario : id_usuario
+        _id_usuario : id_usuario,
+        _valor_flete : forma.form._value.valor_flete
     }
     let headers = new Headers({
        'Content-Type':'application/json'
@@ -159,11 +157,11 @@ public getAllFletesOfertadosActivos(id_usuario){
     let headers = new Headers({
        'Content-Type':'application/json'
      })
+     console.log("url",url)
      return this.http.get(url, {headers})
      .map(res =>{
         return res.json() })
 }
-
 
 public abandonarActivo(id_flete, id_usuario){
   let url = `${this.apiUrl}/fletes/activo/abandonar`
@@ -181,14 +179,6 @@ public abandonarActivo(id_flete, id_usuario){
 
 
 
-
-
-
-
-
-
-
-
 test(){
   let url = `${this.apiUrl}/setsesion`
   console.log("getTest")
@@ -198,14 +188,6 @@ test(){
   return this.http.get(url, {headers})
   .map(res => res.json())
 }
-
-
-
-
-
-
-
-
 
   // CRUD
 //   nuevoHeroe(heroe:Heroe){
