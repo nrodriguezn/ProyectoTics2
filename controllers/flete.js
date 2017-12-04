@@ -185,7 +185,7 @@ function putOfertarFleteArchivado(req, res) { //Funcion llamada solo desde ver a
   })
 }
 
-function putOfertarFleteNormal(req, res) { //Este es cualquier otro caso
+function putOfertarFleteNormal(req, res) {
   console.log("ofertar Flete Normalmente")
 
   console.log(req.body)
@@ -325,6 +325,46 @@ function putFlete(req, res) {
   })
 }
 
+function deleteFleteUser(req, res) {
+  console.log("deleteFleteUser", req.params.flete_id)
+  Flete.remove({
+    _id: req.params.flete_id
+  }, (err, flete) => {
+    if (err) res.status(500).send({
+      message: 'Errror al borrar el flete'
+    })
+    People.update({
+      archivados: req.params.flete_id
+    }, {
+      $pull: {
+        archivados: req.params.flete_id
+      }
+    }, (err, updated) => {
+      if (err) res.status(500).send({
+        message: 'Error al eliminar, inconsistencia de datos'
+      })
+      People.update({
+        ofertado: {
+          id_: req.params.flete_id
+        }
+      }, {
+        $pull: {
+          ofertado: {
+            id_: req.params.flete_id
+          }
+        }
+      }, (err, update) => {
+        if (err) res.status(500).send({
+          message: 'Error al eliminar ofertado, inconsistencia de datos'
+        })
+        res.status(200).send({
+          message: 'El flete ha sido borrado'
+        })
+      })
+    })
+  })
+}
+
 
 
 
@@ -409,7 +449,8 @@ module.exports = {
   getAllFletesOfertadosActivos,
   deleteFleteActivo,
   getAllUserFletes,
-  putFlete
+  putFlete,
+  deleteFleteUser
   // getSend,
   // getSends,
   // putSend,

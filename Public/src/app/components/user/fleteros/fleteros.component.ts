@@ -42,4 +42,11 @@ public clientProfile:any
 
   }
 
+  delete(flete_id){
+    this._fletesService.deleteFleteUser(flete_id)
+    .subscribe(data => {
+      this.ngOnInit()
+    })
+  }
+
 }

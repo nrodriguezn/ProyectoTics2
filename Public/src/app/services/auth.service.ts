@@ -15,7 +15,7 @@ export class AuthService {
   public userProfile:any
   public readyToShow = false
   sub:String
-  private datoNuevoUsuario = 'cliente'
+  private datoNuevoUsuario = 'usuario'
 
 
   auth0 = new auth0.WebAuth({
@@ -71,7 +71,12 @@ export class AuthService {
           this._fletesService.getProfileSesion(profile.sub)
           .subscribe(profile_ =>{
             if(profile_.people == null){
-              this.userProfile.userType = this.datoNuevoUsuario
+              var tipo = confirm("Si quieres trabajar con nosotrs acepta, de lo contrario cancela")
+              if(tipo){
+                this.userProfile.userType = 'cliente'
+              }else{
+                this.userProfile.userType = 'usuario'
+              }
               this._fletesService.postNewProfile(this.userProfile)
               .subscribe(res => {
                 this.userProfile = res

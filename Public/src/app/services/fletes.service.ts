@@ -164,27 +164,27 @@ public getAllFletesOfertadosActivos(id_usuario){
 }
 
 public abandonarActivo(id_flete, id_usuario){
-  let url = `${this.apiUrl}/fletes/activo/abandonar`
-   var body = {
-      _id_activo : id_flete,
-      _id_usuario : id_usuario
-  }
-  let headers = new Headers({
-     'Content-Type':'application/json'
-   })
-    return this.http.put(url, body, {headers})
-      .map( res => {
-        res.json()} )
-  }
+    let url = `${this.apiUrl}/fletes/activo/abandonar`
+     var body = {
+        _id_activo : id_flete,
+        _id_usuario : id_usuario
+    }
+    let headers = new Headers({
+       'Content-Type':'application/json'
+     })
+      return this.http.put(url, body, {headers})
+        .map( res => {
+          res.json()} )
+    }
 
-public getAllFletesUsuario(id){
-  let url = `${this.apiUrl}/fletes/usuario/${id}`
-  let headers = new Headers({
-     'Content-Type':'application/json'
-   })
-   return this.http.get(url, {headers})
-   .map(res =>{
-     return res.json() })
+  public getAllFletesUsuario(id){
+    let url = `${this.apiUrl}/fletes/usuario/${id}`
+    let headers = new Headers({
+       'Content-Type':'application/json'
+     })
+     return this.http.get(url, {headers})
+     .map(res =>{
+       return res.json() })
 }
 
 public getClientProfile(id_usuario){
@@ -208,6 +208,12 @@ public actualizarFlete(forma){
           console.log(res.json())
           return res.json()
         })
+}
+
+public deleteFleteUser(flete_id){
+    let url = `${this.apiUrl}/flete/${flete_id}`
+    return this.http.delete(url)
+      .map( res => res.json() )
 }
 
 test(){

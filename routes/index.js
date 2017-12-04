@@ -55,6 +55,7 @@ api.get('/fletes/ofertados/:id_usuario', fleteCtrl.getAllFletesOfertadosActivos)
 api.put('/fletes/activo/abandonar', fleteCtrl.deleteFleteActivo)
 api.get('/fletes/usuario/:id_usuario', fleteCtrl.getAllUserFletes)
 api.put('/flete/update', fleteCtrl.putFlete)
+api.delete('/flete/:flete_id', fleteCtrl.deleteFleteUser)
 
 
 //Send Controllers

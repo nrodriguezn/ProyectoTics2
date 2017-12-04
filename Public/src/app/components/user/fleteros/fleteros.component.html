@@ -20,7 +20,8 @@
                   <ul class="list-group">
                     <li *ngIf="flete.ofertado.length > 0"><button type="button" class="btn btn-info ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id+'ver'" *ngFor="let ofertado of flete.ofertado; let i_of = index">Ver ({{i_of+1}})</button></li>
                     <li><button type="button" class="btn btn-info ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id">Editar</button></li>
-                    <li><button type="button" class="btn btn-danger ancho-b" (click)="eliminar(flete._id)">Eliminar</button></li>
+                    <!-- <li><button type="button" class="btn btn-danger ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id+'elim'">Eliminar</button></li> -->
+                    <li><button type="button" class="btn btn-danger ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id+'elim'">ELiminar</button></li>
                   </ul>
                 </div>
               </td>
@@ -71,6 +72,34 @@
         </li>
       </ul>
     </div>
+
+    <!-- ELIMINAR  -->
+    <div class="modal fade" [attr.id]="flete._id+'elim'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Eliminar {{flete.titulo}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-row" *ngFor="let ofertado of flete.ofertado">
+
+                ¿Esta seguro que desea eliminar el flete {{flete.titulo}}?
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="delete(flete._id)" data-dismiss="modal">Eliminar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
     <!-- EDITAR  -->
     <form >
       <div class="modal fade" [attr.id]="flete._id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
