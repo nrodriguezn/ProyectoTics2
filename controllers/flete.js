@@ -8,7 +8,7 @@ var ObjectId = require('mongodb').ObjectID;
 function postNewFlete(req, res) {
   console.log("postNewFlete")
   let flete = new Flete()
-  
+
   flete.persona_id = req.body.persona_id
   flete.horarioRetiro = req.body.horario
   flete.subasta = req.body.tipoFlete
@@ -298,6 +298,21 @@ function deleteFleteActivo(req, res) {
   })
 }
 
+function getAllUserFletes(req, res) {
+  console.log("getFletesUsuario")
+  Flete.find(
+    req.params.id_usuario, (err, sends) => {
+      if (err) return res.status(500).send({
+        message: 'Error al realizar la peticion'
+      })
+      if (!sends) return res.status(404).send({
+        message: 'Al parecer no hay envios aun '
+      })
+      res.status(200).send({
+        sends
+      })
+    })
+}
 
 
 
@@ -381,7 +396,8 @@ module.exports = {
   putOfertarFleteArchivado,
   putOfertarFleteNormal,
   getAllFletesOfertadosActivos,
-  deleteFleteActivo
+  deleteFleteActivo,
+  getAllUserFletes
   // getSend,
   // getSends,
   // putSend,

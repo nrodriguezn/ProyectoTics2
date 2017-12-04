@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FletesService} from './../../../services/fletes.service';
+import {AuthService} from './../../../services/auth.service';
+
 
 @Component({
   selector: 'app-fleteros',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FleterosComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth:AuthService, public _fletesService:FletesService) { }
+
+public fletes:any[] = []
 
   ngOnInit() {
+    setTimeout(time=>{
+      this.auth.instanceProfile()
+      this._fletesService.getAllFletesUsuario(this.auth.userProfile._id)
+      .subscribe(data => {
+        this.fletes = data.sends
+        console.log(this.fletes)
+      })
+    },1000)
+
+
   }
 
 }

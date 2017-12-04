@@ -1,11 +1,11 @@
 .card-body-list{
   display: inline-block;
-  justify-content: center;
 
 }
 
 .img img{
-  width: 100px;
+  width: 200px;
+  padding-bottom: 20px;
 }
 
 div ul li ul{
@@ -16,4 +16,28 @@ div ul li ul{
 .numeros-cliente{
   display: inline-block;
   padding: 10px;
+}
+
+p{
+  padding-top: 20px;
+}
+
+h3{
+float: left;
+}
+
+ul {
+  padding-top: 20px;
+}
+.main-container{
+  padding-top: 20px;
+}
+
+
+.botones li{
+  padding-top: 5px;
+  align-items: right;
+}
+.ancho-b{
+  width: 230px;
 }

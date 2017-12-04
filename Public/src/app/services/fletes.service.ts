@@ -177,7 +177,15 @@ public abandonarActivo(id_flete, id_usuario){
         res.json()} )
   }
 
-
+public getAllFletesUsuario(id){
+  let url = `${this.apiUrl}/fletes/usuario/${id}`
+  let headers = new Headers({
+     'Content-Type':'application/json'
+   })
+   return this.http.get(url, {headers})
+   .map(res =>{
+     return res.json() })
+}
 
 test(){
   let url = `${this.apiUrl}/setsesion`

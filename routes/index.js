@@ -14,7 +14,7 @@ const api = express.Router()
 api.get('/product', productCtrl.getProducts)
 api.post('/product', productCtrl.saveProduct)
 api.get('/product/:productId', productCtrl.getProduct)
-api.put('/product/:productId',productCtrl.updateProduct)
+api.put('/product/:productId', productCtrl.updateProduct)
 api.delete('/product/:productId', productCtrl.deleteProduct)
 
 
@@ -22,22 +22,27 @@ api.delete('/product/:productId', productCtrl.deleteProduct)
 api.post('/signup', userCtrl.signUp)
 api.post('/signin', userCtrl.signIn)
 api.get('/private', auth, (req, res) => {
-res.status(200).send({message: 'Tienes autorizacion'})
+  res.status(200).send({
+    message: 'Tienes autorizacion'
+  })
 })
 
 //People Controllers
 // api.get('/setsesion', peopleCtrl.setSesion)
-api.get('/setsesion', (req,res) => {
+api.get('/setsesion', (req, res) => {
   console.log("funciona")
-res.status(200).send({message: 'funcionando'})})
-api.post('/people', peopleCtrl.postProfile )
-api.get('/people', peopleCtrl.getProfiles )
-api.get('/people/:peopleId', peopleCtrl.getProfile )
-api.put('/people/:peopleId', peopleCtrl.putProfile )
-api.delete('/people/:peopleId', peopleCtrl.deleteProfile )
+  res.status(200).send({
+    message: 'funcionando'
+  })
+})
+api.post('/people', peopleCtrl.postProfile)
+api.get('/people', peopleCtrl.getProfiles)
+api.get('/people/:peopleId', peopleCtrl.getProfile)
+api.put('/people/:peopleId', peopleCtrl.putProfile)
+api.delete('/people/:peopleId', peopleCtrl.deleteProfile)
 
 //Flete controllers
-api.post('/postform', fleteCtrl.postNewFlete )
+api.post('/postform', fleteCtrl.postNewFlete)
 api.get('/fletes', fleteCtrl.getAllFletes)
 api.get('/fletes/:comuna', fleteCtrl.getComunaFilter)
 api.put('/fletes/archivar', fleteCtrl.putNewArchivado)
@@ -47,14 +52,15 @@ api.put('/fletes/ofertar/archivado', fleteCtrl.putOfertarFleteArchivado)
 api.put('/fletes/ofertar/normal', fleteCtrl.putOfertarFleteNormal)
 api.get('/fletes/ofertados/:id_usuario', fleteCtrl.getAllFletesOfertadosActivos)
 api.put('/fletes/activo/abandonar', fleteCtrl.deleteFleteActivo)
+api.get('/fletes/usuario/:id_usuario', fleteCtrl.getAllUserFletes)
 
 
 //Send Controllers
-api.post('/send',sendCtrl.postSend  )
-api.get('/send', sendCtrl.getSend )
-api.get('/send/:sendId', sendCtrl.getSend )
-api.put('/send/:sendId', sendCtrl.putSend )
-api.delete('/send/:sendId', sendCtrl.deleteSend )
+api.post('/send', sendCtrl.postSend)
+api.get('/send', sendCtrl.getSend)
+api.get('/send/:sendId', sendCtrl.getSend)
+api.put('/send/:sendId', sendCtrl.putSend)
+api.delete('/send/:sendId', sendCtrl.deleteSend)
 
 
 
