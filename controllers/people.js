@@ -76,13 +76,59 @@ function getClientProfile(req, res) {
     if (!people) return res.status(404).send({
       message: 'Al parecer no existen personas aun'
     })
-
-    console.log("people", people)
     res.status(200).send({
       people
     })
   })
 }
+
+function counts(req, res) {
+  console.log("Counts Elems People")
+  People.findOne({
+    _id: req.params.id_people
+  }, (err, ofertados) => {
+    let ElemOfer = ofertados.ofertado
+    let ElemArch = ofertados.archivados
+
+    let salidaOfer = 0
+    ofertados.ofertado.forEach(dato => {
+      salidaOfer += 1
+    })
+
+    let salidaArch = 0
+    ofertados.archivados.forEach(dato => {
+      salidaArch += 1
+    })
+
+    let conteo = {
+      contArch: salidaArch,
+      contOfer: salidaOfer
+    }
+
+    if (err) return res.status(500).send({
+      message: 'Error al realizar el Conteo'
+    })
+    if (!conteo) return res.status(404).send({
+      message: 'No se pudo realizar correctamente el conteo'
+    })
+
+    res.status(200).send({
+      conteo
+    })
+
+
+
+  })
+}
+
+
+
+
+
+
+
+
+
 //como son personas separamos los clientes(fletes) de usuarios
 //tu siendo cliente quiero que me muestra los usuarios que cumplan con:
 //tu siendo usuario quiero q me muestre los fletes que cumplan con :
@@ -192,5 +238,6 @@ module.exports = {
   deleteProfile,
   postProfile,
   setSesion,
-  getClientProfile
+  getClientProfile,
+  counts
 }

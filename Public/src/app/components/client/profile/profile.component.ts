@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from './../../../services/auth.service';
+import {FletesService} from './../../../services/fletes.service';
 
 
 @Component({
@@ -9,20 +10,23 @@ import {AuthService} from './../../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  userType:string
-  profile:any
+  public userType:string
+  public profile:any
+  public archivados:Number = 0
+  public ofertados:Number = 0
 
-  constructor(public auth:AuthService) { }
+  constructor(public auth:AuthService, public _fletesService: FletesService) { }
 
   ngOnInit() {
      this.auth.instanceProfile()
-    //   if (this.auth.userProfile) {
-    //     this.profile = this.auth.userProfile;
-    //   } else {
-    //     this.auth.getProfile((err, profile) => {
-    //       this.profile = profile;
-    //     });
-    //   }
+     setTimeout(data =>{
+       this._fletesService.countsInitProfile(this.auth.userProfile._id)
+       .subscribe(data => {
+         this.archivados = data.conteo.contArch,
+         this.ofertados = data.conteo.contOfer
+       })
+     }, 800)
+
   }
 
 }

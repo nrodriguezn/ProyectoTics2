@@ -230,7 +230,6 @@ function getAllFletesOfertadosActivos(req, res) {
     ofertado: 1,
     _id: 0
   }, (err, people) => {
-    console.log("People:", people)
 
     var id_array = new Array()
     for (var i = 0; i < people.ofertado.length; i++) {
@@ -242,14 +241,12 @@ function getAllFletesOfertadosActivos(req, res) {
       salida += dato + ", "
     })
     salida = salida + "]"
-    console.log("salida", salida)
 
     Flete.find({
       _id: {
         $in: eval(salida)
       }
     }, (err, activos) => {
-      console.log(activos)
       if (err) res.status(500).send({
         message: 'Error al Buscar Usuario'
       })
@@ -274,7 +271,6 @@ function deleteFleteActivo(req, res) {
       }
     }
   }, (err, updated) => {
-    console.log("PeopleUopdated: ", updated)
     if (err) res.status(500).send({
       message: 'Error al actualizar'
     })
@@ -287,7 +283,6 @@ function deleteFleteActivo(req, res) {
         }
       }
     }, (err, updated) => {
-      console.log("FleteUdated: ", updated)
       if (err) res.status(500).send({
         message: 'Error al actualizar'
       })

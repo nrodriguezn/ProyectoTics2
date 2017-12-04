@@ -11,28 +11,29 @@
         <tr>
           <td>
             <span>Bienvenido</span><br>
-            <h3> {{this.auth.userProfile.nombre}}</h3>
+            <h3> {{this.auth.userProfile?.nombre}} <br>
+            {{this.auth.userProfile?.apellido}} </h3>
           </td>
           <td>
             <ul>
               <div class="img">
-                <img [src]="this.auth.userProfile.url_img" alt="">
+                <img [src]="this.auth.userProfile?.url_img" alt="">
               </div>
             </ul>
           </td>
           <td>
             <ul>
                 <div class="numeros-cliente">
-                  <h5>{{ this.auth.userProfile.numeroEnvios}}</h5>
-                  <span>Fletes</span>
+                  <h5>{{this.ofertados}}</h5>
+                  <span>Fletes Ofertados</span>
                 </div>
                 <div class="numeros-cliente">
-                  <h5>{{ this.auth.userProfile.fletesCancelados}}</h5>
+                  <h5>{{ this.auth.userProfile?.fletesCancelados}}</h5>
                   <span>Cancelados</span>
                 </div>
                 <div class="numeros-cliente">
-                  <h5>{{ this.auth.userProfile.numeroEnvios}}</h5>
-                  <span>Este Mes</span>
+                  <h5 >{{this.archivados}}</h5>
+                  <span>Archivados</span>
                 </div>
             </ul>
           </td>
@@ -64,5 +65,7 @@
       </ul>
   </li>
 </ul>
+
+<pre>{{this.auth.userProfile | json}}</pre>
 
   </div>
