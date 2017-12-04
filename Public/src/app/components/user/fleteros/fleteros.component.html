@@ -71,42 +71,221 @@
         </li>
       </ul>
     </div>
-<form (ngSubmit)="enviar(forma)" #forma="ngForm" novalidate="">
-    <div class="modal fade" [attr.id]="flete._id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- EDITAR  -->
+    <form >
+      <div class="modal fade" [attr.id]="flete._id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{flete.titulo}}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Editar {{flete.titulo}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="form-row">
-                <div class="col">
-                  Precio a Cobrar:
-                </div>
-                <div class="col">
-                  <input type="text"
-                         class="form-control"
-                         placeholder="$10.000"
-                         name="valor_flete"
-                         ngModel
-                         minlength="5"
-                         required>
-                </div>
+
+              <div class="form-group">
+                <label>Titulo</label>
+                <input  [(ngModel)]="flete.titulo"
+                    type="text"
+                       name="titulo"
+                      class="form-control"
+                      placeholder="Titulo"
+                      required>
               </div>
+              <div class="form-group">
+                <label>Comentario</label>
+                <input  [(ngModel)]="flete.comentario"
+                    type="text"
+                       name="comentario"
+                      class="form-control"
+                      placeholder="comentario"
+                      required>
+              </div>
+              <div class="form-group">
+                <label>Horario de Retiro</label>
+                <input  [(ngModel)]="flete.horarioRetiro"
+                    type="text"
+                       name="horarioRetiro"
+                      class="form-control"
+                      placeholder="Horario Retiro"
+                      required>
+              </div>
+            </div>
+
+              <h5>Direccion Origen</h5>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Comuna</label>
+                <select [(ngModel)]="flete.direccionOrigen.comuna"
+                    class="form-control" name="direccionOrigen.comuna">
+                    <option>Alhué</option>
+                    <option>Buin</option>
+                    <option>Calera de tango</option>
+                    <option>Cerrillos</option>
+                    <option>Cerro navia</option>
+                    <option>Colina</option>
+                    <option>Conchalí</option>
+                    <option>Curacaví</option>
+                    <option>El bosque</option>
+                    <option>El monte</option>
+                    <option>Estación central</option>
+                    <option>Huechuraba</option>
+                    <option>Independencia</option>
+                    <option>Isla de maipo</option>
+                    <option>La cisterna</option>
+                    <option>La florida</option>
+                    <option>La granja</option>
+                    <option>La pintana</option>
+                    <option>La reina</option>
+                    <option>Lampa</option>
+                    <option>Las condes</option>
+                    <option>Lo barnechea</option>
+                    <option>Lo espejo</option>
+                    <option>Lo prado</option>
+                    <option>Macul</option>
+                    <option>Maipú</option>
+                    <option>María pinto</option>
+                    <option>Melipilla</option>
+                    <option>Ñuñoa</option>
+                    <option>Padre hurtado</option>
+                    <option>Paine</option>
+                    <option>Pedro aguirre cerda</option>
+                    <option>Peñaflor</option>
+                    <option>Peñalolén</option>
+                    <option>Pirque</option>
+                    <option>Providencia</option>
+                    <option>Pudahuel</option>
+                    <option>Puente alto</option>
+                    <option>Quilicura</option>
+                    <option>Quinta normal</option>
+                    <option>Recoleta</option>
+                    <option>Renca</option>
+                    <option>San bernardo</option>
+                    <option>San joaquín</option>
+                    <option>San josé de maipo</option>
+                    <option>San miguel</option>
+                    <option>San pedro</option>
+                    <option>San ramón</option>
+                    <option>Santiago</option>
+                    <option>Talagante</option>
+                    <option>Tiltil</option>
+                    <option>Vitacura</option>
+            </select>
+              </div>
+              <div class="form-group">
+                <label>Calle</label>
+                <input  [(ngModel)]="flete.direccionOrigen.calle"
+                    type="text"
+                       name="direccionOrigen.calle"
+                      class="form-control"
+                      placeholder="Calle"
+                      required>
+              </div>
+              <div class="form-group">
+                <label>Numero</label>
+                <input  [(ngModel)]="flete.direccionOrigen.numero"
+                    type="text"
+                       name="direccionOrigen.numero"
+                      class="form-control"
+                      placeholder="Numero"
+                      required>
+              </div>
+            </div>
+
+            <h5>Direccion Destino</h5>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Comuna</label>
+                <select [(ngModel)]="flete.direccionDestino.comuna"
+                    class="form-control" name="direccionDestino.comuna">
+                    <option>Alhué</option>
+                    <option>Buin</option>
+                    <option>Calera de tango</option>
+                    <option>Cerrillos</option>
+                    <option>Cerro navia</option>
+                    <option>Colina</option>
+                    <option>Conchalí</option>
+                    <option>Curacaví</option>
+                    <option>El bosque</option>
+                    <option>El monte</option>
+                    <option>Estación central</option>
+                    <option>Huechuraba</option>
+                    <option>Independencia</option>
+                    <option>Isla de maipo</option>
+                    <option>La cisterna</option>
+                    <option>La florida</option>
+                    <option>La granja</option>
+                    <option>La pintana</option>
+                    <option>La reina</option>
+                    <option>Lampa</option>
+                    <option>Las condes</option>
+                    <option>Lo barnechea</option>
+                    <option>Lo espejo</option>
+                    <option>Lo prado</option>
+                    <option>Macul</option>
+                    <option>Maipú</option>
+                    <option>María pinto</option>
+                    <option>Melipilla</option>
+                    <option>Ñuñoa</option>
+                    <option>Padre hurtado</option>
+                    <option>Paine</option>
+                    <option>Pedro aguirre cerda</option>
+                    <option>Peñaflor</option>
+                    <option>Peñalolén</option>
+                    <option>Pirque</option>
+                    <option>Providencia</option>
+                    <option>Pudahuel</option>
+                    <option>Puente alto</option>
+                    <option>Quilicura</option>
+                    <option>Quinta normal</option>
+                    <option>Recoleta</option>
+                    <option>Renca</option>
+                    <option>San bernardo</option>
+                    <option>San joaquín</option>
+                    <option>San josé de maipo</option>
+                    <option>San miguel</option>
+                    <option>San pedro</option>
+                    <option>San ramón</option>
+                    <option>Santiago</option>
+                    <option>Talagante</option>
+                    <option>Tiltil</option>
+                    <option>Vitacura</option>
+            </select>
+              </div>
+              <div class="form-group">
+                <label>Calle</label>
+                <input  [(ngModel)]="flete.direccionDestino.calle"
+                    type="text"
+                       name="direccionDestino.calle"
+                      class="form-control"
+                      placeholder="Calle"
+                      required>
+              </div>
+              <div class="form-group">
+                <label>Numero</label>
+                <input  [(ngModel)]="flete.direccionDestino.numero"
+                    type="text"
+                       name="direccionDestino.numero"
+                      class="form-control"
+                      placeholder="Numero"
+                      required>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" (click)="ofertar(flete._id, forma)" data-dismiss="modal">Ofertar</button>
+            <button type="submit" class="btn btn-success" (click)="actualizarFlete(flete)" name="button" data-dismiss="modal">Guardar Cambios</button>
           </div>
         </div>
       </div>
     </div>
-  </form>
+    </form>
 
-
+    <!-- VER -->
     <div class="modal fade" [attr.id]="flete._id+'ver'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -125,10 +304,10 @@
                 {{ofertado.monto | currency:'CPL':true: '.0-0'}}
               </div>
               <div class="col">
-                <button type="button" class="btn btn-info" (click)="verPerfil(flete._id, forma)" data-dismiss="modal">Ver Perfil</button>
+                <button type="button" class="btn btn-info" (click)="verPerfil(ofertado.id_usuario)" data-dismiss="modal" data-toggle="modal" [attr.data-target]="'#clientProfile'">Ver Perfil</button>
               </div>
               <div class="col">
-                <button type="button" class="btn btn-success" (click)="contactar(flete._id, forma)" data-dismiss="modal">Contactar</button>
+                <button type="button" class="btn btn-success" (click)="contactar(ofertado.id_usuario)" data-dismiss="modal">Contactar</button>
               </div>
           </div>
           <div class="modal-footer">
@@ -139,7 +318,56 @@
     </div>
   </div>
 
+  <!-- CLientProfile -->
+  <div class="modal fade" [attr.id]="'clientProfile'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{flete.titulo}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row" *ngFor="let client of this.clientProfile">
 
+            <div class="list-group">
+              <a class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <small>Nombre</small>
+                  <h5 class="mb-1">{{client.nombre}}</h5><br>
+                  <small>Apellidos</small>
+                  <h5 class=mb-1>{{client.apellido}}</h5>
+                </div>
+              </a>
+              <a class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <small>Fletes Cancelados</small>
+                  <h5 class="mb-1">{{client.fletesCancelados}}</h5>
+                </div>
+              </a>
+              <a class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <small>Numero de Envios</small>
+                  <h5 class="mb-1">{{client.numeroEnvios}}</h5>
+                </div>
+              </a>
+              <a class="list-group-item list-group-item-action flex-column align-items-start" >  <!-- *ngFor="let vehiculo of client.vehiculo" -->
+                <div class="d-flex w-100 justify-content-between">
+                  <small>Vehiculos:</small>
+                </div>
+                <p class="mb-1">Camioneta</p>
+                <small class="text-muted">2toneladas</small>
+              </a>
+            </div>
 
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" (click)="ofertar(flete._id, forma)" data-dismiss="modal">Contactar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

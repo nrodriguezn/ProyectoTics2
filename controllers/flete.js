@@ -314,6 +314,17 @@ function getAllUserFletes(req, res) {
     })
 }
 
+function putFlete(req, res) {
+  Flete.findByIdAndUpdate(req.body._id, req.body, (err, sendUpdated) => {
+    if (err) res.status(500).send({
+      message: 'Error al actualizar'
+    })
+    res.status(200).send({
+      send: sendUpdated
+    })
+  })
+}
+
 
 
 
@@ -397,7 +408,8 @@ module.exports = {
   putOfertarFleteNormal,
   getAllFletesOfertadosActivos,
   deleteFleteActivo,
-  getAllUserFletes
+  getAllUserFletes,
+  putFlete
   // getSend,
   // getSends,
   // putSend,

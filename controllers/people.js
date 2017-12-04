@@ -2,12 +2,14 @@
 
 const People = require('../models/people')
 
- function setSesion(req, res){
+function setSesion(req, res) {
   console.log("Set Sesion")
-  res.status(200).send({message: 'Tienes autorizacion'})
+  res.status(200).send({
+    message: 'Tienes autorizacion'
+  })
 }
 
-function postProfile ( req, res ) {
+function postProfile(req, res) {
   console.log('POST /api/profile')
   let people = new People()
   people.sub = req.body.sub
@@ -19,35 +21,71 @@ function postProfile ( req, res ) {
   people.fletesCancelados = "0"
 
   console.log(people, "Guardar Ahora")
-  people.save((err, peopleStored)=>{
-    if(err) res.status(500).send({message: 'Error al guardar en la base de datos'})
-    res.status(200).send({people: peopleStored})
+  people.save((err, peopleStored) => {
+    if (err) res.status(500).send({
+      message: 'Error al guardar en la base de datos'
+    })
+    res.status(200).send({
+      people: peopleStored
+    })
   })
 }
 
 function getProfile(req, res) {
   console.log("get Profile")
   let id_auth = req.params.peopleId
-  People.findOne({sub: id_auth}, (err, people) =>{
-    if (err) return res.status(500).send({message: 'Error al realizar la peticion'})
-    if (!People) return res.status(404).send({message: 'No se ha encontrado el perfil'})
+  People.findOne({
+    sub: id_auth
+  }, (err, people) => {
+    if (err) return res.status(500).send({
+      message: 'Error al realizar la peticion'
+    })
+    if (!People) return res.status(404).send({
+      message: 'No se ha encontrado el perfil'
+    })
 
-    res.status(200).send({ people })
+    res.status(200).send({
+      people
+    })
   })
 }
 
 //en este punto tendre que hacer una busqueda de personas con filtro de alguna manera
 function getProfiles(req, res) {
   People.find({}, (err, peoples) => {
-    if(err) return res.status(500).send({message: 'Error al realizar la peticion'})
-    if (!peoples) return res.status(404).send({message: 'Al parecer no existen personas aun'})
+    if (err) return res.status(500).send({
+      message: 'Error al realizar la peticion'
+    })
+    if (!peoples) return res.status(404).send({
+      message: 'Al parecer no existen personas aun'
+    })
 
-    res.status(200).send({ peoples })
+    res.status(200).send({
+      peoples
+    })
+  })
+}
+
+function getClientProfile(req, res) {
+  People.find({
+    _id: req.params.id_user
+  }, (err, people) => {
+    if (err) return res.status(500).send({
+      message: 'Error al realizar la peticion'
+    })
+    if (!people) return res.status(404).send({
+      message: 'Al parecer no existen personas aun'
+    })
+
+    console.log("people", people)
+    res.status(200).send({
+      people
+    })
   })
 }
 //como son personas separamos los clientes(fletes) de usuarios
- //tu siendo cliente quiero que me muestra los usuarios que cumplan con:
- //tu siendo usuario quiero q me muestre los fletes que cumplan con :
+//tu siendo cliente quiero que me muestra los usuarios que cumplan con:
+//tu siendo usuario quiero q me muestre los fletes que cumplan con :
 
 //function getProfilesComuna ((comunaSSSSSSS,(cliente,usuario), people)
 //function getProfilesTipocamion ((tipo,cliente) , people)
@@ -99,8 +137,8 @@ function getProfiles(req, res) {
 //
 //  }
 //como son personas separamos los clientes(fletes) de usuarios
- //tu siendo cliente quiero que me muestra los usuarios que cumplan con:
- //tu siendo usuario quiero q me muestre los fletes que cumplan con :
+//tu siendo cliente quiero que me muestra los usuarios que cumplan con:
+//tu siendo usuario quiero q me muestre los fletes que cumplan con :
 
 //function getProfilesComuna ((comunaSSSSSSS,(cliente,usuario), people)
 //function getProfilesTipocamion ((tipo,cliente) , people)
@@ -117,9 +155,13 @@ function putProfile(req, res) {
   let peopleId = req.params.peopleId
   let update = req.body
 
-  People.findByIdAndUpdate(peopleId, update, (err, peopleUpdated) =>{
-    if (err) res.status(500).send({message: 'Error al actualizar el perfil'})
-    res.status(200).send({ people: peopleUpdated})
+  People.findByIdAndUpdate(peopleId, update, (err, peopleUpdated) => {
+    if (err) res.status(500).send({
+      message: 'Error al actualizar el perfil'
+    })
+    res.status(200).send({
+      people: peopleUpdated
+    })
   })
 }
 
@@ -127,11 +169,17 @@ function deleteProfile(req, res) {
   //hacer algun check, mas que nada en frontend de esto
   let peopleId = req.params.peopleId
 
-  People.findById(peopleId, (err, people) =>{
-    if(err) res.status(500).send({message: 'Error al borrar el Perfil'})
-    People.remove(err =>{
-      if(err) res.status(500).send({message: 'Error al borrar el Perfil'})
-      res.status(200).send({message: 'El Perfil ha sido eliminado'})
+  People.findById(peopleId, (err, people) => {
+    if (err) res.status(500).send({
+      message: 'Error al borrar el Perfil'
+    })
+    People.remove(err => {
+      if (err) res.status(500).send({
+        message: 'Error al borrar el Perfil'
+      })
+      res.status(200).send({
+        message: 'El Perfil ha sido eliminado'
+      })
     })
   })
 }
@@ -143,5 +191,6 @@ module.exports = {
   putProfile,
   deleteProfile,
   postProfile,
-  setSesion
+  setSesion,
+  getClientProfile
 }

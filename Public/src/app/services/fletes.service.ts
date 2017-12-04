@@ -187,6 +187,29 @@ public getAllFletesUsuario(id){
      return res.json() })
 }
 
+public getClientProfile(id_usuario){
+  let url = `${this.apiUrl}/people/client/${id_usuario}`
+  let headers = new Headers({
+     'Content-Type':'application/json'
+   })
+   return this.http.get(url, {headers})
+   .map(res =>{
+     return res.json() })
+}
+
+public actualizarFlete(forma){
+  let body = JSON.stringify(forma)
+  let headers = new Headers({
+    'Content-Type':'application/json'
+  })
+  let url = `${this.apiUrl}/flete/update`
+  return this.http.put(url, forma, { headers } ) //URL, BODY, HEADERS
+          .map(res=>{
+          console.log(res.json())
+          return res.json()
+        })
+}
+
 test(){
   let url = `${this.apiUrl}/setsesion`
   console.log("getTest")

@@ -40,6 +40,7 @@ api.get('/people', peopleCtrl.getProfiles)
 api.get('/people/:peopleId', peopleCtrl.getProfile)
 api.put('/people/:peopleId', peopleCtrl.putProfile)
 api.delete('/people/:peopleId', peopleCtrl.deleteProfile)
+api.get('/people/client/:id_user', peopleCtrl.getClientProfile)
 
 //Flete controllers
 api.post('/postform', fleteCtrl.postNewFlete)
@@ -53,6 +54,7 @@ api.put('/fletes/ofertar/normal', fleteCtrl.putOfertarFleteNormal)
 api.get('/fletes/ofertados/:id_usuario', fleteCtrl.getAllFletesOfertadosActivos)
 api.put('/fletes/activo/abandonar', fleteCtrl.deleteFleteActivo)
 api.get('/fletes/usuario/:id_usuario', fleteCtrl.getAllUserFletes)
+api.put('/flete/update', fleteCtrl.putFlete)
 
 
 //Send Controllers

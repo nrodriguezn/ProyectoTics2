@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
 import {FletesService} from './../../../services/fletes.service';
 import {AuthService} from './../../../services/auth.service';
 
@@ -13,17 +14,31 @@ export class FleterosComponent implements OnInit {
   constructor(public auth:AuthService, public _fletesService:FletesService) { }
 
 public fletes:any[] = []
+public clientProfile:any
 
   ngOnInit() {
+    this.auth.instanceProfile()
     setTimeout(time=>{
-      this.auth.instanceProfile()
       this._fletesService.getAllFletesUsuario(this.auth.userProfile._id)
       .subscribe(data => {
         this.fletes = data.sends
-        console.log(this.fletes)
       })
-    },1000)
+    },800)
+  }
 
+  verPerfil(id_usuario){
+    this._fletesService.getClientProfile(id_usuario)
+    .subscribe(data => {
+      this.clientProfile = data.people
+      console.log(this.clientProfile)
+    })
+  }
+
+  actualizarFlete(forma){
+    this._fletesService.actualizarFlete(forma)
+    .subscribe(data => {
+      this.ngOnInit()
+    })
 
   }
 
