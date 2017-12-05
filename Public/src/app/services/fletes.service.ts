@@ -236,6 +236,19 @@ export class FletesService {
     })
   }
 
+  public updateProfileClient(profile){
+    let body = JSON.stringify(profile)
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    })
+    let url = `${this.apiUrl}/people/profileUpdate`
+    return this.http.put(url, forma, { headers }) //URL, BODY, HEADERS
+      .map(res => {
+        console.log(res.json())
+        return res.json()
+      })
+  }
+
 
   test() {
     let url = `${this.apiUrl}/setsesion`

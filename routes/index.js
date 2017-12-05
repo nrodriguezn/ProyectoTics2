@@ -42,6 +42,7 @@ api.put('/people/:peopleId', peopleCtrl.putProfile)
 api.delete('/people/:peopleId', peopleCtrl.deleteProfile)
 api.get('/people/client/:id_user', peopleCtrl.getClientProfile)
 api.get('/count/:id_people', peopleCtrl.counts)
+api.put('/people/profileUpdate', peopleCtrl.profileUpdate)
 
 //Flete controllers
 api.post('/postform', fleteCtrl.postNewFlete)

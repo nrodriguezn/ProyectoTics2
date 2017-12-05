@@ -29,4 +29,12 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  actualizarperfile(profile){
+    this._fletesService.updateProfileClient(profile)
+    .subscribe(data=>{
+      this.auth.userProfile = data
+      this.ngOnInit()
+    })
+  }
+
 }

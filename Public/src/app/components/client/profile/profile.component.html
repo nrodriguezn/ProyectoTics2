@@ -40,6 +40,7 @@
           <td>
             <ul>
                 <button type="button" class="btn btn-info">Editar Perfil</button>
+                <button type="button" class="btn btn-info ancho-b" data-toggle="modal" [attr.data-target]="'#editar'">Editar</button>
             </ul>
           </td>
         </tr>
@@ -69,3 +70,113 @@
 <pre>{{this.auth.userProfile | json}}</pre>
 
   </div>
+
+
+
+
+
+  <!-- EDITAR  -->
+  <form >
+    <div class="modal fade" [attr.id]="'editar'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row">
+
+            <div class="form-group">
+              <label>Titulo</label>
+              <input  [(ngModel)]="this.auth.userProfile.nombre"
+                  type="text"
+                     name="titulo"
+                    class="form-control"
+                    placeholder="Titulo"
+                    required>
+            </div>
+            <div class="form-group">
+              <label>Comentario</label>
+              <input  [(ngModel)]="flete.comentario"
+                  type="text"
+                     name="comentario"
+                    class="form-control"
+                    placeholder="comentario"
+                    required>
+            </div>
+            <div class="form-group">
+              <label>Horario de Retiro</label>
+              <input  [(ngModel)]="flete.horarioRetiro"
+                  type="text"
+                     name="horarioRetiro"
+                    class="form-control"
+                    placeholder="Horario Retiro"
+                    required>
+            </div>
+          </div>
+
+            <h5>Direccion Origen</h5>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Comuna</label>
+
+            </div>
+            <div class="form-group">
+              <label>Calle</label>
+              <input  [(ngModel)]="flete.direccionOrigen.calle"
+                  type="text"
+                     name="direccionOrigen.calle"
+                    class="form-control"
+                    placeholder="Calle"
+                    required>
+            </div>
+            <div class="form-group">
+              <label>Numero</label>
+              <input  [(ngModel)]="flete.direccionOrigen.numero"
+                  type="text"
+                     name="direccionOrigen.numero"
+                    class="form-control"
+                    placeholder="Numero"
+                    required>
+            </div>
+          </div>
+
+          <h5>Direccion Destino</h5>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Comuna</label>
+
+            </div>
+            <div class="form-group">
+              <label>Calle</label>
+              <input  [(ngModel)]="flete.direccionDestino.calle"
+                  type="text"
+                     name="direccionDestino.calle"
+                    class="form-control"
+                    placeholder="Calle"
+                    required>
+            </div>
+            <div class="form-group">
+              <label>Numero</label>
+              <input  [(ngModel)]="flete.direccionDestino.numero"
+                  type="text"
+                     name="direccionDestino.numero"
+                    class="form-control"
+                    placeholder="Numero"
+                    required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-success" (click)="actualizarperfil(this.auth.userProfile)" name="button" data-dismiss="modal">Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>

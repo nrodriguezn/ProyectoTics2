@@ -230,6 +230,19 @@ function deleteProfile(req, res) {
   })
 }
 
+function profileUpdate(req, res) {
+  let peopleUpdate = req.body //revisar
+  console.log(req.body)
+  People.findById(peopleUpdate._id, peopleUpdate, (err, peopleUpdated) => {
+    if (err) res.status(500).send({
+      message: 'Error al actualizar el perfil'
+    })
+    res.status(200).send({
+      peopleUpdated
+    })
+  })
+}
+
 
 module.exports = {
   getProfile,
@@ -239,5 +252,6 @@ module.exports = {
   postProfile,
   setSesion,
   getClientProfile,
-  counts
+  counts,
+  profileUpdate
 }
