@@ -1,37 +1,87 @@
   <div class="container main-container">
 
-<!--     <div class="animated fadeIn fast" *ngIf="this.auth.userProfile.name == true">
-  <h3>Lo sentimos, el backend no esta corriendo</h3>
-  <hr>
-</div> -->
 
-    <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.name != undefined">
-<h2>Perfil del usuario: {{ this.auth.userProfile.name }}</h2>
-<pre>  {{ this.auth.userProfile | json}} </pre>
-      <hr>
-    </div>
-    <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.nombre != undefined">
-<h2>Perfil del usuario: {{this.auth.userProfile.nombre}}</h2>
-<pre>  {{ this.auth.userProfile | json}} </pre>
-      <hr>
-    </div>
+    <!-- <div class="card"> -->
+<!-- <div class="card-header"> -->
 
+      <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.name != undefined">
+  <h2>Bienvenido {{ this.auth.userProfile.name }}</h2>
 
-
-
-
-
-
-          <h3 class="text-center">Comandos para Atom</h3>
-          <hr>
-          <p class="lead text-center">
-              Seleccionar todos los elementos iguales: cmd + ctrl + g <br>
-              Seleccionar el siguiente elemento igual: cmd + d <br>
-              Mover un elemento: cmd + ctrl + flecha <br>
-              Comentar lineas: cmd + shift + / <br>
-              To UPPERCASE: cmd + k + u <br>
-              To lowercase: cmd + k + l <br>
-              Duplicar Linea: cmd + shift + d <br>
-              Juntar Lineas: cmd + j <br>
-        </p>
       </div>
+      <div class="animated fadeIn fast" *ngIf="this.auth.readyToShow && this.auth.userProfile.nombre != undefined">
+  <h2>Bienvenido {{this.auth.userProfile.nombre}}</h2>
+
+      </div>
+
+<!-- </div> -->
+
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <h4>Portal de servicios de transportes y mudanzas en Santiago</h4>
+          <p class=" text-secondary">
+            En Pro Flete bridamos la opción de cotizar vía nuestro portal, en donde usted como usuario con la necesidad de realizar un traslado podrá publicar su requerimiento en nuestro sitio web, posterior a esto, todos los trabajadores inscritos en fletes de Santiago verán su publicación a la cual ofertaran con un valor determinado, posterior a esto, usted podrá contactar con el que sea de su agrado.
+
+          </p>
+
+          <footer class="blockquote-footer">Encuentra tu mejor opción en  <cite title="Source Title">Fletes App</cite></footer>
+
+          <hr>
+
+          <h5>¡ Te ofrecemos los siguientes servicios !</h5>
+
+          <br>
+
+          <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Transportes</h4>
+              <p class="card-text  text-info">Busca la persona que mas se adecue a tus necesidades financieras o tipo de vehículo</p>
+            </div>
+          </div>
+        </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body ">
+                <h4 class="card-title">Mudanzas</h4>
+                <p class="card-text text-info">Decide el día que quieras realizar tu mudanza, de seguro alguien podrá ese día y hora!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body ">
+                <h4 class="card-title">Cargas Pesadas</h4>
+                <p class="card-text text-info">Hay de todo tipo de vehículos para transportar hasta las cargas más pesadas!</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body ">
+                <h4 class="card-title">Cargas Livianas</h4>
+                <p class="card-text text-info">No solo trabajamos con grandes empresas, también puedes enviar encomiendas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<br>
+
+
+
+
+        </blockquote>
+      </div>
+    </div>
+
+
+
+
+
+
+
+      <!-- </div> -->
