@@ -242,7 +242,7 @@ export class FletesService {
       'Content-Type': 'application/json'
     })
     let url = `${this.apiUrl}/people/profileUpdate`
-    return this.http.put(url, forma, { headers }) //URL, BODY, HEADERS
+    return this.http.put(url, body, { headers }) //URL, BODY, HEADERS
       .map(res => {
         console.log(res.json())
         return res.json()
