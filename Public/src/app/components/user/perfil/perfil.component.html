@@ -1,98 +1,38 @@
 
 
 
-  <!--Body-->
-  <div class="card-body animated fadeIn fast">
-    <ul class="list-group">
-        <li class="list-group-item card-body-list">
-          <table class="table">
-            <tr>
-              <td>
-                <span>Bienvenido</span><br>
-                <h3> {{this.auth.userProfile.nombre}}</h3>
-              </td>
-              <td>
-                <ul>
-                  <div class="img">
-                    <img [src]="this.auth.userProfile.url_img" alt="">
-                  </div>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                    <div class="numeros-cliente">
-                      <h5>{{ this.auth.userProfile.numeroEnvios}}</h5>
-                      <span>Fletes</span>
-                    </div>
-                    <div class="numeros-cliente">
-                      <h5>{{ this.auth.userProfile.fletesCancelados}}</h5>
-                      <span>Cancelados</span>
-                    </div>
-                    <div class="numeros-cliente">
-                      <h5>{{ this.auth.userProfile.numeroEnvios}}</h5>
-                      <span>Este Mes</span>
-                    </div>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                    <button type="button" class="btn btn-info">Editar Perfil</button>
-                </ul>
-              </td>
-            </tr>
-          </table>
 
 
-<!-- <hr> -->
-<!-- <pre>  {{ this.auth.userProfile | json}} </pre>
-<p>{{this.auth.userProfile.resenaPropia}}</p> -->
-    </li>
-  </ul>
+  <div class="card animated fadeIn fast">
+    <div class="card-body">
+          <div class="d-flex justify-content-center">
+            <h2>Bienvenido</h2> <h4 style="padding-left: 40px;">{{this.auth.userProfile.nombre}}</h4>
 
-  <table class="table table-sm" style="padding-top: 10px;">
-<thead>
-  <tr>
-    <th scope="col"><strong>Divisa</strong></th>
-    <th scope="col">Cantidad</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <th scope="row">Dinero gastado este mes:</th>
-    <!-- <td>{{this.auth.userProfile.infoExtra.dineroGastado}}</td> -->
-
-  </tr>
-  <tr>
-    <th scope="row">Cantidad de envios realizados:</th>
-    <!-- <td>{{this.auth.userProfile.infoExtra.enviosCantidad}}</td> -->
-
-  </tr>
-  <tr>
-    <th scope="row">Fletes Activos:</th>
-    <!-- <td>{{this.auth.userProfile.infoExtra.fletesActivos}}</td> -->
-
-  </tr>
-</tbody>
-</table>
-
-<ul class="list-group">
-  <li class="list-group-item card-body-list">
-    <ul>
-        <div class="img">
-          <img src="assets/img/default.jpg" alt="">
-        </div>
-      </ul>
-      <ul>
-          <div class="numeros-cliente">
-            <h5>Escritorio Completo</h5>
-            <span>Escritprio completo para trasladar 10km</span>
           </div>
 
-      </ul>
-      <ul>
-          <button type="button" class="btn btn-info">Subastar</button>
-      </ul>
-  </li>
-</ul>
-
+<br><br>
+  <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Publica un Flete con confianza!</h4>
+        <p class="card-text">Una vez el flete haya sido publicado, fleteros de tu comuna estaran esperando para ofrecerte el mejor precio y servicio, no los dejes esperando!</p>
+        <a   [routerLink]="['/publicarFlete']" class="btn btn-primary">Revisa tus publicaciones!</a>
+      </div>
+    </div>
   </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Revisa tus Publicaciones</h4>
+        <p class="card-text">No olvides estar revisando tus publicaciones, solo tu decides si contratar o no a algun flete, solo debes hacer click en Ver, Ver Perfil</p>
+        <a [routerLink]="['/verFleteros']" class="btn btn-primary">Revisa tus publicaciones!</a>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div>

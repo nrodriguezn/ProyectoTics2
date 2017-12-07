@@ -35,7 +35,7 @@
       <div class="card-body">
         <div class="form-row">
             <div class="col">
-              Titulo:
+              <h5>Título</h5>
             </div>
             <div class="col">
               <input type="text"
@@ -49,10 +49,10 @@
           </div>
           <br>
 
-      <div class="card-body">
+
             <div class="form-row">
               <div class="col">
-                  Comentario:
+                  <h5>Comentario</h5>
               </div>
               <div class="col">
                   <textarea type="text"
@@ -69,7 +69,7 @@
 
           <div class="form-row">
               <div class="col">
-                Horario Flete:
+                <h5>Horario Flete:</h5>
               </div>
               <div class="col">
                 <input type="text"
@@ -82,36 +82,16 @@
               </div>
             </div>
             <br>
-
             <div class="form-row">
                 <div class="col">
-                  Tipo de Flete:
-                </div>
-                <div class="col">
-                  <select
-                      class="form-control"
-                      name="tipoFlete"
-                      [ngModel]=""
-                      required
-                      value="Normal">
-                    <option selected>Normal</option>
-                    <option>Subasta</option>
-                  </select>
-                </div>
-              </div>
-
-            <br>
-
-            <div class="form-row">
-                <div class="col">
-                  Imagen:
+                  <h5>Imagen:</h5>
                 </div>
                 <div class="col">
                   <input type="file" class="form-control-file" name="imagen" ngModel >
                   <span> <small>No es Obligatoria</small> </span>
                 </div>
              </div>
-        </div>
+
       </div>
     </div>
     <br>
@@ -126,7 +106,7 @@
       <div class="card-body">
         <div class="form-row">
             <div class="col">
-              Comuna:
+              <h5>Comuna:</h5>
             </div>
             <div class="col">
               <select class="form-control option-select" name="comuna_origen" ngModel>
@@ -190,7 +170,7 @@
 
           <div class="form-row">
               <div class="col">
-                Calle:
+                <h5>Calle:</h5>
               </div>
               <div class="col">
                 <input type="text"
@@ -207,7 +187,7 @@
 
             <div class="form-row">
                 <div class="col">
-                  Numero:
+                  <h5>Numero:</h5>
                 </div>
                 <div class="col">
                   <input type="text"
@@ -226,7 +206,7 @@
             <div class="card-body">
               <div class="form-row">
                 <div class="col">
-                  Comuna:
+                  <h5>Comuna:</h5>
                 </div>
                 <div class="col">
                   <select class="form-control option-select" name="comuna_destino" ngModel>
@@ -290,7 +270,7 @@
 
           <div class="form-row">
               <div class="col">
-                Calle:
+                <h5>Calle:</h5>
               </div>
               <div class="col">
                 <input type="text"
@@ -307,7 +287,7 @@
 
             <div class="form-row">
                 <div class="col">
-                  Numero:
+                  <h5>Numero:</h5>
                 </div>
                 <div class="col">
                   <input type="text"
@@ -354,7 +334,6 @@
                 {{ this.auth.userProfile.numeroEnvios }}
               </div>
             </div>
-            <pre>{{this.auth.userProfile | json}}</pre>
           </div>
         </div>
       </form>

@@ -70,6 +70,7 @@ function getProfiles(req, res) {
 }
 
 function getClientProfile(req, res) {
+  console.log("getClientProfile", res.params)
   People.find({
     _id: req.params.id_user
   }, (err, people) => {

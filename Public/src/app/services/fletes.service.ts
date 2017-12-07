@@ -195,6 +195,7 @@ export class FletesService {
   }
 
   public getClientProfile(id_usuario) {
+
     let url = `${this.apiUrl}/people/client/${id_usuario}`
     let headers = new Headers({
       'Content-Type': 'application/json'

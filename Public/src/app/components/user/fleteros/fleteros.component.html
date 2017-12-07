@@ -20,8 +20,7 @@
                   <ul class="list-group">
                     <li *ngIf="flete.ofertado.length > 0"><button type="button" class="btn btn-info ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id+'ver'" *ngFor="let ofertado of flete.ofertado; let i_of = index">Ver ({{i_of+1}})</button></li>
                     <li><button type="button" class="btn btn-info ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id">Editar</button></li>
-                    <!-- <li><button type="button" class="btn btn-danger ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id+'elim'">Eliminar</button></li> -->
-                    <li><button type="button" class="btn btn-danger ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id+'elim'">ELiminar</button></li>
+                    <li><button type="button" class="btn btn-danger ancho-b" data-toggle="modal" [attr.data-target]="'#'+flete._id+'elim'">Eliminar</button></li>
                   </ul>
                 </div>
               </td>
@@ -335,9 +334,6 @@
               <div class="col">
                 <button type="button" class="btn btn-info" (click)="verPerfil(ofertado.id_usuario)" data-dismiss="modal" data-toggle="modal" [attr.data-target]="'#clientProfile'">Ver Perfil</button>
               </div>
-              <div class="col">
-                <button type="button" class="btn btn-success" (click)="contactar(ofertado.id_usuario)" data-dismiss="modal">Contactar</button>
-              </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -352,7 +348,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{flete.titulo}}</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Información del Flete</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -360,40 +356,47 @@
         <div class="modal-body">
           <div class="form-row" *ngFor="let client of this.clientProfile">
 
-            <div class="list-group">
-              <a class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <small>Nombre</small>
-                  <h5 class="mb-1">{{client.nombre}}</h5><br>
-                  <small>Apellidos</small>
-                  <h5 class=mb-1>{{client.apellido}}</h5>
-                </div>
-              </a>
-              <a class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <small>Fletes Cancelados</small>
-                  <h5 class="mb-1">{{client.fletesCancelados}}</h5>
-                </div>
-              </a>
-              <a class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <small>Numero de Envios</small>
-                  <h5 class="mb-1">{{client.numeroEnvios}}</h5>
-                </div>
-              </a>
-              <a class="list-group-item list-group-item-action flex-column align-items-start" >  <!-- *ngFor="let vehiculo of client.vehiculo" -->
-                <div class="d-flex w-100 justify-content-between">
-                  <small>Vehiculos:</small>
-                </div>
-                <p class="mb-1">Camioneta</p>
-                <small class="text-muted">2toneladas</small>
-              </a>
-            </div>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th scope="row">Nombre</th>
+                    <td>{{client.nombre}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Apellido</th>
+                    <td>{{client.apellido}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Numero Envios</th>
+                    <td>{{client.numeroEnvios}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Fletes Cancelados</th>
+                    <td>{{client.fletesCancelados}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Numero de Contacto</th>
+                    <td>{{client.num_contacto}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tipo Vehículo</th>
+                    <td>{{client.vehiculo.tipo}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Patente Vehículo</th>
+                    <td>{{client.vehiculo.patente}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Color Vehículo</th>
+                    <td>{{client.vehiculo.color}}</td>
+                  </tr>
+                </tbody>
+              </table>
 
-          </div>
+
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-success" (click)="ofertar(flete._id, forma)" data-dismiss="modal">Contactar</button>
         </div>
       </div>
     </div>

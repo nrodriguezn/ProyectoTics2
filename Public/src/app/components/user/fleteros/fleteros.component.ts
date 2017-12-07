@@ -30,7 +30,6 @@ public clientProfile:any
     this._fletesService.getClientProfile(id_usuario)
     .subscribe(data => {
       this.clientProfile = data.people
-      console.log(this.clientProfile)
     })
   }
 
