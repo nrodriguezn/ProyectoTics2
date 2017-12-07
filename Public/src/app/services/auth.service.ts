@@ -23,7 +23,7 @@ export class AuthService {
     domain: 'nico-app.auth0.com',
     responseType: 'token id_token',
     audience: 'https://nico-app.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/callback',
+    redirectUri: 'https://proflete-angular.herokuapp.com/callback',
     scope: 'openid profile'
   });
 

@@ -8,18 +8,20 @@ const app = express()
 const api = require('./routes')
 
 var corsOptions = {
-  origin: 'http://localhost:4200',
+  origin: 'https://proflete-angular.herokuapp.com',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions))
 
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
 app.use(bodyParser.json())
 app.engine('.hbs', hbs({
   defaultlayaut: 'default',
   extname: '.hbs'
-}))//para configurar el motor de plantillas
+})) //para configurar el motor de plantillas
 app.use('/api', api)
 
 
