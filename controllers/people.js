@@ -19,8 +19,11 @@ function postProfile(req, res) {
   people.tipo = req.body.userType
   people.numeroEnvios = "0"
   people.fletesCancelados = "0"
+  people.vehiculo.tipo = ""
+  people.vehiculo.patente = ""
+  people.vehiculo.color = ""
+  people.vehiculo.num_contacto = ""
 
-  console.log(people, "Guardar Ahora")
   people.save((err, peopleStored) => {
     if (err) res.status(500).send({
       message: 'Error al guardar en la base de datos'
@@ -87,41 +90,65 @@ function counts(req, res) {
   People.findOne({
     _id: req.params.id_people
   }, (err, ofertados) => {
-    let ElemOfer = ofertados.ofertado
-    let ElemArch = ofertados.archivados
+    if (ofertados) {
+      let ElemOfer = ofertados.ofertado
+      let ElemArch = ofertados.archivados
 
-    let salidaOfer = 0
-    ofertados.ofertado.forEach(dato => {
-      salidaOfer += 1
-    })
+      let salidaOfer = 0
+      ofertados.ofertado.forEach(dato => {
+        salidaOfer += 1
+      })
 
-    let salidaArch = 0
-    ofertados.archivados.forEach(dato => {
-      salidaArch += 1
-    })
+      let salidaArch = 0
+      ofertados.archivados.forEach(dato => {
+        salidaArch += 1
+      })
 
-    let conteo = {
-      contArch: salidaArch,
-      contOfer: salidaOfer
+      let conteo = {
+        contArch: salidaArch,
+        contOfer: salidaOfer
+      }
+
+      if (err) return res.status(500).send({
+        message: 'Error al realizar el Conteo'
+      })
+      if (!conteo) return res.status(404).send({
+        message: 'No se pudo realizar correctamente el conteo'
+      })
+
+      res.status(200).send({
+        conteo
+      })
+    } else {
+      res.status(500).send({
+        message: "again"
+      })
     }
-
-    if (err) return res.status(500).send({
-      message: 'Error al realizar el Conteo'
-    })
-    if (!conteo) return res.status(404).send({
-      message: 'No se pudo realizar correctamente el conteo'
-    })
-
-    res.status(200).send({
-      conteo
-    })
-
-
 
   })
 }
 
+function profileUpdate(req, res) {
+  People.findByIdAndUpdate(req.body._id, req.body, (err, sendUpdated) => {
+    if (err) res.status(500).send({
+      message: 'Error al actualizar el perfil'
+    })
+    res.status(200).send({
+      sendUpdated
+    })
+  })
+}
 
+//
+// Flete.findByIdAndUpdate(req.body._id, req.body, (err, sendUpdated) => {
+//   if (err) res.status(500).send({
+//     message: 'Error al actualizar'
+//   })
+//   res.status(200).send({
+//     send: sendUpdated
+//   })
+// })
+// }
 
 
 
@@ -197,58 +224,49 @@ function counts(req, res) {
 
 
 
-function putProfile(req, res) {
-  let peopleId = req.params.peopleId
-  let update = req.body
+// function putProfile(req, res) {
+//   let peopleId = req.params.peopleId
+//   let update = req.body
+//
+//   People.findByIdAndUpdate(peopleId, update, (err, peopleUpdated) => {
+//     if (err) res.status(500).send({
+//       message: 'Error al actualizar el perfil'
+//     })
+//     res.status(200).send({
+//       people: peopleUpdated
+//     })
+//   })
+// }
 
-  People.findByIdAndUpdate(peopleId, update, (err, peopleUpdated) => {
-    if (err) res.status(500).send({
-      message: 'Error al actualizar el perfil'
-    })
-    res.status(200).send({
-      people: peopleUpdated
-    })
-  })
-}
+// function deleteProfile(req, res) {
+//   //hacer algun check, mas que nada en frontend de esto
+//   let peopleId = req.params.peopleId
+//
+//   People.findById(peopleId, (err, people) => {
+//     if (err) res.status(500).send({
+//       message: 'Error al borrar el Perfil'
+//     })
+//     People.remove(err => {
+//       if (err) res.status(500).send({
+//         message: 'Error al borrar el Perfil'
+//       })
+//       res.status(200).send({
+//         message: 'El Perfil ha sido eliminado'
+//       })
+//     })
+//   })
+// }
 
-function deleteProfile(req, res) {
-  //hacer algun check, mas que nada en frontend de esto
-  let peopleId = req.params.peopleId
 
-  People.findById(peopleId, (err, people) => {
-    if (err) res.status(500).send({
-      message: 'Error al borrar el Perfil'
-    })
-    People.remove(err => {
-      if (err) res.status(500).send({
-        message: 'Error al borrar el Perfil'
-      })
-      res.status(200).send({
-        message: 'El Perfil ha sido eliminado'
-      })
-    })
-  })
-}
 
-function profileUpdate(req, res) {
-  let peopleUpdate = req.body //revisar
-  console.log(req.body)
-  People.findById(peopleUpdate._id, peopleUpdate, (err, peopleUpdated) => {
-    if (err) res.status(500).send({
-      message: 'Error al actualizar el perfil'
-    })
-    res.status(200).send({
-      peopleUpdated
-    })
-  })
-}
+
 
 
 module.exports = {
   getProfile,
   getProfiles,
-  putProfile,
-  deleteProfile,
+  //putProfile,
+  //deleteProfile,
   postProfile,
   setSesion,
   getClientProfile,

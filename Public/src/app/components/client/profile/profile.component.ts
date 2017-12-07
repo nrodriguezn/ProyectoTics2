@@ -22,6 +22,9 @@ export class ProfileComponent implements OnInit {
      setTimeout(data =>{
        this._fletesService.countsInitProfile(this.auth.userProfile._id)
        .subscribe(data => {
+         if(data == "again"){
+           this.ngOnInit()
+         }
          this.archivados = data.conteo.contArch,
          this.ofertados = data.conteo.contOfer
        })
@@ -29,7 +32,8 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  actualizarperfile(profile){
+  actualizarperfil(profile){
+    console.log(profile)
     this._fletesService.updateProfileClient(profile)
     .subscribe(data=>{
       this.auth.userProfile = data

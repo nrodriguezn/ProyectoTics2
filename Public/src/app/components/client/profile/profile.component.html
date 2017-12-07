@@ -11,8 +11,8 @@
         <tr>
           <td>
             <span>Bienvenido</span><br>
-            <h3> {{this.auth.userProfile?.nombre}} <br>
-            {{this.auth.userProfile?.apellido}} </h3>
+            <h3> {{this.auth.userProfile.nombre}} <br>
+            {{this.auth.userProfile.apellido}} </h3>
           </td>
           <td>
             <ul>
@@ -28,7 +28,7 @@
                   <span>Fletes Ofertados</span>
                 </div>
                 <div class="numeros-cliente">
-                  <h5>{{ this.auth.userProfile?.fletesCancelados}}</h5>
+                  <h5>{{ this.auth.userProfile.fletesCancelados}}</h5>
                   <span>Cancelados</span>
                 </div>
                 <div class="numeros-cliente">
@@ -39,37 +39,55 @@
           </td>
           <td>
             <ul>
-                <button type="button" class="btn btn-info">Editar Perfil</button>
-                <button type="button" class="btn btn-info ancho-b" data-toggle="modal" [attr.data-target]="'#editar'">Editar</button>
+                <button type="button" class="btn btn-info ancho-b" data-toggle="modal" [attr.data-target]="'#editar'">Editar Perfil</button>
             </ul>
           </td>
         </tr>
       </table>
     </li>
   </ul>
+</div>
+
+
+<br><br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Vehiculo</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Patente</th>
+      <th scope="col">Color</th>
+      <th scope="col">Numero Contacto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><div class="img">
+        <img src="assets/img/camion_solo.png" alt="">
+      </div></th>
+      <td>{{ this.auth.userProfile.vehiculo.tipo }}</td>
+      <td>{{ this.auth.userProfile.vehiculo.patente}}</td>
+      <td>{{ this.auth.userProfile.vehiculo.color}}</td>
+      <td>{{ this.auth.userProfile.num_contacto}}</td>
+    </tr>
+  </tbody>
+</table>
 
 
 
-<ul class="list-group">
-  <li class="list-group-item card-body-list">
-    <ul>
-        <div class="img">
-          <img src="assets/img/default.jpg" alt="">
+
+
+        <!-- <div class="img">
+          <img src="assets/img/camion_solo.png" alt="">
         </div>
-      </ul>
-      <ul>
           <div class="numeros-cliente">
             <h5>Vehiculo</h5>
-            <span>Informacion relevante del vehiculo</span>
-          </div>
+          </div> -->
 
-      </ul>
-  </li>
-</ul>
 
-<pre>{{this.auth.userProfile | json}}</pre>
 
-  </div>
+
 
 
 
@@ -87,90 +105,76 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-row">
+            <div class="form-row">
 
-            <div class="form-group">
-              <label>Titulo</label>
-              <input  [(ngModel)]="this.auth.userProfile.nombre"
+              <div class="form-group">
+                <label>Nombre</label>
+                <input  [(ngModel)]="this.auth.userProfile.nombre"
+                    type="text"
+                       name="nombre"
+                      class="form-control"
+                      placeholder="Nombre"
+                      required>
+              </div>
+              <div class="form-group">
+                <label>Apellido</label>
+                <input  [(ngModel)]="this.auth.userProfile.apellido"
+                    type="text"
+                       name="apellido"
+                      class="form-control"
+                      placeholder="Apellido"
+                      required>
+              </div>
+              <div class="form-group">
+              <label>Numero de Contacto</label>
+              <input  [(ngModel)]="this.auth.userProfile.num_contacto"
                   type="text"
-                     name="titulo"
+                     name="num_contacto"
                     class="form-control"
-                    placeholder="Titulo"
+                    placeholder=""
                     required>
             </div>
-            <div class="form-group">
-              <label>Comentario</label>
-              <input  [(ngModel)]="flete.comentario"
-                  type="text"
-                     name="comentario"
-                    class="form-control"
-                    placeholder="comentario"
-                    required>
-            </div>
-            <div class="form-group">
-              <label>Horario de Retiro</label>
-              <input  [(ngModel)]="flete.horarioRetiro"
-                  type="text"
-                     name="horarioRetiro"
-                    class="form-control"
-                    placeholder="Horario Retiro"
-                    required>
-            </div>
-          </div>
-
-            <h5>Direccion Origen</h5>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>Comuna</label>
 
             </div>
-            <div class="form-group">
-              <label>Calle</label>
-              <input  [(ngModel)]="flete.direccionOrigen.calle"
-                  type="text"
-                     name="direccionOrigen.calle"
-                    class="form-control"
-                    placeholder="Calle"
-                    required>
-            </div>
-            <div class="form-group">
-              <label>Numero</label>
-              <input  [(ngModel)]="flete.direccionOrigen.numero"
-                  type="text"
-                     name="direccionOrigen.numero"
-                    class="form-control"
-                    placeholder="Numero"
-                    required>
-            </div>
-          </div>
 
-          <h5>Direccion Destino</h5>
+              <h5>Informacion de vehiculo</h5>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label>Comuna</label>
+              <div class="form-row">
 
+              <div class="form-group">
+                <label>descripcion</label>
+                <select
+                    class="form-control option-select"
+                    [(ngModel)]="this.auth.userProfile.vehiculo.tipo"
+                    name="vehiculo.tipo">
+                    <option>Auto</option>
+                    <option>Camioneta</option>
+                    <option>Camion</option>
+                    <option>Moto</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Patente</label>
+                <input  [(ngModel)]="this.auth.userProfile.vehiculo.patente"
+                      type="text"
+                       name="vehiculo.patente"
+                      class="form-control"
+                      placeholder="ABCD12"
+                      required>
+              </div>
+              <div class="form-group">
+                <label>Color</label>
+                <input  [(ngModel)]="this.auth.userProfile.vehiculo.color"
+                      type="text"
+                       name="vehiculo.color"
+                      class="form-control"
+                      placeholder="Negro"
+                      required>
+              </div>
             </div>
-            <div class="form-group">
-              <label>Calle</label>
-              <input  [(ngModel)]="flete.direccionDestino.calle"
-                  type="text"
-                     name="direccionDestino.calle"
-                    class="form-control"
-                    placeholder="Calle"
-                    required>
-            </div>
-            <div class="form-group">
-              <label>Numero</label>
-              <input  [(ngModel)]="flete.direccionDestino.numero"
-                  type="text"
-                     name="direccionDestino.numero"
-                    class="form-control"
-                    placeholder="Numero"
-                    required>
-            </div>
-          </div>
+
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

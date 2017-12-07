@@ -42,21 +42,18 @@ const PeopleSchema = new Schema({
       type: Number
     },
   },
-  "vehiculo": [{
+  "vehiculo": {
     "tipo": {
       type: String,
-      enum: ['camion', 'furgon', 'moto']
+      enum: ['Auto', 'Camioneta', 'Camion', 'Moto', '']
     },
     "patente": {
       type: String
     },
     "color": {
       type: String
-    },
-    "url_img": {
-      type: String
     }
-  }],
+  },
   "archivados": [{
     type: String,
     default: []
@@ -88,6 +85,9 @@ const PeopleSchema = new Schema({
   },
   "fletesCancelados": {
     type: Number
+  },
+  "num_contacto": {
+    type: String
   }
 
 })
