@@ -8,7 +8,8 @@ const app = express()
 const api = require('./routes')
 
 var corsOptions = {
-  origin: 'https://proflete-angular.herokuapp.com, http://localhost:4200',
+  //origin: 'https://proflete-angular.herokuapp.com',
+  origin: 'http://localhost:4200',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions))
