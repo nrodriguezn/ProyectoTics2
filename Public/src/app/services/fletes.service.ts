@@ -14,8 +14,8 @@ export class FletesService {
   public fletesArchivados: any[] = []
 
 
-  public apiUrl:string = 'https://backproflete.herokuapp.com/api'
-  // public apiUrl: string = 'http://localhost:3000/api'
+  // public apiUrl:string = 'https://backproflete.herokuapp.com/api'
+  public apiUrl: string = 'http://localhost:3000/api'
 
 
   public getUserType() {
