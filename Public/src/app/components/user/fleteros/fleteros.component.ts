@@ -21,6 +21,7 @@ public clientProfile:any
     setTimeout(time=>{
       this._fletesService.getAllFletesUsuario(this.auth.userProfile._id)
       .subscribe(data => {
+        console.log(this.fletes)
         this.fletes = data.sends
       })
     },800)
